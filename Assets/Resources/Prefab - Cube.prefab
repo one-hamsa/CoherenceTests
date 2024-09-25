@@ -434,7 +434,7 @@ MonoBehaviour:
       lodStepsActive: 1
     GeneratesArchetypeDefinition: 0
   interpolationLocation: 4
-  RigidbodyUpdateMode: 1
+  RigidbodyUpdateMode: 0
   OnRigidbody2DPositionUpdate:
     m_PersistentCalls:
       m_Calls: []
