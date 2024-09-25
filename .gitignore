@@ -26,6 +26,16 @@
 # Visual Studio cache directory
 .vs/
 
+# VSCode
+.vscode
+
+# Debugging info
+Assets/Resources/DebugInfo.txt
+Assets/Resources/DebugInfo.txt.meta
+
+# Jetbrains Rider settings files
+.idea
+
 # Gradle cache directory
 .gradle/
 
