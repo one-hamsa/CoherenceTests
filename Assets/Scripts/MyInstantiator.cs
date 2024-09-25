@@ -11,12 +11,12 @@ public class MyInstantiator : INetworkObjectInstantiator
     {
         if ((spawnInfo.prefab as MonoBehaviour)?.gameObject == PrefabRepository.GetPlayerPrefab())
         {
-            // Trying to remotely instantiate a player, set the loadout
-            Player._useLoadout = true;
-            Player._loadout_leftArmItemID = spawnInfo.GetBindingValue<int>("leftArmItemID");
-            Player._loadout_rightArmItemID = spawnInfo.GetBindingValue<int>("rightArmItemID");
-            Player._loadout_leftWeaponItemID = spawnInfo.GetBindingValue<int>("leftWeaponItemID");
-            Player._loadout_rightWeaponItemID = spawnInfo.GetBindingValue<int>("rightWeaponItemID");
+            // // Trying to remotely instantiate a player, set the loadout
+            // Player._useLoadout = true;
+            // Player._loadout_leftArmItemID = spawnInfo.GetBindingValue<int>("leftArmItemID");
+            // Player._loadout_rightArmItemID = spawnInfo.GetBindingValue<int>("rightArmItemID");
+            // Player._loadout_leftWeaponItemID = spawnInfo.GetBindingValue<int>("leftWeaponItemID");
+            // Player._loadout_rightWeaponItemID = spawnInfo.GetBindingValue<int>("rightWeaponItemID");
             
             // Now we can instantiate
             return Object.Instantiate(PrefabRepository.GetPlayerPrefab()).GetComponent<ICoherenceSync>();
