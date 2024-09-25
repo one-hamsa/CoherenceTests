@@ -177,13 +177,12 @@ namespace Coherence.Generated
                 case 150: return GenericFieldULong3.FromInterop(data, dataSize, simFrames, simFramesCount);
                 case 151: return GenericFieldColor0.FromInterop(data, dataSize, simFrames, simFramesCount);
                 case 152: return GenericFieldColor1.FromInterop(data, dataSize, simFrames, simFramesCount);
-                case 153: return _01ab9e945591dab4c9c7a936045b976c_2272714898920472812.FromInterop(data, dataSize, simFrames, simFramesCount);
-                case 154: return _01ab9e945591dab4c9c7a936045b976c_8021727627539323238.FromInterop(data, dataSize, simFrames, simFramesCount);
-                case 155: return _01ab9e945591dab4c9c7a936045b976c_8549624382963648638.FromInterop(data, dataSize, simFrames, simFramesCount);
-                case 156: return _3bec13d4bb00a5e479d1a130c95272ee_1816034302234343057.FromInterop(data, dataSize, simFrames, simFramesCount);
-                case 157: return _7aa047939d3aa49498cc38bb3ac3eec7_7616975171125922867.FromInterop(data, dataSize, simFrames, simFramesCount);
-                case 158: return _86637d6221845a54c80f4dee3a49e53e_8118622161289229957.FromInterop(data, dataSize, simFrames, simFramesCount);
-                case 159: return _ddf545e2defc9334d82e1bfb3a54514a_1735892028521822499.FromInterop(data, dataSize, simFrames, simFramesCount);
+                case 153: return _01ab9e945591dab4c9c7a936045b976c_8021727627539323238.FromInterop(data, dataSize, simFrames, simFramesCount);
+                case 154: return _01ab9e945591dab4c9c7a936045b976c_8549624382963648638.FromInterop(data, dataSize, simFrames, simFramesCount);
+                case 155: return _3bec13d4bb00a5e479d1a130c95272ee_1816034302234343057.FromInterop(data, dataSize, simFrames, simFramesCount);
+                case 156: return _7aa047939d3aa49498cc38bb3ac3eec7_7616975171125922867.FromInterop(data, dataSize, simFrames, simFramesCount);
+                case 157: return _86637d6221845a54c80f4dee3a49e53e_8118622161289229957.FromInterop(data, dataSize, simFrames, simFramesCount);
+                case 158: return _ddf545e2defc9334d82e1bfb3a54514a_1735892028521822499.FromInterop(data, dataSize, simFrames, simFramesCount);
             }
 
             throw new ArgumentException($"Unkown component type {type}", nameof(type));
@@ -1883,17 +1882,6 @@ namespace Coherence.Generated
                 }
                 case 153:
                 {
-                    var orig = (_01ab9e945591dab4c9c7a936045b976c_2272714898920472812)component;
-                    var val = new _01ab9e945591dab4c9c7a936045b976c_2272714898920472812.Interop();
-
-                    fixed (void* pinnedPtrids = orig.ids) { val.ids = new ByteArray { Data = pinnedPtrids, Length =  orig.ids?.Length ?? 0 };
-
-                    updater.UpdateComponent(entity, componentType, val, 16, component.FieldsMask, component.StoppedMask, frames);
-
-}                    return;
-                }
-                case 154:
-                {
                     var orig = (_01ab9e945591dab4c9c7a936045b976c_8021727627539323238)component;
                     var val = new _01ab9e945591dab4c9c7a936045b976c_8021727627539323238.Interop();
 
@@ -1904,7 +1892,7 @@ namespace Coherence.Generated
 
                     return;
                 }
-                case 155:
+                case 154:
                 {
                     var orig = (_01ab9e945591dab4c9c7a936045b976c_8549624382963648638)component;
                     var val = new _01ab9e945591dab4c9c7a936045b976c_8549624382963648638.Interop();
@@ -1918,7 +1906,7 @@ namespace Coherence.Generated
 
                     return;
                 }
-                case 156:
+                case 155:
                 {
                     var orig = (_3bec13d4bb00a5e479d1a130c95272ee_1816034302234343057)component;
                     var val = new _3bec13d4bb00a5e479d1a130c95272ee_1816034302234343057.Interop();
@@ -1930,7 +1918,7 @@ namespace Coherence.Generated
 
                     return;
                 }
-                case 157:
+                case 156:
                 {
                     var orig = (_7aa047939d3aa49498cc38bb3ac3eec7_7616975171125922867)component;
                     var val = new _7aa047939d3aa49498cc38bb3ac3eec7_7616975171125922867.Interop();
@@ -1942,7 +1930,7 @@ namespace Coherence.Generated
 
                     return;
                 }
-                case 158:
+                case 157:
                 {
                     var orig = (_86637d6221845a54c80f4dee3a49e53e_8118622161289229957)component;
                     var val = new _86637d6221845a54c80f4dee3a49e53e_8118622161289229957.Interop();
@@ -1954,7 +1942,7 @@ namespace Coherence.Generated
 
                     return;
                 }
-                case 159:
+                case 158:
                 {
                     var orig = (_ddf545e2defc9334d82e1bfb3a54514a_1735892028521822499)component;
                     var val = new _ddf545e2defc9334d82e1bfb3a54514a_1735892028521822499.Interop();
@@ -1989,14 +1977,6 @@ namespace Coherence.Generated
 
         public unsafe IEntityInput GetInput(UInt32 type, IntPtr data, Int32 dataSize)
         {
-            switch (type)
-            {
-                  case 0: return _01ab9e945591dab4c9c7a936045b976c.FromInterop(data, dataSize);
-                  case 1: return _3bec13d4bb00a5e479d1a130c95272ee.FromInterop(data, dataSize);
-                  case 2: return _7aa047939d3aa49498cc38bb3ac3eec7.FromInterop(data, dataSize);
-                  case 3: return _86637d6221845a54c80f4dee3a49e53e.FromInterop(data, dataSize);
-                  case 4: return _ddf545e2defc9334d82e1bfb3a54514a.FromInterop(data, dataSize);
-            }
             throw new ArgumentException($"Unknown input type {type}", nameof(type));
         }
 
@@ -2097,60 +2077,6 @@ namespace Coherence.Generated
         public unsafe void SendInput(INativeCoreInputSender sender, InteropEntity entity, long frame, IEntityInput input)
         {
             var type = input.GetComponentType();
-            var inputData = (InputData)input;
-            switch (type)
-            {
-                case 0:
-                {
-                    var orig = (_01ab9e945591dab4c9c7a936045b976c)inputData.Input;
-                    var val = new _01ab9e945591dab4c9c7a936045b976c.Interop();
-
-
-                    sender.SendInput(entity, frame, type, val, 0);
-
-                    return;
-                }
-                case 1:
-                {
-                    var orig = (_3bec13d4bb00a5e479d1a130c95272ee)inputData.Input;
-                    var val = new _3bec13d4bb00a5e479d1a130c95272ee.Interop();
-
-
-                    sender.SendInput(entity, frame, type, val, 0);
-
-                    return;
-                }
-                case 2:
-                {
-                    var orig = (_7aa047939d3aa49498cc38bb3ac3eec7)inputData.Input;
-                    var val = new _7aa047939d3aa49498cc38bb3ac3eec7.Interop();
-
-
-                    sender.SendInput(entity, frame, type, val, 0);
-
-                    return;
-                }
-                case 3:
-                {
-                    var orig = (_86637d6221845a54c80f4dee3a49e53e)inputData.Input;
-                    var val = new _86637d6221845a54c80f4dee3a49e53e.Interop();
-
-
-                    sender.SendInput(entity, frame, type, val, 0);
-
-                    return;
-                }
-                case 4:
-                {
-                    var orig = (_ddf545e2defc9334d82e1bfb3a54514a)inputData.Input;
-                    var val = new _ddf545e2defc9334d82e1bfb3a54514a.Interop();
-
-
-                    sender.SendInput(entity, frame, type, val, 0);
-
-                    return;
-                }
-            }
 
             throw new NotImplementedException($"Failed to send an input with type {type}.");
         }

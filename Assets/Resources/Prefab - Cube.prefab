@@ -329,7 +329,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1859129984264921914}
   - component: {fileID: 3582981628696257013}
-  - component: {fileID: -8991240469588349970}
   - component: {fileID: 8118622161289229957}
   m_Layer: 0
   m_Name: Prefab - Cube
@@ -492,9 +491,9 @@ MonoBehaviour:
         descriptor:
           rid: 4417920554039508994
         routing: 0
+        syncMode: 0
         isPredicted: 0
         predictionMode: 0
-        defaultInterpolationPath: 
         guid: afdd95ed2f444dd2b1be1ac8dfcbd925
         archetypeData:
           type: 7
@@ -523,6 +522,7 @@ MonoBehaviour:
         ownerType:
           assemblyQualifiedName: UnityEngine.Transform, UnityEngine.CoreModule, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
+        defaultSyncMode: 0
         CustomData:
           rid: -2
         bindingType:
@@ -536,9 +536,9 @@ MonoBehaviour:
         descriptor:
           rid: 4417920695832936465
         routing: 0
+        syncMode: 0
         isPredicted: 0
         predictionMode: 0
-        defaultInterpolationPath: 
         guid: d24f7942547649f0aafed1df15b2aca7
         archetypeData:
           type: 3
@@ -567,6 +567,7 @@ MonoBehaviour:
         ownerType:
           assemblyQualifiedName: MechSyncState, Assembly-CSharp, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
+        defaultSyncMode: 0
         CustomData:
           rid: -2
         bindingType:
@@ -580,9 +581,9 @@ MonoBehaviour:
         descriptor:
           rid: 4417920695832936467
         routing: 0
+        syncMode: 0
         isPredicted: 0
         predictionMode: 0
-        defaultInterpolationPath: 
         guid: dc394eab71eb48f9a69fe44b8df69e2a
         archetypeData:
           type: 7
@@ -611,6 +612,7 @@ MonoBehaviour:
         ownerType:
           assemblyQualifiedName: MechSyncState, Assembly-CSharp, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
+        defaultSyncMode: 0
         CustomData:
           rid: -2
         bindingType:
@@ -624,9 +626,9 @@ MonoBehaviour:
         descriptor:
           rid: 4417920695832936476
         routing: 0
+        syncMode: 0
         isPredicted: 0
         predictionMode: 0
-        defaultInterpolationPath: 
         guid: 6393046b690e49918ab1c810c63f78b6
         archetypeData:
           type: 8
@@ -655,6 +657,7 @@ MonoBehaviour:
         ownerType:
           assemblyQualifiedName: UnityEngine.Transform, UnityEngine.CoreModule, Version=0.0.0.0,
             Culture=neutral, PublicKeyToken=null
+        defaultSyncMode: 0
         CustomData:
           rid: -2
         bindingType:
@@ -662,24 +665,6 @@ MonoBehaviour:
             Coherence.Toolkit, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
         oldName: 
         oldParameterAssemblyTypes: []
---- !u!114 &-8991240469588349970
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5235640173522209345}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4dc97a814921d461188a38ca20db6787, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  InitialBufferSize: 32
-  InitialInputDelay: 3
-  DisconnectOnTimeReset: 0
-  DestroyOnInputAuthorityDisconnected: 1
-  UseFixedSimulationFrames: 0
-  fields: []
 --- !u!114 &8118622161289229957
 MonoBehaviour:
   m_ObjectHideFlags: 0
