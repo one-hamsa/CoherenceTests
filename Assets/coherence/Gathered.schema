@@ -1,0 +1,39 @@
+component _01ab9e945591dab4c9c7a936045b976c_2272714898920472812 [id "153"]
+  ids Bytes [bits "4072"]
+
+component _01ab9e945591dab4c9c7a936045b976c_8021727627539323238 [id "154"]
+  blah Bool [bits "1"]
+  stam Vector3 [compression "None"]
+
+component _01ab9e945591dab4c9c7a936045b976c_8549624382963648638 [id "155"]
+  leftArmItemID Int [bits "32", range-min "-2147483648", range-max "2147483647"]
+  rightArmItemID Int [bits "32", range-min "-2147483648", range-max "2147483647"]
+  leftWeaponItemID Int [bits "32", range-min "-2147483648", range-max "2147483647"]
+  rightWeaponItemID Int [bits "32", range-min "-2147483648", range-max "2147483647"]
+
+component _3bec13d4bb00a5e479d1a130c95272ee_1816034302234343057 [id "156"]
+  blah Bool [bits "1"]
+  stam Vector3 [compression "None"]
+
+component _7aa047939d3aa49498cc38bb3ac3eec7_7616975171125922867 [id "157"]
+  blah Bool [bits "1"]
+  stam Vector3 [compression "None"]
+
+component _86637d6221845a54c80f4dee3a49e53e_8118622161289229957 [id "158"]
+  blah Bool [bits "1"]
+  stam Vector3 [compression "None"]
+
+component _ddf545e2defc9334d82e1bfb3a54514a_1735892028521822499 [id "159"]
+  blah Bool [bits "1"]
+  stam Vector3 [compression "None"]
+
+input _01ab9e945591dab4c9c7a936045b976c [id "0"]
+
+input _3bec13d4bb00a5e479d1a130c95272ee [id "1"]
+
+input _7aa047939d3aa49498cc38bb3ac3eec7 [id "2"]
+
+input _86637d6221845a54c80f4dee3a49e53e [id "3"]
+
+input _ddf545e2defc9334d82e1bfb3a54514a [id "4"]
+

@@ -1,0 +1,9 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1045 &1
+EditorBuildSettings:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Scenes: []
+  m_configObjects:
+    io.coherence.simulator.build.options: {fileID: 11400000, guid: e5ccb1ec189fcc64583b52e149bf69d9, type: 2}
