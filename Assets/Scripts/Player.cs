@@ -26,15 +26,30 @@ public class Player : MonoBehaviour
     private void Awake()
     {
         _coherenceSync = GetComponent<CoherenceSync>();
-
     }
 
-    private IEnumerator Start()
+    private void InstantiateDirectlyInHierarchy()
     {
-        yield return null;
-        yield return null;
-        yield return null;
-        
+        _leftArm = Instantiate(PrefabRepository.GetPrefab(leftArmItemID), transform.position + Vector3.left * 3f, Quaternion.identity, transform);
+        _rightArm = Instantiate(PrefabRepository.GetPrefab(rightArmItemID), transform.position + Vector3.right * 3f, Quaternion.identity, transform);
+        _leftWeapon  = Instantiate(PrefabRepository.GetPrefab(leftWeaponItemID), _leftArm.transform.position + Vector3.up * 2f, Quaternion.identity, _leftArm.transform);
+        _rightWeapon  = Instantiate(PrefabRepository.GetPrefab(rightWeaponItemID), _rightArm.transform.position + Vector3.up * 2f, Quaternion.identity, _rightArm.transform);
+    }
+
+    private void InstantiateAndThenSetParent()
+    {
+        _leftArm = Instantiate(PrefabRepository.GetPrefab(leftArmItemID), transform.position + Vector3.left * 3f, Quaternion.identity);
+        _leftArm.transform.SetParent(transform);
+        _rightArm = Instantiate(PrefabRepository.GetPrefab(rightArmItemID), transform.position + Vector3.right * 3f, Quaternion.identity);
+        _rightArm.transform.SetParent(transform);
+        _leftWeapon  = Instantiate(PrefabRepository.GetPrefab(leftWeaponItemID), _leftArm.transform.position + Vector3.up * 2f, Quaternion.identity);
+        _leftWeapon.transform.SetParent(_leftArm.transform);
+        _rightWeapon  = Instantiate(PrefabRepository.GetPrefab(rightWeaponItemID), _rightArm.transform.position + Vector3.up * 2f, Quaternion.identity);
+        _rightWeapon.transform.SetParent(_rightArm.transform);
+    }
+
+    private void Start()
+    {
         if (_coherenceSync.HasStateAuthority)
         {
             int numOptions = PrefabRepository.GetPrefabCount();
@@ -43,20 +58,8 @@ public class Player : MonoBehaviour
             leftWeaponItemID = Random.Range(0, numOptions);
             rightWeaponItemID= Random.Range(0, numOptions);
             
-            _leftArm = Instantiate(PrefabRepository.GetPrefab(leftArmItemID), transform.position + Vector3.left * 3f, Quaternion.identity);
-            _leftArm.transform.SetParent(transform);
-            yield return null;
-            yield return null;
-            _rightArm = Instantiate(PrefabRepository.GetPrefab(rightArmItemID), transform.position + Vector3.right * 3f, Quaternion.identity);
-            _rightArm.transform.SetParent(transform);
-            yield return null;
-            yield return null;
-            _leftWeapon  = Instantiate(PrefabRepository.GetPrefab(leftWeaponItemID), _leftArm.transform.position + Vector3.up * 2f, Quaternion.identity);
-            _leftWeapon.transform.SetParent(_leftArm.transform);
-            yield return null;
-            yield return null;
-            _rightWeapon  = Instantiate(PrefabRepository.GetPrefab(rightWeaponItemID), _rightArm.transform.position + Vector3.up * 2f, Quaternion.identity);
-            _rightWeapon.transform.SetParent(_rightArm.transform);
+            //InstantiateDirectlyInHierarchy();
+            InstantiateAndThenSetParent();
         }
     }
 
