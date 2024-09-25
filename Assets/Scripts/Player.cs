@@ -47,12 +47,12 @@ public class Player : MonoBehaviour
             _loadout_rightArmItemID = rightArmItemID;
             _loadout_leftWeaponItemID = leftWeaponItemID;
             _loadout_rightWeaponItemID = rightWeaponItemID;
+            
+            _leftArm = Instantiate(PrefabRepository.GetPrefab(_loadout_leftArmItemID), transform.position + Vector3.left * 3f, Quaternion.identity, transform);
+            _rightArm = Instantiate(PrefabRepository.GetPrefab(_loadout_rightArmItemID), transform.position + Vector3.right * 3f, Quaternion.identity, transform);
+            _leftWeapon  = Instantiate(PrefabRepository.GetPrefab(_loadout_leftWeaponItemID), _leftArm.transform.position + Vector3.up * 2f, Quaternion.identity, _leftArm.transform);
+            _rightWeapon  = Instantiate(PrefabRepository.GetPrefab(_loadout_rightWeaponItemID), _rightArm.transform.position + Vector3.up * 2f, Quaternion.identity, _rightArm.transform);
         }
-
-        _leftArm = Instantiate(PrefabRepository.GetPrefab(_loadout_leftArmItemID), transform.position + Vector3.left * 3f, Quaternion.identity, transform);
-        _rightArm = Instantiate(PrefabRepository.GetPrefab(_loadout_rightArmItemID), transform.position + Vector3.right * 3f, Quaternion.identity, transform);
-        _leftWeapon  = Instantiate(PrefabRepository.GetPrefab(_loadout_leftWeaponItemID), _leftArm.transform.position + Vector3.up * 2f, Quaternion.identity, _leftArm.transform);
-        _rightWeapon  = Instantiate(PrefabRepository.GetPrefab(_loadout_rightWeaponItemID), _rightArm.transform.position + Vector3.up * 2f, Quaternion.identity, _rightArm.transform);
     }
 
     private void Update()
