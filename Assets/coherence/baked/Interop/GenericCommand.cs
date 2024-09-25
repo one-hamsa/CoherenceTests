@@ -44,8 +44,8 @@ namespace Coherence.Generated
 
             var orig = new GenericCommand();
             var comp = (Interop*)data;
-            orig.name = comp->name.Data != null ? System.Text.Encoding.UTF8.GetString((byte*)comp->name.Data, comp->name.Length) : null;
-            orig.commandData = new byte[comp->commandData.Length]; Marshal.Copy((System.IntPtr)comp->commandData.Data, orig.commandData, 0, comp->commandData.Length);
+            orig.name = comp->name.Data != null ? System.Text.Encoding.UTF8.GetString((byte*)comp->name.Data, (int)comp->name.Length) : null;
+            orig.commandData = new byte[comp->commandData.Length]; Marshal.Copy((System.IntPtr)comp->commandData.Data, orig.commandData, 0, (int)comp->commandData.Length);
             orig.entityParam1 = comp->entityParam1;
             orig.entityParam2 = comp->entityParam2;
             orig.entityParam3 = comp->entityParam3;

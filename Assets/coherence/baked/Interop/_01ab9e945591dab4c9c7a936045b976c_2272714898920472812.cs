@@ -45,7 +45,7 @@ namespace Coherence.Generated
 
             var comp = (Interop*)data;
 
-            orig.ids = new byte[comp->ids.Length]; Marshal.Copy((System.IntPtr)comp->ids.Data, orig.ids, 0, comp->ids.Length);
+            orig.ids = new byte[comp->ids.Length]; Marshal.Copy((System.IntPtr)comp->ids.Data, orig.ids, 0, (int)comp->ids.Length);
 
             return orig;
         }

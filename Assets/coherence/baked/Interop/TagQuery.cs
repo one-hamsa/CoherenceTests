@@ -45,7 +45,7 @@ namespace Coherence.Generated
 
             var comp = (Interop*)data;
 
-            orig.tag = comp->tag.Data != null ? System.Text.Encoding.UTF8.GetString((byte*)comp->tag.Data, comp->tag.Length) : null;
+            orig.tag = comp->tag.Data != null ? System.Text.Encoding.UTF8.GetString((byte*)comp->tag.Data, (int)comp->tag.Length) : null;
 
             return orig;
         }

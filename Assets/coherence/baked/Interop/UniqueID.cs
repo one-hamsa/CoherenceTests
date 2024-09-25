@@ -45,7 +45,7 @@ namespace Coherence.Generated
 
             var comp = (Interop*)data;
 
-            orig.uuid = comp->uuid.Data != null ? System.Text.Encoding.UTF8.GetString((byte*)comp->uuid.Data, comp->uuid.Length) : null;
+            orig.uuid = comp->uuid.Data != null ? System.Text.Encoding.UTF8.GetString((byte*)comp->uuid.Data, (int)comp->uuid.Length) : null;
 
             return orig;
         }

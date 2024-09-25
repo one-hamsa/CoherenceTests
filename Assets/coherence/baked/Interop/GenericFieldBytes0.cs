@@ -45,7 +45,7 @@ namespace Coherence.Generated
 
             var comp = (Interop*)data;
 
-            orig.bytes = new byte[comp->bytes.Length]; Marshal.Copy((System.IntPtr)comp->bytes.Data, orig.bytes, 0, comp->bytes.Length);
+            orig.bytes = new byte[comp->bytes.Length]; Marshal.Copy((System.IntPtr)comp->bytes.Data, orig.bytes, 0, (int)comp->bytes.Length);
             orig.bytesSimulationFrame = simFrames[0].Into();
 
             return orig;

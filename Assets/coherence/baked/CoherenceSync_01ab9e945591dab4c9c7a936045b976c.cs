@@ -34,6 +34,7 @@ namespace Coherence.Generated
     	    CastedUnityComponent = (global::UnityEngine.Transform)UnityComponent;
         }
 
+        public override global::System.Type CoherenceComponentType => typeof(WorldPosition);
         public override string CoherenceComponentName => "WorldPosition";
         public override uint FieldMask => 0b00000000000000000000000000000001;
 
@@ -56,7 +57,7 @@ namespace Coherence.Generated
         public override ICoherenceComponentData WriteComponentData(ICoherenceComponentData coherenceComponent, AbsoluteSimulationFrame simFrame)
         {
             var update = (WorldPosition)coherenceComponent;
-            if (RuntimeInterpolationSettings.IsInterpolationNone)
+            if (Interpolator.IsInterpolationNone)
             {
                 update.value = Value;
             }
@@ -86,6 +87,7 @@ namespace Coherence.Generated
     	    CastedUnityComponent = (global::UnityEngine.Transform)UnityComponent;
         }
 
+        public override global::System.Type CoherenceComponentType => typeof(WorldOrientation);
         public override string CoherenceComponentName => "WorldOrientation";
         public override uint FieldMask => 0b00000000000000000000000000000001;
 
@@ -107,7 +109,7 @@ namespace Coherence.Generated
         public override ICoherenceComponentData WriteComponentData(ICoherenceComponentData coherenceComponent, AbsoluteSimulationFrame simFrame)
         {
             var update = (WorldOrientation)coherenceComponent;
-            if (RuntimeInterpolationSettings.IsInterpolationNone)
+            if (Interpolator.IsInterpolationNone)
             {
                 update.value = Value;
             }
@@ -137,6 +139,7 @@ namespace Coherence.Generated
     	    CastedUnityComponent = (global::MechSyncState)UnityComponent;
         }
 
+        public override global::System.Type CoherenceComponentType => typeof(_01ab9e945591dab4c9c7a936045b976c_8021727627539323238);
         public override string CoherenceComponentName => "_01ab9e945591dab4c9c7a936045b976c_8021727627539323238";
         public override uint FieldMask => 0b00000000000000000000000000000001;
 
@@ -158,7 +161,7 @@ namespace Coherence.Generated
         public override ICoherenceComponentData WriteComponentData(ICoherenceComponentData coherenceComponent, AbsoluteSimulationFrame simFrame)
         {
             var update = (_01ab9e945591dab4c9c7a936045b976c_8021727627539323238)coherenceComponent;
-            if (RuntimeInterpolationSettings.IsInterpolationNone)
+            if (Interpolator.IsInterpolationNone)
             {
                 update.blah = Value;
             }
@@ -188,6 +191,7 @@ namespace Coherence.Generated
     	    CastedUnityComponent = (global::MechSyncState)UnityComponent;
         }
 
+        public override global::System.Type CoherenceComponentType => typeof(_01ab9e945591dab4c9c7a936045b976c_8021727627539323238);
         public override string CoherenceComponentName => "_01ab9e945591dab4c9c7a936045b976c_8021727627539323238";
         public override uint FieldMask => 0b00000000000000000000000000000010;
 
@@ -209,7 +213,7 @@ namespace Coherence.Generated
         public override ICoherenceComponentData WriteComponentData(ICoherenceComponentData coherenceComponent, AbsoluteSimulationFrame simFrame)
         {
             var update = (_01ab9e945591dab4c9c7a936045b976c_8021727627539323238)coherenceComponent;
-            if (RuntimeInterpolationSettings.IsInterpolationNone)
+            if (Interpolator.IsInterpolationNone)
             {
                 update.stam = Value;
             }
@@ -239,6 +243,7 @@ namespace Coherence.Generated
     	    CastedUnityComponent = (global::Player)UnityComponent;
         }
 
+        public override global::System.Type CoherenceComponentType => typeof(_01ab9e945591dab4c9c7a936045b976c_8549624382963648638);
         public override string CoherenceComponentName => "_01ab9e945591dab4c9c7a936045b976c_8549624382963648638";
         public override uint FieldMask => 0b00000000000000000000000000000001;
 
@@ -260,7 +265,7 @@ namespace Coherence.Generated
         public override ICoherenceComponentData WriteComponentData(ICoherenceComponentData coherenceComponent, AbsoluteSimulationFrame simFrame)
         {
             var update = (_01ab9e945591dab4c9c7a936045b976c_8549624382963648638)coherenceComponent;
-            if (RuntimeInterpolationSettings.IsInterpolationNone)
+            if (Interpolator.IsInterpolationNone)
             {
                 update.leftArmItemID = Value;
             }
@@ -290,6 +295,7 @@ namespace Coherence.Generated
     	    CastedUnityComponent = (global::Player)UnityComponent;
         }
 
+        public override global::System.Type CoherenceComponentType => typeof(_01ab9e945591dab4c9c7a936045b976c_8549624382963648638);
         public override string CoherenceComponentName => "_01ab9e945591dab4c9c7a936045b976c_8549624382963648638";
         public override uint FieldMask => 0b00000000000000000000000000000010;
 
@@ -311,7 +317,7 @@ namespace Coherence.Generated
         public override ICoherenceComponentData WriteComponentData(ICoherenceComponentData coherenceComponent, AbsoluteSimulationFrame simFrame)
         {
             var update = (_01ab9e945591dab4c9c7a936045b976c_8549624382963648638)coherenceComponent;
-            if (RuntimeInterpolationSettings.IsInterpolationNone)
+            if (Interpolator.IsInterpolationNone)
             {
                 update.rightArmItemID = Value;
             }
@@ -341,6 +347,7 @@ namespace Coherence.Generated
     	    CastedUnityComponent = (global::Player)UnityComponent;
         }
 
+        public override global::System.Type CoherenceComponentType => typeof(_01ab9e945591dab4c9c7a936045b976c_8549624382963648638);
         public override string CoherenceComponentName => "_01ab9e945591dab4c9c7a936045b976c_8549624382963648638";
         public override uint FieldMask => 0b00000000000000000000000000000100;
 
@@ -362,7 +369,7 @@ namespace Coherence.Generated
         public override ICoherenceComponentData WriteComponentData(ICoherenceComponentData coherenceComponent, AbsoluteSimulationFrame simFrame)
         {
             var update = (_01ab9e945591dab4c9c7a936045b976c_8549624382963648638)coherenceComponent;
-            if (RuntimeInterpolationSettings.IsInterpolationNone)
+            if (Interpolator.IsInterpolationNone)
             {
                 update.leftWeaponItemID = Value;
             }
@@ -392,6 +399,7 @@ namespace Coherence.Generated
     	    CastedUnityComponent = (global::Player)UnityComponent;
         }
 
+        public override global::System.Type CoherenceComponentType => typeof(_01ab9e945591dab4c9c7a936045b976c_8549624382963648638);
         public override string CoherenceComponentName => "_01ab9e945591dab4c9c7a936045b976c_8549624382963648638";
         public override uint FieldMask => 0b00000000000000000000000000001000;
 
@@ -413,7 +421,7 @@ namespace Coherence.Generated
         public override ICoherenceComponentData WriteComponentData(ICoherenceComponentData coherenceComponent, AbsoluteSimulationFrame simFrame)
         {
             var update = (_01ab9e945591dab4c9c7a936045b976c_8549624382963648638)coherenceComponent;
-            if (RuntimeInterpolationSettings.IsInterpolationNone)
+            if (Interpolator.IsInterpolationNone)
             {
                 update.rightWeaponItemID = Value;
             }
@@ -443,6 +451,7 @@ namespace Coherence.Generated
     	    CastedUnityComponent = (global::Coherence.Toolkit.PrefabSyncGroup)UnityComponent;
         }
 
+        public override global::System.Type CoherenceComponentType => typeof(_01ab9e945591dab4c9c7a936045b976c_2272714898920472812);
         public override string CoherenceComponentName => "_01ab9e945591dab4c9c7a936045b976c_2272714898920472812";
         public override uint FieldMask => 0b00000000000000000000000000000001;
 
@@ -464,7 +473,7 @@ namespace Coherence.Generated
         public override ICoherenceComponentData WriteComponentData(ICoherenceComponentData coherenceComponent, AbsoluteSimulationFrame simFrame)
         {
             var update = (_01ab9e945591dab4c9c7a936045b976c_2272714898920472812)coherenceComponent;
-            if (RuntimeInterpolationSettings.IsInterpolationNone)
+            if (Interpolator.IsInterpolationNone)
             {
                 update.ids = Value;
             }

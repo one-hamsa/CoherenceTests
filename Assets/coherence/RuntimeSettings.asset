@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 85b91f942a5214496b0e11eaedb54c36, type: 3}
   m_Name: RuntimeSettings
   m_EditorClassIdentifier: 
+  schemaID: c737a007e638ca4e5bf056f7d626f0d622e4f37c
   versionInfo: {fileID: 11400000, guid: 2191b6f902c97477baa32a7919010503, type: 2}
   runtimeKey: 84e042ee6dbc4d378ca15eed5f5f95c0
-  schemaID: 8f37fe5151dbb13c755418381dc8ba0f999bbb12
   simulatorSlug: 
   localHost: 127.0.0.1
   localWorldUDPPort: 32001
@@ -31,6 +31,12 @@ MonoBehaviour:
   organizationID: crjdpb22t1cj7086hnj0
   projectID: crjdpf22t1cgcr0f9u6g
   projectName: UNDERDOGS
-  defaultTransportMode: 0
+  transportType: 0
+  transportConfiguration: 0
   replicationServerToken: 
   playApiEndpoint: https://api.prod.coherence.io/v1/play
+  schemas:
+  - {fileID: -1758743643018166929, guid: 266a112c2c9e941a58a87a48e7a4f8cb, type: 3}
+  - {fileID: -1758743643018166929, guid: 80a0dd0515b5408499a306d3179c31eb, type: 3}
+  defaultTransportMode: 0
+  defaultTransportModeMigrated: 1
