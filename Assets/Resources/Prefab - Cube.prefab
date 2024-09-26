@@ -330,6 +330,7 @@ GameObject:
   - component: {fileID: 1859129984264921914}
   - component: {fileID: 3582981628696257013}
   - component: {fileID: 8118622161289229957}
+  - component: {fileID: -7406653295576699835}
   m_Layer: 0
   m_Name: Prefab - Cube
   m_TagString: Untagged
@@ -360,7 +361,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5235640173522209345}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: ff62c046a053f416a8dc48ad6483a25e, type: 3}
   m_Name: 
@@ -432,6 +433,8 @@ MonoBehaviour:
       lodStepsActive: 1
     - component: {fileID: 5185007963450161094}
       lodStepsActive: 1
+    - component: {fileID: -7406653295576699835}
+      lodStepsActive: 1
     GeneratesArchetypeDefinition: 0
   interpolationLocation: 4
   RigidbodyUpdateMode: 0
@@ -463,6 +466,8 @@ MonoBehaviour:
   - rid: 4417920695832936464
   - rid: 4417920695832936466
   - rid: 4417920695832936475
+  - rid: 5691255278982660173
+  - rid: 5691255278982660242
   onNetworkedInstantiation:
     m_PersistentCalls:
       m_Calls: []
@@ -499,7 +504,7 @@ MonoBehaviour:
           type: 7
           minRange: 0
           maxRange: 0
-          sampleRate: 20
+          sampleRate: 60
           floatCompression: 0
           fields:
           - type: 7
@@ -508,7 +513,7 @@ MonoBehaviour:
             floatCompression: 0
         unityComponent: {fileID: 1859129984264921914}
         coherenceSync: {fileID: 3582981628696257013}
-        interpolationSettings: {fileID: 11400000, guid: ae4419d1d9a8643709bf5f6b90c584a5, type: 2}
+        interpolationSettings: {fileID: 0}
     - rid: 4417920554039508994
       type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
       data:
@@ -634,7 +639,7 @@ MonoBehaviour:
           type: 8
           minRange: 0
           maxRange: 0
-          sampleRate: 20
+          sampleRate: 60
           floatCompression: 0
           fields:
           - type: 8
@@ -643,7 +648,7 @@ MonoBehaviour:
             floatCompression: 0
         unityComponent: {fileID: 1859129984264921914}
         coherenceSync: {fileID: 3582981628696257013}
-        interpolationSettings: {fileID: 11400000, guid: ae4419d1d9a8643709bf5f6b90c584a5, type: 2}
+        interpolationSettings: {fileID: 0}
     - rid: 4417920695832936476
       type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
       data:
@@ -665,6 +670,96 @@ MonoBehaviour:
             Coherence.Toolkit, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
         oldName: 
         oldParameterAssemblyTypes: []
+    - rid: 5691255278982660173
+      type: {class: IntBinding, ns: Coherence.Toolkit.Bindings.ValueBindings, asm: Coherence.Toolkit}
+      data:
+        descriptor:
+          rid: 5691255278982660174
+        routing: 0
+        syncMode: 0
+        isPredicted: 0
+        predictionMode: 0
+        guid: e9dfd6bfcef24680809073a7909881c3
+        archetypeData:
+          type: 1
+          minRange: -2147483648
+          maxRange: 2147483647
+          sampleRate: 20
+          floatCompression: 0
+          fields:
+          - type: 1
+            bits: 32
+            precision: 0
+            floatCompression: 0
+        unityComponent: {fileID: -7406653295576699835}
+        coherenceSync: {fileID: 3582981628696257013}
+        interpolationSettings: {fileID: 0}
+    - rid: 5691255278982660174
+      type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
+      data:
+        name: partIndex
+        monoAssemblyType: System.Int32, mscorlib
+        required: 0
+        enforcesLODingWhenFieldsOverriden: 1
+        valueSyncCallbackName: 
+        memberType: 4
+        parameterAssemblyTypes: []
+        ownerType:
+          assemblyQualifiedName: PlayerPart, Assembly-CSharp, Version=0.0.0.0, Culture=neutral,
+            PublicKeyToken=null
+        defaultSyncMode: 0
+        CustomData:
+          rid: -2
+        bindingType:
+          assemblyQualifiedName: Coherence.Toolkit.Bindings.ValueBindings.IntBinding,
+            Coherence.Toolkit, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        oldName: 
+        oldParameterAssemblyTypes: []
+    - rid: 5691255278982660242
+      type: {class: ScaleBinding, ns: Coherence.Toolkit.Bindings.TransformBindings, asm: Coherence.Toolkit}
+      data:
+        descriptor:
+          rid: 5691255278982660243
+        routing: 0
+        syncMode: 0
+        isPredicted: 0
+        predictionMode: 0
+        guid: f9f308754b41475ca58d31dc548f6eac
+        archetypeData:
+          type: 7
+          minRange: 0
+          maxRange: 0
+          sampleRate: 60
+          floatCompression: 0
+          fields:
+          - type: 7
+            bits: 32
+            precision: 0.001
+            floatCompression: 0
+        unityComponent: {fileID: 1859129984264921914}
+        coherenceSync: {fileID: 3582981628696257013}
+        interpolationSettings: {fileID: 0}
+    - rid: 5691255278982660243
+      type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
+      data:
+        name: localScale
+        monoAssemblyType: UnityEngine.Vector3, UnityEngine
+        required: 0
+        enforcesLODingWhenFieldsOverriden: 1
+        valueSyncCallbackName: 
+        memberType: 64
+        parameterAssemblyTypes: []
+        ownerType:
+          assemblyQualifiedName: UnityEngine.Transform, UnityEngine.CoreModule, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        defaultSyncMode: 0
+        CustomData:
+          rid: -2
+        bindingType:
+          assemblyQualifiedName: Coherence.Toolkit.Bindings.TransformBindings.ScaleBinding,
+            Coherence.Toolkit, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        oldName: 
+        oldParameterAssemblyTypes: []
 --- !u!114 &8118622161289229957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -679,6 +774,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blah: 0
   stam: {x: 0, y: 0, z: 0}
+--- !u!114 &-7406653295576699835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5235640173522209345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e335ca408e20f624b9b22396d8e8821e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &7555689742042597611
 GameObject:
   m_ObjectHideFlags: 0

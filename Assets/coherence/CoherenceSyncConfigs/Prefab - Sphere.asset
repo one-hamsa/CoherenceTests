@@ -19,7 +19,7 @@ MonoBehaviour:
   objectProvider:
     rid: 4417920695832936458
   objectInstantiator:
-    rid: 5691255278806499330
+    rid: 5691255278982660225
   references:
     version: 2
     RefIds:
@@ -27,6 +27,6 @@ MonoBehaviour:
       type: {class: ResourcesProvider, ns: Coherence.Toolkit, asm: Coherence.Toolkit}
       data:
         resourcesPath: Prefab - Sphere
-    - rid: 5691255278806499330
-      type: {class: DefaultInstantiator, ns: Coherence.Toolkit, asm: Coherence.Toolkit}
+    - rid: 5691255278982660225
+      type: {class: MyInstantiator, ns: , asm: Assembly-CSharp}
       data: 

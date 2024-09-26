@@ -20,7 +20,7 @@ namespace Coherence.Generated
 
     public class Definition : IDefinition
     {
-        public const string schemaId = "0eb4cffb017835a8cfbb5a95af971398c9eef62c";
+        public const string schemaId = "494aac2f56cbd7481d905a526ffd73e5fb160078";
         public const uint InternalWorldPosition = 0;
         public const uint InternalWorldOrientation = 1;
         public const uint InternalLocalUserComponent = 2;
@@ -177,9 +177,13 @@ namespace Coherence.Generated
         public const uint Internal_01ab9e945591dab4c9c7a936045b976c_8021727627539323238 = 153;
         public const uint Internal_01ab9e945591dab4c9c7a936045b976c_8549624382963648638 = 154;
         public const uint Internal_3bec13d4bb00a5e479d1a130c95272ee_1816034302234343057 = 155;
-        public const uint Internal_7aa047939d3aa49498cc38bb3ac3eec7_7616975171125922867 = 156;
-        public const uint Internal_86637d6221845a54c80f4dee3a49e53e_8118622161289229957 = 157;
-        public const uint Internal_ddf545e2defc9334d82e1bfb3a54514a_1735892028521822499 = 158;
+        public const uint Internal_3bec13d4bb00a5e479d1a130c95272ee_8119623259683859537 = 156;
+        public const uint Internal_7aa047939d3aa49498cc38bb3ac3eec7_11687024536901363 = 157;
+        public const uint Internal_7aa047939d3aa49498cc38bb3ac3eec7_7616975171125922867 = 158;
+        public const uint Internal_86637d6221845a54c80f4dee3a49e53e_11040090778132851781 = 159;
+        public const uint Internal_86637d6221845a54c80f4dee3a49e53e_8118622161289229957 = 160;
+        public const uint Internal_ddf545e2defc9334d82e1bfb3a54514a_1735892028521822499 = 161;
+        public const uint Internal_ddf545e2defc9334d82e1bfb3a54514a_8181434535533552611 = 162;
         public const uint InternalAuthorityRequest = 0;
         public const uint InternalAuthorityTransfer = 1;
         public const uint InternalQuerySynced = 2;
@@ -346,9 +350,13 @@ namespace Coherence.Generated
             { 153, "_01ab9e945591dab4c9c7a936045b976c_8021727627539323238" },
             { 154, "_01ab9e945591dab4c9c7a936045b976c_8549624382963648638" },
             { 155, "_3bec13d4bb00a5e479d1a130c95272ee_1816034302234343057" },
-            { 156, "_7aa047939d3aa49498cc38bb3ac3eec7_7616975171125922867" },
-            { 157, "_86637d6221845a54c80f4dee3a49e53e_8118622161289229957" },
-            { 158, "_ddf545e2defc9334d82e1bfb3a54514a_1735892028521822499" },
+            { 156, "_3bec13d4bb00a5e479d1a130c95272ee_8119623259683859537" },
+            { 157, "_7aa047939d3aa49498cc38bb3ac3eec7_11687024536901363" },
+            { 158, "_7aa047939d3aa49498cc38bb3ac3eec7_7616975171125922867" },
+            { 159, "_86637d6221845a54c80f4dee3a49e53e_11040090778132851781" },
+            { 160, "_86637d6221845a54c80f4dee3a49e53e_8118622161289229957" },
+            { 161, "_ddf545e2defc9334d82e1bfb3a54514a_1735892028521822499" },
+            { 162, "_ddf545e2defc9334d82e1bfb3a54514a_8181434535533552611" },
         };
 
         public static string ComponentNameForTypeId(uint typeId)
@@ -693,12 +701,20 @@ namespace Coherence.Generated
                     return _01ab9e945591dab4c9c7a936045b976c_8549624382963648638.Deserialize(referenceSimulationFrame, inProtocolStream);
                 case Internal_3bec13d4bb00a5e479d1a130c95272ee_1816034302234343057:
                     return _3bec13d4bb00a5e479d1a130c95272ee_1816034302234343057.Deserialize(referenceSimulationFrame, inProtocolStream);
+                case Internal_3bec13d4bb00a5e479d1a130c95272ee_8119623259683859537:
+                    return _3bec13d4bb00a5e479d1a130c95272ee_8119623259683859537.Deserialize(referenceSimulationFrame, inProtocolStream);
+                case Internal_7aa047939d3aa49498cc38bb3ac3eec7_11687024536901363:
+                    return _7aa047939d3aa49498cc38bb3ac3eec7_11687024536901363.Deserialize(referenceSimulationFrame, inProtocolStream);
                 case Internal_7aa047939d3aa49498cc38bb3ac3eec7_7616975171125922867:
                     return _7aa047939d3aa49498cc38bb3ac3eec7_7616975171125922867.Deserialize(referenceSimulationFrame, inProtocolStream);
+                case Internal_86637d6221845a54c80f4dee3a49e53e_11040090778132851781:
+                    return _86637d6221845a54c80f4dee3a49e53e_11040090778132851781.Deserialize(referenceSimulationFrame, inProtocolStream);
                 case Internal_86637d6221845a54c80f4dee3a49e53e_8118622161289229957:
                     return _86637d6221845a54c80f4dee3a49e53e_8118622161289229957.Deserialize(referenceSimulationFrame, inProtocolStream);
                 case Internal_ddf545e2defc9334d82e1bfb3a54514a_1735892028521822499:
                     return _ddf545e2defc9334d82e1bfb3a54514a_1735892028521822499.Deserialize(referenceSimulationFrame, inProtocolStream);
+                case Internal_ddf545e2defc9334d82e1bfb3a54514a_8181434535533552611:
+                    return _ddf545e2defc9334d82e1bfb3a54514a_8181434535533552611.Deserialize(referenceSimulationFrame, inProtocolStream);
                 default:
                     throw new System.ArgumentOutOfRangeException(nameof(componentType),
                         $"Missing serialization implementation for a component: {componentType}");
@@ -1022,12 +1038,20 @@ namespace Coherence.Generated
                     return _01ab9e945591dab4c9c7a936045b976c_8549624382963648638.Serialize((_01ab9e945591dab4c9c7a936045b976c_8549624382963648638)data, isRefSimFrameValid, referenceSimulationFrame, protocolStream, logger);
                 case Internal_3bec13d4bb00a5e479d1a130c95272ee_1816034302234343057:
                     return _3bec13d4bb00a5e479d1a130c95272ee_1816034302234343057.Serialize((_3bec13d4bb00a5e479d1a130c95272ee_1816034302234343057)data, isRefSimFrameValid, referenceSimulationFrame, protocolStream, logger);
+                case Internal_3bec13d4bb00a5e479d1a130c95272ee_8119623259683859537:
+                    return _3bec13d4bb00a5e479d1a130c95272ee_8119623259683859537.Serialize((_3bec13d4bb00a5e479d1a130c95272ee_8119623259683859537)data, isRefSimFrameValid, referenceSimulationFrame, protocolStream, logger);
+                case Internal_7aa047939d3aa49498cc38bb3ac3eec7_11687024536901363:
+                    return _7aa047939d3aa49498cc38bb3ac3eec7_11687024536901363.Serialize((_7aa047939d3aa49498cc38bb3ac3eec7_11687024536901363)data, isRefSimFrameValid, referenceSimulationFrame, protocolStream, logger);
                 case Internal_7aa047939d3aa49498cc38bb3ac3eec7_7616975171125922867:
                     return _7aa047939d3aa49498cc38bb3ac3eec7_7616975171125922867.Serialize((_7aa047939d3aa49498cc38bb3ac3eec7_7616975171125922867)data, isRefSimFrameValid, referenceSimulationFrame, protocolStream, logger);
+                case Internal_86637d6221845a54c80f4dee3a49e53e_11040090778132851781:
+                    return _86637d6221845a54c80f4dee3a49e53e_11040090778132851781.Serialize((_86637d6221845a54c80f4dee3a49e53e_11040090778132851781)data, isRefSimFrameValid, referenceSimulationFrame, protocolStream, logger);
                 case Internal_86637d6221845a54c80f4dee3a49e53e_8118622161289229957:
                     return _86637d6221845a54c80f4dee3a49e53e_8118622161289229957.Serialize((_86637d6221845a54c80f4dee3a49e53e_8118622161289229957)data, isRefSimFrameValid, referenceSimulationFrame, protocolStream, logger);
                 case Internal_ddf545e2defc9334d82e1bfb3a54514a_1735892028521822499:
                     return _ddf545e2defc9334d82e1bfb3a54514a_1735892028521822499.Serialize((_ddf545e2defc9334d82e1bfb3a54514a_1735892028521822499)data, isRefSimFrameValid, referenceSimulationFrame, protocolStream, logger);
+                case Internal_ddf545e2defc9334d82e1bfb3a54514a_8181434535533552611:
+                    return _ddf545e2defc9334d82e1bfb3a54514a_8181434535533552611.Serialize((_ddf545e2defc9334d82e1bfb3a54514a_8181434535533552611)data, isRefSimFrameValid, referenceSimulationFrame, protocolStream, logger);
                 default:
                     logger.Error("Missing serialization implementation for a component.", ("component", data.GetComponentType()));
                     return 0;

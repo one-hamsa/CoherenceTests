@@ -20,53 +20,47 @@ namespace Coherence.Generated
     using UnityEngine;
     using Coherence.Toolkit;
 
-    public struct _7aa047939d3aa49498cc38bb3ac3eec7_7616975171125922867 : ICoherenceComponentData
+    public struct _86637d6221845a54c80f4dee3a49e53e_11040090778132851781 : ICoherenceComponentData
     {
         [StructLayout(LayoutKind.Explicit)]
         public struct Interop
         {
             [FieldOffset(0)]
-            public System.Byte blah;
-            [FieldOffset(1)]
-            public Vector3 stam;
+            public System.Int32 partIndex;
         }
 
-        public static unsafe _7aa047939d3aa49498cc38bb3ac3eec7_7616975171125922867 FromInterop(IntPtr data, Int32 dataSize, InteropAbsoluteSimulationFrame* simFrames, Int32 simFramesCount)
+        public static unsafe _86637d6221845a54c80f4dee3a49e53e_11040090778132851781 FromInterop(IntPtr data, Int32 dataSize, InteropAbsoluteSimulationFrame* simFrames, Int32 simFramesCount)
         {
-            if (dataSize != 13) {
-                throw new Exception($"Given data size is not equal to the struct size. ({dataSize} != 13) " +
-                    "for component with ID 158");
+            if (dataSize != 4) {
+                throw new Exception($"Given data size is not equal to the struct size. ({dataSize} != 4) " +
+                    "for component with ID 159");
             }
 
             if (simFramesCount != 0) {
                 throw new Exception($"Given simFrames size is not equal to the expected length. ({simFramesCount} != 0) " +
-                    "for component with ID 158");
+                    "for component with ID 159");
             }
 
-            var orig = new _7aa047939d3aa49498cc38bb3ac3eec7_7616975171125922867();
+            var orig = new _86637d6221845a54c80f4dee3a49e53e_11040090778132851781();
 
             var comp = (Interop*)data;
 
-            orig.blah = comp->blah != 0;
-            orig.stam = comp->stam;
+            orig.partIndex = comp->partIndex;
 
             return orig;
         }
 
 
-        public static uint blahMask => 0b00000000000000000000000000000001;
-        public AbsoluteSimulationFrame blahSimulationFrame;
-        public System.Boolean blah;
-        public static uint stamMask => 0b00000000000000000000000000000010;
-        public AbsoluteSimulationFrame stamSimulationFrame;
-        public Vector3 stam;
+        public static uint partIndexMask => 0b00000000000000000000000000000001;
+        public AbsoluteSimulationFrame partIndexSimulationFrame;
+        public System.Int32 partIndex;
 
         public uint FieldsMask { get; set; }
         public uint StoppedMask { get; set; }
-        public uint GetComponentType() => 158;
+        public uint GetComponentType() => 159;
         public int PriorityLevel() => 100;
         public const int order = 0;
-        public uint InitialFieldsMask() => 0b00000000000000000000000000000011;
+        public uint InitialFieldsMask() => 0b00000000000000000000000000000001;
         public bool HasFields() => true;
         public bool HasRefFields() => false;
 
@@ -75,7 +69,7 @@ namespace Coherence.Generated
             return null;
         }
 
-        public int GetFieldCount() => 2;
+        public int GetFieldCount() => 1;
 
 
         
@@ -103,6 +97,8 @@ namespace Coherence.Generated
         public int GetComponentOrder() => order;
         public bool IsSendOrdered() => false;
 
+        private static readonly System.Int32 _partIndex_Min = -2147483648;
+        private static readonly System.Int32 _partIndex_Max = 2147483647;
 
         public AbsoluteSimulationFrame? GetMinSimulationFrame()
         {
@@ -114,7 +110,7 @@ namespace Coherence.Generated
 
         public ICoherenceComponentData MergeWith(ICoherenceComponentData data)
         {
-            var other = (_7aa047939d3aa49498cc38bb3ac3eec7_7616975171125922867)data;
+            var other = (_86637d6221845a54c80f4dee3a49e53e_11040090778132851781)data;
             var otherMask = other.FieldsMask;
 
             FieldsMask |= otherMask;
@@ -122,15 +118,8 @@ namespace Coherence.Generated
 
             if ((otherMask & 0x01) != 0)
             {
-                this.blahSimulationFrame = other.blahSimulationFrame;
-                this.blah = other.blah;
-            }
-
-            otherMask >>= 1;
-            if ((otherMask & 0x01) != 0)
-            {
-                this.stamSimulationFrame = other.stamSimulationFrame;
-                this.stam = other.stam;
+                this.partIndexSimulationFrame = other.partIndexSimulationFrame;
+                this.partIndex = other.partIndex;
             }
 
             otherMask >>= 1;
@@ -144,11 +133,11 @@ namespace Coherence.Generated
             throw new System.NotSupportedException($"{nameof(DiffWith)} is not supported in Unity");
         }
 
-        public static uint Serialize(_7aa047939d3aa49498cc38bb3ac3eec7_7616975171125922867 data, bool isRefSimFrameValid, AbsoluteSimulationFrame referenceSimulationFrame, IOutProtocolBitStream bitStream, Logger logger)
+        public static uint Serialize(_86637d6221845a54c80f4dee3a49e53e_11040090778132851781 data, bool isRefSimFrameValid, AbsoluteSimulationFrame referenceSimulationFrame, IOutProtocolBitStream bitStream, Logger logger)
         {
             if (bitStream.WriteMask(data.StoppedMask != 0))
             {
-                bitStream.WriteMaskBits(data.StoppedMask, 2);
+                bitStream.WriteMaskBits(data.StoppedMask, 1);
             }
 
             var mask = data.FieldsMask;
@@ -156,24 +145,15 @@ namespace Coherence.Generated
             if (bitStream.WriteMask((mask & 0x01) != 0))
             {
 
+                Coherence.Utils.Bounds.Check(data.partIndex, _partIndex_Min, _partIndex_Max, "_86637d6221845a54c80f4dee3a49e53e_11040090778132851781.partIndex", logger);
 
-                var fieldValue = data.blah;
+                data.partIndex = Coherence.Utils.Bounds.Clamp(data.partIndex, _partIndex_Min, _partIndex_Max);
 
-
-
-                bitStream.WriteBool(fieldValue);
-            }
-
-            mask >>= 1;
-            if (bitStream.WriteMask((mask & 0x01) != 0))
-            {
-
-
-                var fieldValue = (data.stam.ToCoreVector3());
+                var fieldValue = data.partIndex;
 
 
 
-                bitStream.WriteVector3(fieldValue, FloatMeta.NoCompression());
+                bitStream.WriteIntegerRange(fieldValue, 32, -2147483648);
             }
 
             mask >>= 1;
@@ -181,26 +161,20 @@ namespace Coherence.Generated
             return mask;
         }
 
-        public static _7aa047939d3aa49498cc38bb3ac3eec7_7616975171125922867 Deserialize(AbsoluteSimulationFrame referenceSimulationFrame, InProtocolBitStream bitStream)
+        public static _86637d6221845a54c80f4dee3a49e53e_11040090778132851781 Deserialize(AbsoluteSimulationFrame referenceSimulationFrame, InProtocolBitStream bitStream)
         {
             var stoppedMask = (uint)0;
             if (bitStream.ReadMask())
             {
-                stoppedMask = bitStream.ReadMaskBits(2);
+                stoppedMask = bitStream.ReadMaskBits(1);
             }
 
-            var val = new _7aa047939d3aa49498cc38bb3ac3eec7_7616975171125922867();
+            var val = new _86637d6221845a54c80f4dee3a49e53e_11040090778132851781();
             if (bitStream.ReadMask())
             {
 
-                val.blah = bitStream.ReadBool();
-                val.FieldsMask |= _7aa047939d3aa49498cc38bb3ac3eec7_7616975171125922867.blahMask;
-            }
-            if (bitStream.ReadMask())
-            {
-
-                val.stam = bitStream.ReadVector3(FloatMeta.NoCompression()).ToUnityVector3();
-                val.FieldsMask |= _7aa047939d3aa49498cc38bb3ac3eec7_7616975171125922867.stamMask;
+                val.partIndex = bitStream.ReadIntegerRange(32, -2147483648);
+                val.FieldsMask |= _86637d6221845a54c80f4dee3a49e53e_11040090778132851781.partIndexMask;
             }
 
             val.StoppedMask = stoppedMask;
@@ -211,11 +185,10 @@ namespace Coherence.Generated
 
         public override string ToString()
         {
-            return $"_7aa047939d3aa49498cc38bb3ac3eec7_7616975171125922867(" +
-                $" blah: { this.blah }" +
-                $" stam: { this.stam }" +
-                $" Mask: { System.Convert.ToString(FieldsMask, 2).PadLeft(2, '0') }, " +
-                $"Stopped: { System.Convert.ToString(StoppedMask, 2).PadLeft(2, '0') })";
+            return $"_86637d6221845a54c80f4dee3a49e53e_11040090778132851781(" +
+                $" partIndex: { this.partIndex }" +
+                $" Mask: { System.Convert.ToString(FieldsMask, 2).PadLeft(1, '0') }, " +
+                $"Stopped: { System.Convert.ToString(StoppedMask, 2).PadLeft(1, '0') })";
         }
     }
 

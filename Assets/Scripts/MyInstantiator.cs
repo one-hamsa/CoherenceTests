@@ -11,14 +11,7 @@ public class MyInstantiator : INetworkObjectInstantiator
     {
         if ((spawnInfo.prefab as MonoBehaviour)?.gameObject == PrefabRepository.GetPlayerPrefab())
         {
-            // // Trying to remotely instantiate a player, set the loadout
-            // Player._useLoadout = true;
-            // Player._loadout_leftArmItemID = spawnInfo.GetBindingValue<int>("leftArmItemID");
-            // Player._loadout_rightArmItemID = spawnInfo.GetBindingValue<int>("rightArmItemID");
-            // Player._loadout_leftWeaponItemID = spawnInfo.GetBindingValue<int>("leftWeaponItemID");
-            // Player._loadout_rightWeaponItemID = spawnInfo.GetBindingValue<int>("rightWeaponItemID");
-            
-            // Now we can instantiate
+            // We can instantiate the root player normally
             return Object.Instantiate(PrefabRepository.GetPlayerPrefab()).GetComponent<ICoherenceSync>();
         }
         
@@ -29,8 +22,17 @@ public class MyInstantiator : INetworkObjectInstantiator
         else
             Debug.Log($"Connected Entity not found for ID {spawnInfo.connectedEntity.Index}");
 
-        var prefabGO = (spawnInfo.prefab as MonoBehaviour)?.gameObject;
-        return Object.Instantiate(prefabGO).GetComponent<ICoherenceSync>();
+        Player player = connectedEntityGO.GetComponentInParent<Player>();
+        var partIndex = spawnInfo.GetBindingValue<int>("partIndex");
+
+        Debug.Log($"Returning existing part with index {partIndex}");
+
+        var part = player.GetPart(partIndex).GetComponent<CoherenceSync>();
+        
+        // We had to load disabled, so it doesn't try to initialize before we get the network command to instantiate it
+        part.enabled = true;
+        
+        return part;
     }
 
     public void WarmUpInstantiator(CoherenceBridge bridge, CoherenceSyncConfig config, INetworkObjectProvider assetLoader)
