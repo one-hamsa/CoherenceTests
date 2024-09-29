@@ -19,7 +19,7 @@ MonoBehaviour:
   objectProvider:
     rid: 4417920759296688254
   objectInstantiator:
-    rid: 4417920759296688255
+    rid: 4417920853667217411
   references:
     version: 2
     RefIds:
@@ -27,6 +27,6 @@ MonoBehaviour:
       type: {class: ResourcesProvider, ns: Coherence.Toolkit, asm: Coherence.Toolkit}
       data:
         resourcesPath: Player Prefab
-    - rid: 4417920759296688255
-      type: {class: DefaultInstantiator, ns: Coherence.Toolkit, asm: Coherence.Toolkit}
+    - rid: 4417920853667217411
+      type: {class: PlayerOrPartInstantiator, ns: , asm: Assembly-CSharp}
       data: 
