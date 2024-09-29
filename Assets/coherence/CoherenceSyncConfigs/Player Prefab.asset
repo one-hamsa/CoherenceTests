@@ -10,23 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 579f4a509fd2f994fa391c0c78ea3f11, type: 3}
-  m_Name: Prefab - Player
+  m_Name: Player Prefab
   m_EditorClassIdentifier: 
-  id: 01ab9e945591dab4c9c7a936045b976c
-  selfId: 90f5819c3100d4e40918da364f5e39b4
-  editorTarget: {fileID: 6291950815995717026, guid: 01ab9e945591dab4c9c7a936045b976c, type: 3}
+  id: daaa1fa3f3526944a84e601f43726765
+  selfId: 87d46c5843005714eb71de3fdfd3b88f
+  editorTarget: {fileID: 4649793381938239223, guid: daaa1fa3f3526944a84e601f43726765, type: 3}
   includeInSchema: 1
   objectProvider:
-    rid: 4417920695832936472
+    rid: 4417920759296688254
   objectInstantiator:
-    rid: 4417920742033457412
+    rid: 4417920759296688255
   references:
     version: 2
     RefIds:
-    - rid: 4417920695832936472
+    - rid: 4417920759296688254
       type: {class: ResourcesProvider, ns: Coherence.Toolkit, asm: Coherence.Toolkit}
       data:
-        resourcesPath: Prefab - Player
-    - rid: 4417920742033457412
-      type: {class: PlayerOrPartInstantiator, ns: , asm: Assembly-CSharp}
+        resourcesPath: Player Prefab
+    - rid: 4417920759296688255
+      type: {class: DefaultInstantiator, ns: Coherence.Toolkit, asm: Coherence.Toolkit}
       data: 

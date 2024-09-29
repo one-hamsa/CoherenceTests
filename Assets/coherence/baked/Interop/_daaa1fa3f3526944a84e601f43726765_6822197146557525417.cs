@@ -20,7 +20,7 @@ namespace Coherence.Generated
     using UnityEngine;
     using Coherence.Toolkit;
 
-    public struct _01ab9e945591dab4c9c7a936045b976c_8549624382963648638 : ICoherenceComponentData
+    public struct _daaa1fa3f3526944a84e601f43726765_6822197146557525417 : ICoherenceComponentData
     {
         [StructLayout(LayoutKind.Explicit)]
         public struct Interop
@@ -35,19 +35,19 @@ namespace Coherence.Generated
             public System.Int32 rightWeaponItemID;
         }
 
-        public static unsafe _01ab9e945591dab4c9c7a936045b976c_8549624382963648638 FromInterop(IntPtr data, Int32 dataSize, InteropAbsoluteSimulationFrame* simFrames, Int32 simFramesCount)
+        public static unsafe _daaa1fa3f3526944a84e601f43726765_6822197146557525417 FromInterop(IntPtr data, Int32 dataSize, InteropAbsoluteSimulationFrame* simFrames, Int32 simFramesCount)
         {
             if (dataSize != 16) {
                 throw new Exception($"Given data size is not equal to the struct size. ({dataSize} != 16) " +
-                    "for component with ID 154");
+                    "for component with ID 160");
             }
 
             if (simFramesCount != 0) {
                 throw new Exception($"Given simFrames size is not equal to the expected length. ({simFramesCount} != 0) " +
-                    "for component with ID 154");
+                    "for component with ID 160");
             }
 
-            var orig = new _01ab9e945591dab4c9c7a936045b976c_8549624382963648638();
+            var orig = new _daaa1fa3f3526944a84e601f43726765_6822197146557525417();
 
             var comp = (Interop*)data;
 
@@ -75,7 +75,7 @@ namespace Coherence.Generated
 
         public uint FieldsMask { get; set; }
         public uint StoppedMask { get; set; }
-        public uint GetComponentType() => 154;
+        public uint GetComponentType() => 160;
         public int PriorityLevel() => 100;
         public const int order = 0;
         public uint InitialFieldsMask() => 0b00000000000000000000000000001111;
@@ -134,7 +134,7 @@ namespace Coherence.Generated
 
         public ICoherenceComponentData MergeWith(ICoherenceComponentData data)
         {
-            var other = (_01ab9e945591dab4c9c7a936045b976c_8549624382963648638)data;
+            var other = (_daaa1fa3f3526944a84e601f43726765_6822197146557525417)data;
             var otherMask = other.FieldsMask;
 
             FieldsMask |= otherMask;
@@ -178,7 +178,7 @@ namespace Coherence.Generated
             throw new System.NotSupportedException($"{nameof(DiffWith)} is not supported in Unity");
         }
 
-        public static uint Serialize(_01ab9e945591dab4c9c7a936045b976c_8549624382963648638 data, bool isRefSimFrameValid, AbsoluteSimulationFrame referenceSimulationFrame, IOutProtocolBitStream bitStream, Logger logger)
+        public static uint Serialize(_daaa1fa3f3526944a84e601f43726765_6822197146557525417 data, bool isRefSimFrameValid, AbsoluteSimulationFrame referenceSimulationFrame, IOutProtocolBitStream bitStream, Logger logger)
         {
             if (bitStream.WriteMask(data.StoppedMask != 0))
             {
@@ -190,7 +190,7 @@ namespace Coherence.Generated
             if (bitStream.WriteMask((mask & 0x01) != 0))
             {
 
-                Coherence.Utils.Bounds.Check(data.leftArmItemID, _leftArmItemID_Min, _leftArmItemID_Max, "_01ab9e945591dab4c9c7a936045b976c_8549624382963648638.leftArmItemID", logger);
+                Coherence.Utils.Bounds.Check(data.leftArmItemID, _leftArmItemID_Min, _leftArmItemID_Max, "_daaa1fa3f3526944a84e601f43726765_6822197146557525417.leftArmItemID", logger);
 
                 data.leftArmItemID = Coherence.Utils.Bounds.Clamp(data.leftArmItemID, _leftArmItemID_Min, _leftArmItemID_Max);
 
@@ -205,7 +205,7 @@ namespace Coherence.Generated
             if (bitStream.WriteMask((mask & 0x01) != 0))
             {
 
-                Coherence.Utils.Bounds.Check(data.rightArmItemID, _rightArmItemID_Min, _rightArmItemID_Max, "_01ab9e945591dab4c9c7a936045b976c_8549624382963648638.rightArmItemID", logger);
+                Coherence.Utils.Bounds.Check(data.rightArmItemID, _rightArmItemID_Min, _rightArmItemID_Max, "_daaa1fa3f3526944a84e601f43726765_6822197146557525417.rightArmItemID", logger);
 
                 data.rightArmItemID = Coherence.Utils.Bounds.Clamp(data.rightArmItemID, _rightArmItemID_Min, _rightArmItemID_Max);
 
@@ -220,7 +220,7 @@ namespace Coherence.Generated
             if (bitStream.WriteMask((mask & 0x01) != 0))
             {
 
-                Coherence.Utils.Bounds.Check(data.leftWeaponItemID, _leftWeaponItemID_Min, _leftWeaponItemID_Max, "_01ab9e945591dab4c9c7a936045b976c_8549624382963648638.leftWeaponItemID", logger);
+                Coherence.Utils.Bounds.Check(data.leftWeaponItemID, _leftWeaponItemID_Min, _leftWeaponItemID_Max, "_daaa1fa3f3526944a84e601f43726765_6822197146557525417.leftWeaponItemID", logger);
 
                 data.leftWeaponItemID = Coherence.Utils.Bounds.Clamp(data.leftWeaponItemID, _leftWeaponItemID_Min, _leftWeaponItemID_Max);
 
@@ -235,7 +235,7 @@ namespace Coherence.Generated
             if (bitStream.WriteMask((mask & 0x01) != 0))
             {
 
-                Coherence.Utils.Bounds.Check(data.rightWeaponItemID, _rightWeaponItemID_Min, _rightWeaponItemID_Max, "_01ab9e945591dab4c9c7a936045b976c_8549624382963648638.rightWeaponItemID", logger);
+                Coherence.Utils.Bounds.Check(data.rightWeaponItemID, _rightWeaponItemID_Min, _rightWeaponItemID_Max, "_daaa1fa3f3526944a84e601f43726765_6822197146557525417.rightWeaponItemID", logger);
 
                 data.rightWeaponItemID = Coherence.Utils.Bounds.Clamp(data.rightWeaponItemID, _rightWeaponItemID_Min, _rightWeaponItemID_Max);
 
@@ -251,7 +251,7 @@ namespace Coherence.Generated
             return mask;
         }
 
-        public static _01ab9e945591dab4c9c7a936045b976c_8549624382963648638 Deserialize(AbsoluteSimulationFrame referenceSimulationFrame, InProtocolBitStream bitStream)
+        public static _daaa1fa3f3526944a84e601f43726765_6822197146557525417 Deserialize(AbsoluteSimulationFrame referenceSimulationFrame, InProtocolBitStream bitStream)
         {
             var stoppedMask = (uint)0;
             if (bitStream.ReadMask())
@@ -259,30 +259,30 @@ namespace Coherence.Generated
                 stoppedMask = bitStream.ReadMaskBits(4);
             }
 
-            var val = new _01ab9e945591dab4c9c7a936045b976c_8549624382963648638();
+            var val = new _daaa1fa3f3526944a84e601f43726765_6822197146557525417();
             if (bitStream.ReadMask())
             {
 
                 val.leftArmItemID = bitStream.ReadIntegerRange(32, -2147483648);
-                val.FieldsMask |= _01ab9e945591dab4c9c7a936045b976c_8549624382963648638.leftArmItemIDMask;
+                val.FieldsMask |= _daaa1fa3f3526944a84e601f43726765_6822197146557525417.leftArmItemIDMask;
             }
             if (bitStream.ReadMask())
             {
 
                 val.rightArmItemID = bitStream.ReadIntegerRange(32, -2147483648);
-                val.FieldsMask |= _01ab9e945591dab4c9c7a936045b976c_8549624382963648638.rightArmItemIDMask;
+                val.FieldsMask |= _daaa1fa3f3526944a84e601f43726765_6822197146557525417.rightArmItemIDMask;
             }
             if (bitStream.ReadMask())
             {
 
                 val.leftWeaponItemID = bitStream.ReadIntegerRange(32, -2147483648);
-                val.FieldsMask |= _01ab9e945591dab4c9c7a936045b976c_8549624382963648638.leftWeaponItemIDMask;
+                val.FieldsMask |= _daaa1fa3f3526944a84e601f43726765_6822197146557525417.leftWeaponItemIDMask;
             }
             if (bitStream.ReadMask())
             {
 
                 val.rightWeaponItemID = bitStream.ReadIntegerRange(32, -2147483648);
-                val.FieldsMask |= _01ab9e945591dab4c9c7a936045b976c_8549624382963648638.rightWeaponItemIDMask;
+                val.FieldsMask |= _daaa1fa3f3526944a84e601f43726765_6822197146557525417.rightWeaponItemIDMask;
             }
 
             val.StoppedMask = stoppedMask;
@@ -293,7 +293,7 @@ namespace Coherence.Generated
 
         public override string ToString()
         {
-            return $"_01ab9e945591dab4c9c7a936045b976c_8549624382963648638(" +
+            return $"_daaa1fa3f3526944a84e601f43726765_6822197146557525417(" +
                 $" leftArmItemID: { this.leftArmItemID }" +
                 $" rightArmItemID: { this.rightArmItemID }" +
                 $" leftWeaponItemID: { this.leftWeaponItemID }" +

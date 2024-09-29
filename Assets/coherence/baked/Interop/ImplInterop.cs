@@ -177,15 +177,15 @@ namespace Coherence.Generated
                 case 150: return GenericFieldULong3.FromInterop(data, dataSize, simFrames, simFramesCount);
                 case 151: return GenericFieldColor0.FromInterop(data, dataSize, simFrames, simFramesCount);
                 case 152: return GenericFieldColor1.FromInterop(data, dataSize, simFrames, simFramesCount);
-                case 153: return _01ab9e945591dab4c9c7a936045b976c_8021727627539323238.FromInterop(data, dataSize, simFrames, simFramesCount);
-                case 154: return _01ab9e945591dab4c9c7a936045b976c_8549624382963648638.FromInterop(data, dataSize, simFrames, simFramesCount);
-                case 155: return _3bec13d4bb00a5e479d1a130c95272ee_1816034302234343057.FromInterop(data, dataSize, simFrames, simFramesCount);
-                case 156: return _3bec13d4bb00a5e479d1a130c95272ee_8119623259683859537.FromInterop(data, dataSize, simFrames, simFramesCount);
-                case 157: return _7aa047939d3aa49498cc38bb3ac3eec7_11687024536901363.FromInterop(data, dataSize, simFrames, simFramesCount);
-                case 158: return _7aa047939d3aa49498cc38bb3ac3eec7_7616975171125922867.FromInterop(data, dataSize, simFrames, simFramesCount);
-                case 159: return _86637d6221845a54c80f4dee3a49e53e_11040090778132851781.FromInterop(data, dataSize, simFrames, simFramesCount);
-                case 160: return _86637d6221845a54c80f4dee3a49e53e_8118622161289229957.FromInterop(data, dataSize, simFrames, simFramesCount);
-                case 161: return _ddf545e2defc9334d82e1bfb3a54514a_1735892028521822499.FromInterop(data, dataSize, simFrames, simFramesCount);
+                case 153: return _3bec13d4bb00a5e479d1a130c95272ee_7202305787937664501.FromInterop(data, dataSize, simFrames, simFramesCount);
+                case 154: return _3bec13d4bb00a5e479d1a130c95272ee_8119623259683859537.FromInterop(data, dataSize, simFrames, simFramesCount);
+                case 155: return _7aa047939d3aa49498cc38bb3ac3eec7_11687024536901363.FromInterop(data, dataSize, simFrames, simFramesCount);
+                case 156: return _7aa047939d3aa49498cc38bb3ac3eec7_1401901415092705111.FromInterop(data, dataSize, simFrames, simFramesCount);
+                case 157: return _86637d6221845a54c80f4dee3a49e53e_11040090778132851781.FromInterop(data, dataSize, simFrames, simFramesCount);
+                case 158: return _86637d6221845a54c80f4dee3a49e53e_750764889627930081.FromInterop(data, dataSize, simFrames, simFramesCount);
+                case 159: return _daaa1fa3f3526944a84e601f43726765_3799887446666487710.FromInterop(data, dataSize, simFrames, simFramesCount);
+                case 160: return _daaa1fa3f3526944a84e601f43726765_6822197146557525417.FromInterop(data, dataSize, simFrames, simFramesCount);
+                case 161: return _ddf545e2defc9334d82e1bfb3a54514a_7122236090842358343.FromInterop(data, dataSize, simFrames, simFramesCount);
                 case 162: return _ddf545e2defc9334d82e1bfb3a54514a_8181434535533552611.FromInterop(data, dataSize, simFrames, simFramesCount);
             }
 
@@ -1886,43 +1886,17 @@ namespace Coherence.Generated
                 }
                 case 153:
                 {
-                    var orig = (_01ab9e945591dab4c9c7a936045b976c_8021727627539323238)component;
-                    var val = new _01ab9e945591dab4c9c7a936045b976c_8021727627539323238.Interop();
+                    var orig = (_3bec13d4bb00a5e479d1a130c95272ee_7202305787937664501)component;
+                    var val = new _3bec13d4bb00a5e479d1a130c95272ee_7202305787937664501.Interop();
 
-                    val.blah = orig.blah ? (System.Byte)1 : (System.Byte)0;
-                    val.stam = orig.stam;
+                    val.position = orig.position;
+                    val.rotation = orig.rotation;
 
-                    updater.UpdateComponent(entity, componentType, val, 13, component.FieldsMask, component.StoppedMask, frames);
+                    updater.UpdateComponent(entity, componentType, val, 28, component.FieldsMask, component.StoppedMask, frames);
 
                     return;
                 }
                 case 154:
-                {
-                    var orig = (_01ab9e945591dab4c9c7a936045b976c_8549624382963648638)component;
-                    var val = new _01ab9e945591dab4c9c7a936045b976c_8549624382963648638.Interop();
-
-                    val.leftArmItemID = orig.leftArmItemID;
-                    val.rightArmItemID = orig.rightArmItemID;
-                    val.leftWeaponItemID = orig.leftWeaponItemID;
-                    val.rightWeaponItemID = orig.rightWeaponItemID;
-
-                    updater.UpdateComponent(entity, componentType, val, 16, component.FieldsMask, component.StoppedMask, frames);
-
-                    return;
-                }
-                case 155:
-                {
-                    var orig = (_3bec13d4bb00a5e479d1a130c95272ee_1816034302234343057)component;
-                    var val = new _3bec13d4bb00a5e479d1a130c95272ee_1816034302234343057.Interop();
-
-                    val.blah = orig.blah ? (System.Byte)1 : (System.Byte)0;
-                    val.stam = orig.stam;
-
-                    updater.UpdateComponent(entity, componentType, val, 13, component.FieldsMask, component.StoppedMask, frames);
-
-                    return;
-                }
-                case 156:
                 {
                     var orig = (_3bec13d4bb00a5e479d1a130c95272ee_8119623259683859537)component;
                     var val = new _3bec13d4bb00a5e479d1a130c95272ee_8119623259683859537.Interop();
@@ -1933,7 +1907,7 @@ namespace Coherence.Generated
 
                     return;
                 }
-                case 157:
+                case 155:
                 {
                     var orig = (_7aa047939d3aa49498cc38bb3ac3eec7_11687024536901363)component;
                     var val = new _7aa047939d3aa49498cc38bb3ac3eec7_11687024536901363.Interop();
@@ -1944,19 +1918,19 @@ namespace Coherence.Generated
 
                     return;
                 }
-                case 158:
+                case 156:
                 {
-                    var orig = (_7aa047939d3aa49498cc38bb3ac3eec7_7616975171125922867)component;
-                    var val = new _7aa047939d3aa49498cc38bb3ac3eec7_7616975171125922867.Interop();
+                    var orig = (_7aa047939d3aa49498cc38bb3ac3eec7_1401901415092705111)component;
+                    var val = new _7aa047939d3aa49498cc38bb3ac3eec7_1401901415092705111.Interop();
 
-                    val.blah = orig.blah ? (System.Byte)1 : (System.Byte)0;
-                    val.stam = orig.stam;
+                    val.position = orig.position;
+                    val.rotation = orig.rotation;
 
-                    updater.UpdateComponent(entity, componentType, val, 13, component.FieldsMask, component.StoppedMask, frames);
+                    updater.UpdateComponent(entity, componentType, val, 28, component.FieldsMask, component.StoppedMask, frames);
 
                     return;
                 }
-                case 159:
+                case 157:
                 {
                     var orig = (_86637d6221845a54c80f4dee3a49e53e_11040090778132851781)component;
                     var val = new _86637d6221845a54c80f4dee3a49e53e_11040090778132851781.Interop();
@@ -1967,27 +1941,53 @@ namespace Coherence.Generated
 
                     return;
                 }
+                case 158:
+                {
+                    var orig = (_86637d6221845a54c80f4dee3a49e53e_750764889627930081)component;
+                    var val = new _86637d6221845a54c80f4dee3a49e53e_750764889627930081.Interop();
+
+                    val.position = orig.position;
+                    val.rotation = orig.rotation;
+
+                    updater.UpdateComponent(entity, componentType, val, 28, component.FieldsMask, component.StoppedMask, frames);
+
+                    return;
+                }
+                case 159:
+                {
+                    var orig = (_daaa1fa3f3526944a84e601f43726765_3799887446666487710)component;
+                    var val = new _daaa1fa3f3526944a84e601f43726765_3799887446666487710.Interop();
+
+                    val.position = orig.position;
+                    val.rotation = orig.rotation;
+
+                    updater.UpdateComponent(entity, componentType, val, 28, component.FieldsMask, component.StoppedMask, frames);
+
+                    return;
+                }
                 case 160:
                 {
-                    var orig = (_86637d6221845a54c80f4dee3a49e53e_8118622161289229957)component;
-                    var val = new _86637d6221845a54c80f4dee3a49e53e_8118622161289229957.Interop();
+                    var orig = (_daaa1fa3f3526944a84e601f43726765_6822197146557525417)component;
+                    var val = new _daaa1fa3f3526944a84e601f43726765_6822197146557525417.Interop();
 
-                    val.blah = orig.blah ? (System.Byte)1 : (System.Byte)0;
-                    val.stam = orig.stam;
+                    val.leftArmItemID = orig.leftArmItemID;
+                    val.rightArmItemID = orig.rightArmItemID;
+                    val.leftWeaponItemID = orig.leftWeaponItemID;
+                    val.rightWeaponItemID = orig.rightWeaponItemID;
 
-                    updater.UpdateComponent(entity, componentType, val, 13, component.FieldsMask, component.StoppedMask, frames);
+                    updater.UpdateComponent(entity, componentType, val, 16, component.FieldsMask, component.StoppedMask, frames);
 
                     return;
                 }
                 case 161:
                 {
-                    var orig = (_ddf545e2defc9334d82e1bfb3a54514a_1735892028521822499)component;
-                    var val = new _ddf545e2defc9334d82e1bfb3a54514a_1735892028521822499.Interop();
+                    var orig = (_ddf545e2defc9334d82e1bfb3a54514a_7122236090842358343)component;
+                    var val = new _ddf545e2defc9334d82e1bfb3a54514a_7122236090842358343.Interop();
 
-                    val.blah = orig.blah ? (System.Byte)1 : (System.Byte)0;
-                    val.stam = orig.stam;
+                    val.position = orig.position;
+                    val.rotation = orig.rotation;
 
-                    updater.UpdateComponent(entity, componentType, val, 13, component.FieldsMask, component.StoppedMask, frames);
+                    updater.UpdateComponent(entity, componentType, val, 28, component.FieldsMask, component.StoppedMask, frames);
 
                     return;
                 }
