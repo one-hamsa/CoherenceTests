@@ -10,23 +10,23 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 579f4a509fd2f994fa391c0c78ea3f11, type: 3}
-  m_Name: Player Prefab
+  m_Name: Generic Rigidbody
   m_EditorClassIdentifier: 
-  id: daaa1fa3f3526944a84e601f43726765
-  selfId: 87d46c5843005714eb71de3fdfd3b88f
-  editorTarget: {fileID: 4649793381938239223, guid: daaa1fa3f3526944a84e601f43726765, type: 3}
+  id: f56c32abdf848d041964eb9b807eddfe
+  selfId: 0cc065b606f23314e95b907700810456
+  editorTarget: {fileID: 8700830231994212049, guid: f56c32abdf848d041964eb9b807eddfe, type: 3}
   includeInSchema: 1
   objectProvider:
-    rid: 4417920759296688254
+    rid: 4417920742033457558
   objectInstantiator:
-    rid: 4417920853667217408
+    rid: 4417920742033457559
   references:
     version: 2
     RefIds:
-    - rid: 4417920759296688254
+    - rid: 4417920742033457558
       type: {class: ResourcesProvider, ns: Coherence.Toolkit, asm: Coherence.Toolkit}
       data:
-        resourcesPath: Player Prefab
-    - rid: 4417920853667217408
-      type: {class: PlayerOrPartInstantiator, ns: , asm: Assembly-CSharp}
+        resourcesPath: Generic Rigidbody
+    - rid: 4417920742033457559
+      type: {class: DefaultInstantiator, ns: Coherence.Toolkit, asm: Coherence.Toolkit}
       data: 

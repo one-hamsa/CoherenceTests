@@ -1,6 +1,5 @@
-component _3bec13d4bb00a5e479d1a130c95272ee_7202305787937664501 [id "153"]
-  position Vector3 [compression "None"]
-  rotation Quaternion [bits "32"]
+component _3bec13d4bb00a5e479d1a130c95272ee_4614871952824475462 [id "153"]
+  ids Bytes [bits "4072"]
 
 component _3bec13d4bb00a5e479d1a130c95272ee_8119623259683859537 [id "154"]
   partIndex Int [bits "32", range-min "-2147483648", range-max "2147483647"]
@@ -8,16 +7,15 @@ component _3bec13d4bb00a5e479d1a130c95272ee_8119623259683859537 [id "154"]
 component _7aa047939d3aa49498cc38bb3ac3eec7_11687024536901363 [id "155"]
   partIndex Int [bits "32", range-min "-2147483648", range-max "2147483647"]
 
-component _7aa047939d3aa49498cc38bb3ac3eec7_1401901415092705111 [id "156"]
-  position Vector3 [compression "None"]
-  rotation Quaternion [bits "32"]
+component _7aa047939d3aa49498cc38bb3ac3eec7_3498283760387909092 [id "156"]
+  ids Bytes [bits "4072"]
+  ids Bytes [bits "4072"]
 
 component _86637d6221845a54c80f4dee3a49e53e_11040090778132851781 [id "157"]
   partIndex Int [bits "32", range-min "-2147483648", range-max "2147483647"]
 
-component _86637d6221845a54c80f4dee3a49e53e_750764889627930081 [id "158"]
-  position Vector3 [compression "None"]
-  rotation Quaternion [bits "32"]
+component _86637d6221845a54c80f4dee3a49e53e_2995927100694470482 [id "158"]
+  ids Bytes [bits "4072"]
 
 component _daaa1fa3f3526944a84e601f43726765_3799887446666487710 [id "159"]
   position Vector3 [compression "None"]
@@ -29,10 +27,13 @@ component _daaa1fa3f3526944a84e601f43726765_6822197146557525417 [id "160"]
   leftWeaponItemID Int [bits "32", range-min "-2147483648", range-max "2147483647"]
   rightWeaponItemID Int [bits "32", range-min "-2147483648", range-max "2147483647"]
 
-component _ddf545e2defc9334d82e1bfb3a54514a_7122236090842358343 [id "161"]
-  position Vector3 [compression "None"]
-  rotation Quaternion [bits "32"]
+component _ddf545e2defc9334d82e1bfb3a54514a_4697158333011300596 [id "161"]
+  ids Bytes [bits "4072"]
 
 component _ddf545e2defc9334d82e1bfb3a54514a_8181434535533552611 [id "162"]
   partIndex Int [bits "32", range-min "-2147483648", range-max "2147483647"]
+
+component _f56c32abdf848d041964eb9b807eddfe_1877998324345617371 [id "163"]
+  position Vector3 [compression "None"]
+  rotation Quaternion [bits "32"]
 
