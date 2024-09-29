@@ -1,14 +1,11 @@
 using Coherence.Toolkit;
 using UnityEngine;
 
-public class MyInstantiator : INetworkObjectInstantiator
+public class PlayerOrPartInstantiator : INetworkObjectInstantiator
 {
-    public void OnUniqueObjectReplaced(ICoherenceSync instance)
-    {
-    }
-
     public ICoherenceSync Instantiate(SpawnInfo spawnInfo)
     {
+        // Is this a request to spawn a root player?
         if ((spawnInfo.prefab as MonoBehaviour)?.gameObject == PrefabRepository.GetPlayerPrefab())
         {
             // We can instantiate the root player normally
@@ -20,23 +17,28 @@ public class MyInstantiator : INetworkObjectInstantiator
         if (connectedEntityGO != null)
             Debug.Log($"Connected Entity is: {connectedEntityGO.name}");
         else
-            Debug.Log($"Connected Entity not found for ID {spawnInfo.connectedEntity.Index}");
+        {
+            // For some reason when Rigidbody interpolation mode is Manual, the spawInfo.connectedEntity is zero.
+            // Is this a bug?
+            Debug.LogError($"Connected Entity not found for ID {spawnInfo.connectedEntity.Index}");
+            return null;
+        }
 
+        // Locate the player 
         Player player = connectedEntityGO.GetComponentInParent<Player>();
-        var partIndex = spawnInfo.GetBindingValue<int>("partIndex");
 
+        // Get the part index of the instantiated part ...
+        var partIndex = spawnInfo.GetBindingValue<int>("partIndex");
         Debug.Log($"Returning existing part with index {partIndex}");
 
+        // Retrieve the pre-existing part from the player
         var part = player.GetPart(partIndex).GetComponent<CoherenceSync>();
         
-        // We had to load disabled, so it doesn't try to initialize before we get the network command to instantiate it
+        // enable its CoherenceSync now (so it doesn't try to initialize before we get the network command to instantiate it)
         part.enabled = true;
         
+        // Return it as the new 'instance'
         return part;
-    }
-
-    public void WarmUpInstantiator(CoherenceBridge bridge, CoherenceSyncConfig config, INetworkObjectProvider assetLoader)
-    {
     }
 
     public void Destroy(ICoherenceSync obj)
@@ -45,7 +47,7 @@ public class MyInstantiator : INetworkObjectInstantiator
             Object.Destroy(c.gameObject);
     }
 
-    public void OnApplicationQuit()
-    {
-    }
+    public void WarmUpInstantiator(CoherenceBridge bridge, CoherenceSyncConfig config, INetworkObjectProvider assetLoader) { }
+    public void OnUniqueObjectReplaced(ICoherenceSync instance) { }
+    public void OnApplicationQuit() { }
 }

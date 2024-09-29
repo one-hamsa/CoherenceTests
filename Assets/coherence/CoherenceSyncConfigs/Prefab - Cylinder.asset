@@ -19,7 +19,7 @@ MonoBehaviour:
   objectProvider:
     rid: 4417920695832936462
   objectInstantiator:
-    rid: 5691255278982660223
+    rid: 4417920742033457411
   references:
     version: 2
     RefIds:
@@ -27,6 +27,6 @@ MonoBehaviour:
       type: {class: ResourcesProvider, ns: Coherence.Toolkit, asm: Coherence.Toolkit}
       data:
         resourcesPath: Prefab - Cylinder
-    - rid: 5691255278982660223
-      type: {class: MyInstantiator, ns: , asm: Assembly-CSharp}
+    - rid: 4417920742033457411
+      type: {class: PlayerOrPartInstantiator, ns: , asm: Assembly-CSharp}
       data: 
