@@ -177,16 +177,23 @@ namespace Coherence.Generated
                 case 150: return GenericFieldULong3.FromInterop(data, dataSize, simFrames, simFramesCount);
                 case 151: return GenericFieldColor0.FromInterop(data, dataSize, simFrames, simFramesCount);
                 case 152: return GenericFieldColor1.FromInterop(data, dataSize, simFrames, simFramesCount);
-                case 153: return _3bec13d4bb00a5e479d1a130c95272ee_7202305787937664501.FromInterop(data, dataSize, simFrames, simFramesCount);
-                case 154: return _3bec13d4bb00a5e479d1a130c95272ee_8119623259683859537.FromInterop(data, dataSize, simFrames, simFramesCount);
+                case 153: return _3bec13d4bb00a5e479d1a130c95272ee_8119623259683859537.FromInterop(data, dataSize, simFrames, simFramesCount);
+                case 154: return _3bec13d4bb00a5e479d1a130c95272ee_8545511309911926812.FromInterop(data, dataSize, simFrames, simFramesCount);
                 case 155: return _7aa047939d3aa49498cc38bb3ac3eec7_11687024536901363.FromInterop(data, dataSize, simFrames, simFramesCount);
-                case 156: return _7aa047939d3aa49498cc38bb3ac3eec7_1401901415092705111.FromInterop(data, dataSize, simFrames, simFramesCount);
+                case 156: return _7aa047939d3aa49498cc38bb3ac3eec7_437120047812858558.FromInterop(data, dataSize, simFrames, simFramesCount);
                 case 157: return _86637d6221845a54c80f4dee3a49e53e_11040090778132851781.FromInterop(data, dataSize, simFrames, simFramesCount);
-                case 158: return _86637d6221845a54c80f4dee3a49e53e_750764889627930081.FromInterop(data, dataSize, simFrames, simFramesCount);
-                case 159: return _daaa1fa3f3526944a84e601f43726765_3799887446666487710.FromInterop(data, dataSize, simFrames, simFramesCount);
-                case 160: return _daaa1fa3f3526944a84e601f43726765_6822197146557525417.FromInterop(data, dataSize, simFrames, simFramesCount);
-                case 161: return _ddf545e2defc9334d82e1bfb3a54514a_7122236090842358343.FromInterop(data, dataSize, simFrames, simFramesCount);
-                case 162: return _ddf545e2defc9334d82e1bfb3a54514a_8181434535533552611.FromInterop(data, dataSize, simFrames, simFramesCount);
+                case 158: return _86637d6221845a54c80f4dee3a49e53e_2238072439915030536.FromInterop(data, dataSize, simFrames, simFramesCount);
+                case 159: return _daaa1fa3f3526944a84e601f43726765_3238819829505931363.FromInterop(data, dataSize, simFrames, simFramesCount);
+                case 160: return _daaa1fa3f3526944a84e601f43726765_6745476663283856847.FromInterop(data, dataSize, simFrames, simFramesCount);
+                case 161: return _daaa1fa3f3526944a84e601f43726765_6822197146557525417.FromInterop(data, dataSize, simFrames, simFramesCount);
+                case 162: return _daaa1fa3f3526944a84e601f43726765_7687811572458356758.FromInterop(data, dataSize, simFrames, simFramesCount);
+                case 163: return _ddf545e2defc9334d82e1bfb3a54514a_8181434535533552611.FromInterop(data, dataSize, simFrames, simFramesCount);
+                case 164: return _ddf545e2defc9334d82e1bfb3a54514a_8625299608525973422.FromInterop(data, dataSize, simFrames, simFramesCount);
+                case 165: return _f56c32abdf848d041964eb9b807eddfe_5150605711725245781.FromInterop(data, dataSize, simFrames, simFramesCount);
+                case 166: return WorldPosition.FromInteropArchetype_f56c32abdf848d041964eb9b807eddfe_WorldPosition_LOD0(data, dataSize, simFrames, simFramesCount);
+                case 167: return WorldOrientation.FromInteropArchetype_f56c32abdf848d041964eb9b807eddfe_WorldOrientation_LOD0(data, dataSize, simFrames, simFramesCount);
+                case 168: return GenericScale.FromInteropArchetype_f56c32abdf848d041964eb9b807eddfe_GenericScale_LOD0(data, dataSize, simFrames, simFramesCount);
+                case 169: return _f56c32abdf848d041964eb9b807eddfe_5150605711725245781.FromInteropArchetype_f56c32abdf848d041964eb9b807eddfe__f56c32abdf848d041964eb9b807eddfe_5150605711725245781_LOD0(data, dataSize, simFrames, simFramesCount);
             }
 
             throw new ArgumentException($"Unkown component type {type}", nameof(type));
@@ -1886,18 +1893,6 @@ namespace Coherence.Generated
                 }
                 case 153:
                 {
-                    var orig = (_3bec13d4bb00a5e479d1a130c95272ee_7202305787937664501)component;
-                    var val = new _3bec13d4bb00a5e479d1a130c95272ee_7202305787937664501.Interop();
-
-                    val.position = orig.position;
-                    val.rotation = orig.rotation;
-
-                    updater.UpdateComponent(entity, componentType, val, 28, component.FieldsMask, component.StoppedMask, frames);
-
-                    return;
-                }
-                case 154:
-                {
                     var orig = (_3bec13d4bb00a5e479d1a130c95272ee_8119623259683859537)component;
                     var val = new _3bec13d4bb00a5e479d1a130c95272ee_8119623259683859537.Interop();
 
@@ -1906,6 +1901,17 @@ namespace Coherence.Generated
                     updater.UpdateComponent(entity, componentType, val, 4, component.FieldsMask, component.StoppedMask, frames);
 
                     return;
+                }
+                case 154:
+                {
+                    var orig = (_3bec13d4bb00a5e479d1a130c95272ee_8545511309911926812)component;
+                    var val = new _3bec13d4bb00a5e479d1a130c95272ee_8545511309911926812.Interop();
+
+                    fixed (void* pinnedPtrids = orig.ids) { val.ids = new ByteArray { Data = pinnedPtrids, Length =  orig.ids?.Length ?? 0 };
+
+                    updater.UpdateComponent(entity, componentType, val, 16, component.FieldsMask, component.StoppedMask, frames);
+
+}                    return;
                 }
                 case 155:
                 {
@@ -1920,15 +1926,14 @@ namespace Coherence.Generated
                 }
                 case 156:
                 {
-                    var orig = (_7aa047939d3aa49498cc38bb3ac3eec7_1401901415092705111)component;
-                    var val = new _7aa047939d3aa49498cc38bb3ac3eec7_1401901415092705111.Interop();
+                    var orig = (_7aa047939d3aa49498cc38bb3ac3eec7_437120047812858558)component;
+                    var val = new _7aa047939d3aa49498cc38bb3ac3eec7_437120047812858558.Interop();
 
-                    val.position = orig.position;
-                    val.rotation = orig.rotation;
+                    fixed (void* pinnedPtrids = orig.ids) { val.ids = new ByteArray { Data = pinnedPtrids, Length =  orig.ids?.Length ?? 0 };
 
-                    updater.UpdateComponent(entity, componentType, val, 28, component.FieldsMask, component.StoppedMask, frames);
+                    updater.UpdateComponent(entity, componentType, val, 16, component.FieldsMask, component.StoppedMask, frames);
 
-                    return;
+}                    return;
                 }
                 case 157:
                 {
@@ -1943,29 +1948,41 @@ namespace Coherence.Generated
                 }
                 case 158:
                 {
-                    var orig = (_86637d6221845a54c80f4dee3a49e53e_750764889627930081)component;
-                    var val = new _86637d6221845a54c80f4dee3a49e53e_750764889627930081.Interop();
+                    var orig = (_86637d6221845a54c80f4dee3a49e53e_2238072439915030536)component;
+                    var val = new _86637d6221845a54c80f4dee3a49e53e_2238072439915030536.Interop();
 
-                    val.position = orig.position;
-                    val.rotation = orig.rotation;
+                    fixed (void* pinnedPtrids = orig.ids) { val.ids = new ByteArray { Data = pinnedPtrids, Length =  orig.ids?.Length ?? 0 };
 
-                    updater.UpdateComponent(entity, componentType, val, 28, component.FieldsMask, component.StoppedMask, frames);
+                    updater.UpdateComponent(entity, componentType, val, 16, component.FieldsMask, component.StoppedMask, frames);
 
-                    return;
+}                    return;
                 }
                 case 159:
                 {
-                    var orig = (_daaa1fa3f3526944a84e601f43726765_3799887446666487710)component;
-                    var val = new _daaa1fa3f3526944a84e601f43726765_3799887446666487710.Interop();
+                    var orig = (_daaa1fa3f3526944a84e601f43726765_3238819829505931363)component;
+                    var val = new _daaa1fa3f3526944a84e601f43726765_3238819829505931363.Interop();
 
-                    val.position = orig.position;
-                    val.rotation = orig.rotation;
+                    val.frame = orig.frame;
 
-                    updater.UpdateComponent(entity, componentType, val, 28, component.FieldsMask, component.StoppedMask, frames);
+                    updater.UpdateComponent(entity, componentType, val, 4, component.FieldsMask, component.StoppedMask, frames);
 
                     return;
                 }
                 case 160:
+                {
+                    var orig = (_daaa1fa3f3526944a84e601f43726765_6745476663283856847)component;
+                    var val = new _daaa1fa3f3526944a84e601f43726765_6745476663283856847.Interop();
+
+                    val.position = orig.position;
+                    val.velocity = orig.velocity;
+                    val.rotation = orig.rotation;
+                    val.angularVelocity = orig.angularVelocity;
+
+                    updater.UpdateComponent(entity, componentType, val, 52, component.FieldsMask, component.StoppedMask, frames);
+
+                    return;
+                }
+                case 161:
                 {
                     var orig = (_daaa1fa3f3526944a84e601f43726765_6822197146557525417)component;
                     var val = new _daaa1fa3f3526944a84e601f43726765_6822197146557525417.Interop();
@@ -1979,19 +1996,21 @@ namespace Coherence.Generated
 
                     return;
                 }
-                case 161:
+                case 162:
                 {
-                    var orig = (_ddf545e2defc9334d82e1bfb3a54514a_7122236090842358343)component;
-                    var val = new _ddf545e2defc9334d82e1bfb3a54514a_7122236090842358343.Interop();
+                    var orig = (_daaa1fa3f3526944a84e601f43726765_7687811572458356758)component;
+                    var val = new _daaa1fa3f3526944a84e601f43726765_7687811572458356758.Interop();
 
                     val.position = orig.position;
+                    val.velocity = orig.velocity;
                     val.rotation = orig.rotation;
+                    val.angularVelocity = orig.angularVelocity;
 
-                    updater.UpdateComponent(entity, componentType, val, 28, component.FieldsMask, component.StoppedMask, frames);
+                    updater.UpdateComponent(entity, componentType, val, 52, component.FieldsMask, component.StoppedMask, frames);
 
                     return;
                 }
-                case 162:
+                case 163:
                 {
                     var orig = (_ddf545e2defc9334d82e1bfb3a54514a_8181434535533552611)component;
                     var val = new _ddf545e2defc9334d82e1bfb3a54514a_8181434535533552611.Interop();
@@ -1999,6 +2018,31 @@ namespace Coherence.Generated
                     val.partIndex = orig.partIndex;
 
                     updater.UpdateComponent(entity, componentType, val, 4, component.FieldsMask, component.StoppedMask, frames);
+
+                    return;
+                }
+                case 164:
+                {
+                    var orig = (_ddf545e2defc9334d82e1bfb3a54514a_8625299608525973422)component;
+                    var val = new _ddf545e2defc9334d82e1bfb3a54514a_8625299608525973422.Interop();
+
+                    fixed (void* pinnedPtrids = orig.ids) { val.ids = new ByteArray { Data = pinnedPtrids, Length =  orig.ids?.Length ?? 0 };
+
+                    updater.UpdateComponent(entity, componentType, val, 16, component.FieldsMask, component.StoppedMask, frames);
+
+}                    return;
+                }
+                case 165:
+                {
+                    var orig = (_f56c32abdf848d041964eb9b807eddfe_5150605711725245781)component;
+                    var val = new _f56c32abdf848d041964eb9b807eddfe_5150605711725245781.Interop();
+
+                    val.position = orig.position;
+                    val.velocity = orig.velocity;
+                    val.rotation = orig.rotation;
+                    val.angularVelocity = orig.angularVelocity;
+
+                    updater.UpdateComponent(entity, componentType, val, 52, component.FieldsMask, component.StoppedMask, frames);
 
                     return;
                 }
@@ -2018,6 +2062,7 @@ namespace Coherence.Generated
                   case 4: return PersistenceReady.FromInterop(data, dataSize);
                   case 5: return SceneIndexChanged.FromInterop(data, dataSize);
                   case 6: return GenericCommand.FromInterop(data, dataSize);
+                  case 7: return _daaa1fa3f3526944a84e601f43726765_2351f7fda0244521b241827c0e01304f.FromInterop(data, dataSize);
             }
 
             throw new ArgumentException($"Unkown command type {type}", nameof(type));
@@ -2116,6 +2161,20 @@ namespace Coherence.Generated
                     return sender.SendCommand(entity, target, type, val, 48);
 
 }}                }
+
+                case 7:
+                {
+                    var orig = (_daaa1fa3f3526944a84e601f43726765_2351f7fda0244521b241827c0e01304f)command;
+                    var val = new _daaa1fa3f3526944a84e601f43726765_2351f7fda0244521b241827c0e01304f.Interop();
+
+                    val.rigidbodyIndex = orig.rigidbodyIndex;
+                    val.localPos = orig.localPos;
+                    val.worldImpulse = orig.worldImpulse;
+                    val.numFrames = orig.numFrames;
+
+                    return sender.SendCommand(entity, target, type, val, 32);
+
+                }
 
             }
 

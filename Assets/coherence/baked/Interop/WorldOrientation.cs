@@ -51,6 +51,28 @@ namespace Coherence.Generated
             return orig;
         }
 
+        public static unsafe WorldOrientation FromInteropArchetype_f56c32abdf848d041964eb9b807eddfe_WorldOrientation_LOD0(IntPtr data, Int32 dataSize, InteropAbsoluteSimulationFrame* simFrames, Int32 simFramesCount)
+        {
+            if (dataSize != 16) {
+                throw new Exception($"Given data size is not equal to the struct size. ({dataSize} != 16) " +
+                    "for component with ID 167");
+            }
+
+                
+            if (simFramesCount != 1) {
+                throw new Exception($"Given simFrames size is not equal to the expected length. ({simFramesCount} != 1) " +
+                    "for component with ID 167");
+            }
+
+            var orig = new WorldOrientation();
+
+            var comp = (Interop*)data;
+
+            orig.value = comp->value;
+            orig.valueSimulationFrame = simFrames[0].Into();
+
+            return orig;
+        }
 
         public static uint valueMask => 0b00000000000000000000000000000001;
         public AbsoluteSimulationFrame valueSimulationFrame;
@@ -201,6 +223,27 @@ namespace Coherence.Generated
             return val;
         }
 
+        public static WorldOrientation DeserializeArchetype_f56c32abdf848d041964eb9b807eddfe_WorldOrientation_LOD0(AbsoluteSimulationFrame referenceSimulationFrame, InProtocolBitStream bitStream)
+        {
+            var stoppedMask = (uint)0;
+            if (bitStream.ReadMask())
+            {
+                stoppedMask = bitStream.ReadMaskBits(1);
+            }
+
+            var val = new WorldOrientation();
+            if (bitStream.ReadMask())
+            {
+                val.valueSimulationFrame = referenceSimulationFrame + DeserializerTools.ReadFieldSimFrameDelta(bitStream);
+
+                val.value = bitStream.ReadQuaternion(32).ToUnityQuaternion();
+                val.FieldsMask |= valueMask;
+            }
+
+            val.StoppedMask = stoppedMask;
+
+            return val;
+        }
 
         public override string ToString()
         {

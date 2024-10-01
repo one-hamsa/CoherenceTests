@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 579f4a509fd2f994fa391c0c78ea3f11, type: 3}
+  m_Name: Generic Rigidbody
+  m_EditorClassIdentifier: 
+  id: f56c32abdf848d041964eb9b807eddfe
+  selfId: 0cc065b606f23314e95b907700810456
+  editorTarget: {fileID: 1797120115244458800, guid: f56c32abdf848d041964eb9b807eddfe, type: 3}
+  includeInSchema: 1
+  objectProvider:
+    rid: 4417920853876932610
+  objectInstantiator:
+    rid: 4417920853667217430
+  references:
+    version: 2
+    RefIds:
+    - rid: 4417920853667217430
+      type: {class: PlayerOrPartInstantiator, ns: , asm: Assembly-CSharp}
+      data: 
+    - rid: 4417920853876932610
+      type: {class: ResourcesProvider, ns: Coherence.Toolkit, asm: Coherence.Toolkit}
+      data:
+        resourcesPath: Generic Rigidbody

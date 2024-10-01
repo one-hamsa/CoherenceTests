@@ -8,6 +8,9 @@ using Random = UnityEngine.Random;
 
 public class Player : MonoBehaviour
 {
+    public static Player me;
+    public static Player other;
+    
     public int leftArmItemID;
     public int rightArmItemID;
     public int leftWeaponItemID;
@@ -36,6 +39,11 @@ public class Player : MonoBehaviour
             rightWeaponItemID= Random.Range(0, numOptions);
 
             Debug.Log($"My clientID = {_coherenceSync.CoherenceBridge.Client.ClientID}");
+            me = this;
+        }
+        else
+        {
+            other = this;
         }
         
         // Create the player according to load-out
