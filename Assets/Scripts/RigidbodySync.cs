@@ -1,14 +1,16 @@
 using System;
-using System.Collections;
-using System.Collections.Generic;
+using System.Linq;
 using Coherence.Toolkit;
+using Coherence.Toolkit.Bindings;
 using UnityEngine;
 
 [DefaultExecutionOrder(1000)]
 public class RigidbodySync : MonoBehaviour
 {
+    public bool debug;
+    
     [Range(0, 1)] 
-    public float remoteAnimVelocityBlend = 0.5f;
+    public float baseReconciliationRate = 0.5f;
     
     private Rigidbody _rigidbody;
     private CoherenceBridge _bridge;
@@ -17,15 +19,48 @@ public class RigidbodySync : MonoBehaviour
     private Collider _collider;
 
     private float _reconciliationRate = 1f;
-    
-    [Sync, NonSerialized]
+
+    private HistoryBuffer<Vector3> _positionHistory = new Vector3HistoryBuffer();
+    private HistoryBuffer<Quaternion> _rotationHistory = new QuaternionHistoryBuffer();
+
+    [Sync, NonSerialized, OnValueSynced(nameof(OnPositionUpdated))]
     public Vector3 position;
     [Sync, NonSerialized]
     public  Vector3 velocity;
-    [Sync, NonSerialized]
+    [Sync, NonSerialized, OnValueSynced(nameof(OnRotationUpdated))]
     public  Quaternion rotation;
     [Sync, NonSerialized] 
     public  Vector3 angularVelocity;
+
+    private Vector3 _lastPositionError;
+    private Quaternion _lastRotationError;
+
+    private ValueBinding<Vector3> posBinding;
+    private ValueBinding<Quaternion> rotBinding;
+
+    private void OnPositionUpdated(Vector3 oldPos, Vector3 newPos)
+    {
+        if (posBinding != null && posBinding.Interpolator.Buffer.Last != null)
+        {
+            double sampleTime = posBinding.Interpolator.Buffer.Last.Value.Time;
+            var clientPositionAtTimeOfSample = _positionHistory.Evaluate(sampleTime);
+            if (debug)
+                Debug.Log($"{Time.fixedTime}: Got RBPosUpdate (in Fixed = {Time.inFixedTimeStep})");
+            float invFixedDT = 1f / Time.fixedDeltaTime;
+            Vector3 deltaPos = position - clientPositionAtTimeOfSample;
+            Vector3 animatedVelocity = deltaPos * invFixedDT - _rigidbody.velocity;
+		
+            // Quaternion deltaRotation = RigidbodyPredictor.ShortWorldSpaceDeltaTo(_rigidbody.rotation, futureRot);
+            // RigidbodyPredictor.SafeToAngleAxis(deltaRotation, out float angleDegrees, out Vector3 axis);
+            // Vector3 animatedAngularVelocity = axis * (Mathf.Deg2Rad * angleDegrees * invFixedDT) - _rigidbody.angularVelocity;
+            //
+            // float rate = baseReconciliationRate * _reconciliationRate;
+            // _rigidbody.AddForce(animatedVelocity * rate, ForceMode.VelocityChange);
+            // _rigidbody.AddTorque(animatedAngularVelocity * rate, ForceMode.VelocityChange);
+            
+        }
+    }
+    private void OnRotationUpdated(Quaternion oldRot, Quaternion newRot) { }
 
     private void Awake()
     {
@@ -42,10 +77,27 @@ public class RigidbodySync : MonoBehaviour
             Debug.LogWarning("Couldn't find CoherenceBridge in the scene.");
             return;
         }
+        
+
+        posBinding = (ValueBinding<Vector3>)_coherenceSync.Bindings.Last(b => b.Name == "position");
+        rotBinding = (ValueBinding<Quaternion>)_coherenceSync.Bindings.Last(b => b.Name == "rotation");
+    }
+
+    private void Update()
+    {
+        if (debug)
+            Debug.Log($"{Time.fixedTime}: Update (in Fixed = {Time.inFixedTimeStep})");
     }
 
     private void FixedUpdate()
     {
+        if (debug)
+            Debug.Log($"{Time.fixedTime}: FixedUpdate");
+
+        double clientTime = _bridge.Client.NetworkTime.TimeAsDouble;
+        _positionHistory.AddSample(clientTime, _rigidbody.position);
+        _rotationHistory.AddSample(clientTime, _rigidbody.rotation);
+        
         if (_coherenceSync.HasStateAuthority)
         {
             position = _rigidbody.position;
@@ -57,22 +109,27 @@ public class RigidbodySync : MonoBehaviour
         {
             Vector3 futurePos = position;
             Quaternion futureRot = rotation;
-            float dt = (_bridge.NetworkTime.ClientSimulationFrame - _bridge.NetworkTime.ServerSimulationFrame) * Time.fixedDeltaTime;
-            if (dt > 0f)
-                RigidbodyPredictor.PredictFutureState(_rigidbody, position, rotation, velocity, angularVelocity, dt, out futurePos, out futureRot);
+
+            // TODO: Can we do something with extrapolation here, how far do we need to extrapolate?
+            //float dt = (_bridge.NetworkTime.ClientSimulationFrame - _bridge.NetworkTime.ServerSimulationFrame) * Time.fixedDeltaTime;
+            //if (dt > 0f)
+                //RigidbodyPredictor.PredictFutureState(_rigidbody, position, rotation, velocity, angularVelocity, dt, out futurePos, out futureRot);
 
             _lastPredictedPos = futurePos;
             _lastPredictedRot = futureRot;
 
+            Vector3 myPositionAtTimeOfSample = _positionHistory.Evaluate(_bridge.Client.NetworkTime.TimeAsDouble - _bridge.Client.Ping.LatestLatencyMs * 0.001f);
+            Quaternion myRotationAtTimeOfSample = _rotationHistory.Evaluate(_bridge.Client.NetworkTime.TimeAsDouble - _bridge.Client.Ping.LatestLatencyMs * 0.001f);
+
             float invFixedDT = 1f / Time.fixedDeltaTime;
-            Vector3 deltaPos = futurePos - _rigidbody.position;
+            Vector3 deltaPos = futurePos - myPositionAtTimeOfSample;
             Vector3 animatedVelocity = deltaPos * invFixedDT - _rigidbody.velocity;
 		
-            Quaternion deltaRotation = RigidbodyPredictor.ShortWorldSpaceDeltaTo(_rigidbody.rotation, futureRot);
+            Quaternion deltaRotation = RigidbodyPredictor.ShortWorldSpaceDeltaTo(myRotationAtTimeOfSample, futureRot);
             RigidbodyPredictor.SafeToAngleAxis(deltaRotation, out float angleDegrees, out Vector3 axis);
             Vector3 animatedAngularVelocity = axis * (Mathf.Deg2Rad * angleDegrees * invFixedDT) - _rigidbody.angularVelocity;
 
-            float rate = remoteAnimVelocityBlend * _reconciliationRate;
+            float rate = baseReconciliationRate;// * _reconciliationRate;
             _rigidbody.AddForce(animatedVelocity * rate, ForceMode.VelocityChange);
             _rigidbody.AddTorque(animatedAngularVelocity * rate, ForceMode.VelocityChange);
         }

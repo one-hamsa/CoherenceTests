@@ -73,7 +73,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc6fa8d79aa35fa4c802f8fef695ff1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  remoteAnimVelocityBlend: 0.5
+  debug: 0
+  baseReconciliationRate: 0.5
 --- !u!1 &4649793381938239223
 GameObject:
   m_ObjectHideFlags: 0
@@ -226,7 +227,7 @@ MonoBehaviour:
     - component: {fileID: 3238819829505931363}
       lodStepsActive: 1
     GeneratesArchetypeDefinition: 0
-  interpolationLocation: 5
+  interpolationLocation: 4
   RigidbodyUpdateMode: 0
   OnRigidbody2DPositionUpdate:
     m_PersistentCalls:
@@ -259,16 +260,16 @@ MonoBehaviour:
   - rid: 4417920759296688244
   - rid: 4417920759296688246
   - rid: 4417920759296688248
-  - rid: 4417920853667217481
   - rid: 4417920853667217482
-  - rid: 4417920853667217483
   - rid: 4417920853667217484
-  - rid: 4417920853667217489
   - rid: 4417920853667217490
-  - rid: 4417920853667217491
   - rid: 4417920853667217492
   - rid: 4417920853667217580
   - rid: 4417920853667217586
+  - rid: 9055798910898405460
+  - rid: 9055798910898405461
+  - rid: 9055798910898405462
+  - rid: 9055798910898405463
   onNetworkedInstantiation:
     m_PersistentCalls:
       m_Calls: []
@@ -438,13 +439,13 @@ MonoBehaviour:
         guid: 7148367372d04e2489076505a4c3266a
         archetypeData:
           type: 1
-          minRange: -2147483648
-          maxRange: 2147483647
+          minRange: -1
+          maxRange: 32
           sampleRate: 20
           floatCompression: 0
           fields:
           - type: 1
-            bits: 32
+            bits: 6
             precision: 0
             floatCompression: 0
         unityComponent: {fileID: 6822197146557525417}
@@ -483,13 +484,13 @@ MonoBehaviour:
         guid: 87fabb8668294e7898a5c7463bd97eff
         archetypeData:
           type: 1
-          minRange: -2147483648
-          maxRange: 2147483647
+          minRange: -1
+          maxRange: 32
           sampleRate: 20
           floatCompression: 0
           fields:
           - type: 1
-            bits: 32
+            bits: 6
             precision: 0
             floatCompression: 0
         unityComponent: {fileID: 6822197146557525417}
@@ -528,13 +529,13 @@ MonoBehaviour:
         guid: 856605db6ef9487d90a9da9603d45d9e
         archetypeData:
           type: 1
-          minRange: -2147483648
-          maxRange: 2147483647
+          minRange: -1
+          maxRange: 32
           sampleRate: 20
           floatCompression: 0
           fields:
           - type: 1
-            bits: 32
+            bits: 6
             precision: 0
             floatCompression: 0
         unityComponent: {fileID: 6822197146557525417}
@@ -573,13 +574,13 @@ MonoBehaviour:
         guid: b99e9c0f9d534521992c3f31bfd21986
         archetypeData:
           type: 1
-          minRange: -2147483648
-          maxRange: 2147483647
+          minRange: -1
+          maxRange: 32
           sampleRate: 20
           floatCompression: 0
           fields:
           - type: 1
-            bits: 32
+            bits: 6
             precision: 0
             floatCompression: 0
         unityComponent: {fileID: 6822197146557525417}
@@ -606,30 +607,6 @@ MonoBehaviour:
             Coherence.Toolkit, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
         oldName: 
         oldParameterAssemblyTypes: []
-    - rid: 4417920853667217481
-      type: {class: Vector3Binding, ns: Coherence.Toolkit.Bindings.ValueBindings, asm: Coherence.Toolkit}
-      data:
-        descriptor:
-          rid: 4417920853667217485
-        routing: 0
-        syncMode: 0
-        isPredicted: 0
-        predictionMode: 0
-        guid: 6758bc6e19e34dbb80fbdbd295bdddf9
-        archetypeData:
-          type: 7
-          minRange: 0
-          maxRange: 0
-          sampleRate: 20
-          floatCompression: 0
-          fields:
-          - type: 7
-            bits: 32
-            precision: 0.001
-            floatCompression: 0
-        unityComponent: {fileID: 6745476663283856847}
-        coherenceSync: {fileID: 6453049085343314258}
-        interpolationSettings: {fileID: 0}
     - rid: 4417920853667217482
       type: {class: Vector3Binding, ns: Coherence.Toolkit.Bindings.ValueBindings, asm: Coherence.Toolkit}
       data:
@@ -650,30 +627,6 @@ MonoBehaviour:
           - type: 7
             bits: 32
             precision: 0.001
-            floatCompression: 0
-        unityComponent: {fileID: 6745476663283856847}
-        coherenceSync: {fileID: 6453049085343314258}
-        interpolationSettings: {fileID: 0}
-    - rid: 4417920853667217483
-      type: {class: QuaternionBinding, ns: Coherence.Toolkit.Bindings.ValueBindings, asm: Coherence.Toolkit}
-      data:
-        descriptor:
-          rid: 4417920853667217487
-        routing: 0
-        syncMode: 0
-        isPredicted: 0
-        predictionMode: 0
-        guid: 915f013e53bf45528a466883ed4f2adf
-        archetypeData:
-          type: 8
-          minRange: 0
-          maxRange: 0
-          sampleRate: 20
-          floatCompression: 0
-          fields:
-          - type: 8
-            bits: 32
-            precision: 0.00000008381903171539307
             floatCompression: 0
         unityComponent: {fileID: 6745476663283856847}
         coherenceSync: {fileID: 6453049085343314258}
@@ -702,27 +655,6 @@ MonoBehaviour:
         unityComponent: {fileID: 6745476663283856847}
         coherenceSync: {fileID: 6453049085343314258}
         interpolationSettings: {fileID: 0}
-    - rid: 4417920853667217485
-      type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
-      data:
-        name: position
-        monoAssemblyType: UnityEngine.Vector3, UnityEngine
-        required: 1
-        enforcesLODingWhenFieldsOverriden: 1
-        valueSyncCallbackName: 
-        memberType: 4
-        parameterAssemblyTypes: []
-        ownerType:
-          assemblyQualifiedName: RigidbodySync, Assembly-CSharp, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-        defaultSyncMode: 0
-        CustomData:
-          rid: -2
-        bindingType:
-          assemblyQualifiedName: Coherence.Toolkit.Bindings.ValueBindings.Vector3Binding,
-            Coherence.Toolkit, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        oldName: 
-        oldParameterAssemblyTypes: []
     - rid: 4417920853667217486
       type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
       data:
@@ -741,27 +673,6 @@ MonoBehaviour:
           rid: -2
         bindingType:
           assemblyQualifiedName: Coherence.Toolkit.Bindings.ValueBindings.Vector3Binding,
-            Coherence.Toolkit, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        oldName: 
-        oldParameterAssemblyTypes: []
-    - rid: 4417920853667217487
-      type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
-      data:
-        name: rotation
-        monoAssemblyType: UnityEngine.Quaternion, UnityEngine
-        required: 1
-        enforcesLODingWhenFieldsOverriden: 1
-        valueSyncCallbackName: 
-        memberType: 4
-        parameterAssemblyTypes: []
-        ownerType:
-          assemblyQualifiedName: RigidbodySync, Assembly-CSharp, Version=0.0.0.0,
-            Culture=neutral, PublicKeyToken=null
-        defaultSyncMode: 0
-        CustomData:
-          rid: -2
-        bindingType:
-          assemblyQualifiedName: Coherence.Toolkit.Bindings.ValueBindings.QuaternionBinding,
             Coherence.Toolkit, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
         oldName: 
         oldParameterAssemblyTypes: []
@@ -786,30 +697,6 @@ MonoBehaviour:
             Coherence.Toolkit, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
         oldName: 
         oldParameterAssemblyTypes: []
-    - rid: 4417920853667217489
-      type: {class: Vector3Binding, ns: Coherence.Toolkit.Bindings.ValueBindings, asm: Coherence.Toolkit}
-      data:
-        descriptor:
-          rid: 4417920853667217485
-        routing: 0
-        syncMode: 0
-        isPredicted: 0
-        predictionMode: 0
-        guid: 4a34e5cb481d4acaa3c9f91532746022
-        archetypeData:
-          type: 7
-          minRange: 0
-          maxRange: 0
-          sampleRate: 20
-          floatCompression: 0
-          fields:
-          - type: 7
-            bits: 32
-            precision: 0.001
-            floatCompression: 0
-        unityComponent: {fileID: 7687811572458356758}
-        coherenceSync: {fileID: 6453049085343314258}
-        interpolationSettings: {fileID: 0}
     - rid: 4417920853667217490
       type: {class: Vector3Binding, ns: Coherence.Toolkit.Bindings.ValueBindings, asm: Coherence.Toolkit}
       data:
@@ -830,30 +717,6 @@ MonoBehaviour:
           - type: 7
             bits: 32
             precision: 0.001
-            floatCompression: 0
-        unityComponent: {fileID: 7687811572458356758}
-        coherenceSync: {fileID: 6453049085343314258}
-        interpolationSettings: {fileID: 0}
-    - rid: 4417920853667217491
-      type: {class: QuaternionBinding, ns: Coherence.Toolkit.Bindings.ValueBindings, asm: Coherence.Toolkit}
-      data:
-        descriptor:
-          rid: 4417920853667217487
-        routing: 0
-        syncMode: 0
-        isPredicted: 0
-        predictionMode: 0
-        guid: cb836fa971be49fdaf0b776ad8652a27
-        archetypeData:
-          type: 8
-          minRange: 0
-          maxRange: 0
-          sampleRate: 20
-          floatCompression: 0
-          fields:
-          - type: 8
-            bits: 32
-            precision: 0.00000008381903171539307
             floatCompression: 0
         unityComponent: {fileID: 7687811572458356758}
         coherenceSync: {fileID: 6453049085343314258}
@@ -972,6 +835,144 @@ MonoBehaviour:
             Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
         oldName: 
         oldParameterAssemblyTypes: []
+    - rid: 9055798910898405460
+      type: {class: Vector3Binding, ns: Coherence.Toolkit.Bindings.ValueBindings, asm: Coherence.Toolkit}
+      data:
+        descriptor:
+          rid: 9055798910898405464
+        routing: 0
+        syncMode: 0
+        isPredicted: 0
+        predictionMode: 0
+        guid: 7ae88791f3be4221ac311a648014db33
+        archetypeData:
+          type: 7
+          minRange: 0
+          maxRange: 0
+          sampleRate: 20
+          floatCompression: 0
+          fields:
+          - type: 7
+            bits: 32
+            precision: 0.001
+            floatCompression: 0
+        unityComponent: {fileID: 6745476663283856847}
+        coherenceSync: {fileID: 0}
+        interpolationSettings: {fileID: 0}
+    - rid: 9055798910898405461
+      type: {class: QuaternionBinding, ns: Coherence.Toolkit.Bindings.ValueBindings, asm: Coherence.Toolkit}
+      data:
+        descriptor:
+          rid: 9055798910898405465
+        routing: 0
+        syncMode: 0
+        isPredicted: 0
+        predictionMode: 0
+        guid: 4843fdbf84b94d0cb49209a6a149be51
+        archetypeData:
+          type: 8
+          minRange: 0
+          maxRange: 0
+          sampleRate: 20
+          floatCompression: 0
+          fields:
+          - type: 8
+            bits: 32
+            precision: 0.00000008381903171539307
+            floatCompression: 0
+        unityComponent: {fileID: 6745476663283856847}
+        coherenceSync: {fileID: 0}
+        interpolationSettings: {fileID: 0}
+    - rid: 9055798910898405462
+      type: {class: Vector3Binding, ns: Coherence.Toolkit.Bindings.ValueBindings, asm: Coherence.Toolkit}
+      data:
+        descriptor:
+          rid: 9055798910898405464
+        routing: 0
+        syncMode: 0
+        isPredicted: 0
+        predictionMode: 0
+        guid: 87279d72f598443eb116ba2237c1d6de
+        archetypeData:
+          type: 7
+          minRange: 0
+          maxRange: 0
+          sampleRate: 20
+          floatCompression: 0
+          fields:
+          - type: 7
+            bits: 32
+            precision: 0.001
+            floatCompression: 0
+        unityComponent: {fileID: 7687811572458356758}
+        coherenceSync: {fileID: 0}
+        interpolationSettings: {fileID: 0}
+    - rid: 9055798910898405463
+      type: {class: QuaternionBinding, ns: Coherence.Toolkit.Bindings.ValueBindings, asm: Coherence.Toolkit}
+      data:
+        descriptor:
+          rid: 9055798910898405465
+        routing: 0
+        syncMode: 0
+        isPredicted: 0
+        predictionMode: 0
+        guid: 762d543a877b48cdbbff4ad4ef588df6
+        archetypeData:
+          type: 8
+          minRange: 0
+          maxRange: 0
+          sampleRate: 20
+          floatCompression: 0
+          fields:
+          - type: 8
+            bits: 32
+            precision: 0.00000008381903171539307
+            floatCompression: 0
+        unityComponent: {fileID: 7687811572458356758}
+        coherenceSync: {fileID: 0}
+        interpolationSettings: {fileID: 0}
+    - rid: 9055798910898405464
+      type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
+      data:
+        name: position
+        monoAssemblyType: UnityEngine.Vector3, UnityEngine
+        required: 1
+        enforcesLODingWhenFieldsOverriden: 1
+        valueSyncCallbackName: OnPositionUpdated
+        memberType: 4
+        parameterAssemblyTypes: []
+        ownerType:
+          assemblyQualifiedName: RigidbodySync, Assembly-CSharp, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        defaultSyncMode: 0
+        CustomData:
+          rid: -2
+        bindingType:
+          assemblyQualifiedName: Coherence.Toolkit.Bindings.ValueBindings.Vector3Binding,
+            Coherence.Toolkit, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        oldName: 
+        oldParameterAssemblyTypes: []
+    - rid: 9055798910898405465
+      type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
+      data:
+        name: rotation
+        monoAssemblyType: UnityEngine.Quaternion, UnityEngine
+        required: 1
+        enforcesLODingWhenFieldsOverriden: 1
+        valueSyncCallbackName: OnRotationUpdated
+        memberType: 4
+        parameterAssemblyTypes: []
+        ownerType:
+          assemblyQualifiedName: RigidbodySync, Assembly-CSharp, Version=0.0.0.0,
+            Culture=neutral, PublicKeyToken=null
+        defaultSyncMode: 0
+        CustomData:
+          rid: -2
+        bindingType:
+          assemblyQualifiedName: Coherence.Toolkit.Bindings.ValueBindings.QuaternionBinding,
+            Coherence.Toolkit, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        oldName: 
+        oldParameterAssemblyTypes: []
 --- !u!114 &3238819829505931363
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -985,6 +986,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   frame: 0
+  impactScale: 5000
 --- !u!1 &4695941414634728633
 GameObject:
   m_ObjectHideFlags: 0
@@ -1166,7 +1168,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc6fa8d79aa35fa4c802f8fef695ff1a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  remoteAnimVelocityBlend: 0.5
+  debug: 0
+  baseReconciliationRate: 0.5
 --- !u!1 &6655034258908265605
 GameObject:
   m_ObjectHideFlags: 0

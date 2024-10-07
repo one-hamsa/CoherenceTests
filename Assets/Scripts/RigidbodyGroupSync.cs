@@ -12,7 +12,6 @@ public class RigidbodyGroupSync : MonoBehaviour
 
     public float impactScale = 200f;
     
-    private bool _initialized;
     private CoherenceSync _sync;
     private List<Rigidbody> _rigidbodies = new();
     private List<RigidbodySync> _rigidbodySyncs = new();
@@ -20,6 +19,8 @@ public class RigidbodyGroupSync : MonoBehaviour
     private float _reconciliationRate = 1f;
 
     private List<Impact> _impacts = new(); 
+    
+    private const int InternalReconcileFrames = 10;
 
     private class Impact
     {
@@ -40,7 +41,6 @@ public class RigidbodyGroupSync : MonoBehaviour
         GetComponentsInChildren(_rigidbodies);
         foreach (var rb in _rigidbodies)
             _rigidbodySyncs.Add(rb.GetComponent<RigidbodySync>());
-        _initialized = true;
     }
 
     [Command]
@@ -67,7 +67,7 @@ public class RigidbodyGroupSync : MonoBehaviour
                 UnityEngine.Random.Range(0, _rigidbodies.Count),
                 UnityEngine.Random.insideUnitSphere, 
                 UnityEngine.Random.onUnitSphere * impactScale, 
-                10);
+                240);
         }
     }
 
@@ -88,20 +88,22 @@ public class RigidbodyGroupSync : MonoBehaviour
         _reconciliationRate = 1f;
         for (int i = 0; i < _impacts.Count; i++)
         {
-            var impact = _impacts[i];            
+            var impact = _impacts[i];
             var rb = _rigidbodies[impact.rigidbodyIndex];
             Vector3 worldPos = rb.rotation * impact.localPos + rb.position;
-            
-            if (_sync.HasStateAuthority)
-                rb.AddForceAtPosition(impact.worldImpulse/impact.numFrames, worldPos);
-            
+
+
             impact.curFrame++;
 
             if (impact.curFrame <= impact.numFrames)
+            {
+                // Add the force for all clients (local prediction)
+                rb.AddForceAtPosition(impact.worldImpulse/impact.numFrames, worldPos);
                 _reconciliationRate = Mathf.Min(0f, _reconciliationRate);
+            }
             else
             {
-                float rate = (float)(impact.curFrame - impact.numFrames) / impact.numFrames;
+                float rate = (float)(impact.curFrame - impact.numFrames) / InternalReconcileFrames;
                 _reconciliationRate = Mathf.Min(rate, _reconciliationRate);
                 if (rate >= 1f)
                 {

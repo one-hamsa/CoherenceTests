@@ -26,13 +26,13 @@ namespace Coherence.Generated
         public struct Interop
         {
             [FieldOffset(0)]
-            public Vector3 position;
-            [FieldOffset(12)]
             public Vector3 velocity;
-            [FieldOffset(24)]
-            public Quaternion rotation;
-            [FieldOffset(40)]
+            [FieldOffset(12)]
             public Vector3 angularVelocity;
+            [FieldOffset(24)]
+            public Vector3 position;
+            [FieldOffset(36)]
+            public Quaternion rotation;
         }
 
         public static unsafe _f56c32abdf848d041964eb9b807eddfe_5150605711725245781 FromInterop(IntPtr data, Int32 dataSize, InteropAbsoluteSimulationFrame* simFrames, Int32 simFramesCount)
@@ -51,10 +51,10 @@ namespace Coherence.Generated
 
             var comp = (Interop*)data;
 
-            orig.position = comp->position;
             orig.velocity = comp->velocity;
-            orig.rotation = comp->rotation;
             orig.angularVelocity = comp->angularVelocity;
+            orig.position = comp->position;
+            orig.rotation = comp->rotation;
 
             return orig;
         }
@@ -76,26 +76,26 @@ namespace Coherence.Generated
 
             var comp = (Interop*)data;
 
-            orig.position = comp->position;
             orig.velocity = comp->velocity;
-            orig.rotation = comp->rotation;
             orig.angularVelocity = comp->angularVelocity;
+            orig.position = comp->position;
+            orig.rotation = comp->rotation;
 
             return orig;
         }
 
-        public static uint positionMask => 0b00000000000000000000000000000001;
-        public AbsoluteSimulationFrame positionSimulationFrame;
-        public Vector3 position;
-        public static uint velocityMask => 0b00000000000000000000000000000010;
+        public static uint velocityMask => 0b00000000000000000000000000000001;
         public AbsoluteSimulationFrame velocitySimulationFrame;
         public Vector3 velocity;
-        public static uint rotationMask => 0b00000000000000000000000000000100;
-        public AbsoluteSimulationFrame rotationSimulationFrame;
-        public Quaternion rotation;
-        public static uint angularVelocityMask => 0b00000000000000000000000000001000;
+        public static uint angularVelocityMask => 0b00000000000000000000000000000010;
         public AbsoluteSimulationFrame angularVelocitySimulationFrame;
         public Vector3 angularVelocity;
+        public static uint positionMask => 0b00000000000000000000000000000100;
+        public AbsoluteSimulationFrame positionSimulationFrame;
+        public Vector3 position;
+        public static uint rotationMask => 0b00000000000000000000000000001000;
+        public AbsoluteSimulationFrame rotationSimulationFrame;
+        public Quaternion rotation;
 
         public uint FieldsMask { get; set; }
         public uint StoppedMask { get; set; }
@@ -158,13 +158,6 @@ namespace Coherence.Generated
 
             if ((otherMask & 0x01) != 0)
             {
-                this.positionSimulationFrame = other.positionSimulationFrame;
-                this.position = other.position;
-            }
-
-            otherMask >>= 1;
-            if ((otherMask & 0x01) != 0)
-            {
                 this.velocitySimulationFrame = other.velocitySimulationFrame;
                 this.velocity = other.velocity;
             }
@@ -172,15 +165,22 @@ namespace Coherence.Generated
             otherMask >>= 1;
             if ((otherMask & 0x01) != 0)
             {
-                this.rotationSimulationFrame = other.rotationSimulationFrame;
-                this.rotation = other.rotation;
+                this.angularVelocitySimulationFrame = other.angularVelocitySimulationFrame;
+                this.angularVelocity = other.angularVelocity;
             }
 
             otherMask >>= 1;
             if ((otherMask & 0x01) != 0)
             {
-                this.angularVelocitySimulationFrame = other.angularVelocitySimulationFrame;
-                this.angularVelocity = other.angularVelocity;
+                this.positionSimulationFrame = other.positionSimulationFrame;
+                this.position = other.position;
+            }
+
+            otherMask >>= 1;
+            if ((otherMask & 0x01) != 0)
+            {
+                this.rotationSimulationFrame = other.rotationSimulationFrame;
+                this.rotation = other.rotation;
             }
 
             otherMask >>= 1;
@@ -207,18 +207,6 @@ namespace Coherence.Generated
             {
 
 
-                var fieldValue = (data.position.ToCoreVector3());
-
-
-
-                bitStream.WriteVector3(fieldValue, FloatMeta.NoCompression());
-            }
-
-            mask >>= 1;
-            if (bitStream.WriteMask((mask & 0x01) != 0))
-            {
-
-
                 var fieldValue = (data.velocity.ToCoreVector3());
 
 
@@ -231,11 +219,11 @@ namespace Coherence.Generated
             {
 
 
-                var fieldValue = (data.rotation.ToCoreQuaternion());
+                var fieldValue = (data.angularVelocity.ToCoreVector3());
 
 
 
-                bitStream.WriteQuaternion(fieldValue, 23);
+                bitStream.WriteVector3(fieldValue, FloatMeta.ForTruncated(16));
             }
 
             mask >>= 1;
@@ -243,11 +231,23 @@ namespace Coherence.Generated
             {
 
 
-                var fieldValue = (data.angularVelocity.ToCoreVector3());
+                var fieldValue = (data.position.ToCoreVector3());
 
 
 
-                bitStream.WriteVector3(fieldValue, FloatMeta.ForTruncated(16));
+                bitStream.WriteVector3(fieldValue, FloatMeta.NoCompression());
+            }
+
+            mask >>= 1;
+            if (bitStream.WriteMask((mask & 0x01) != 0))
+            {
+
+
+                var fieldValue = (data.rotation.ToCoreQuaternion());
+
+
+
+                bitStream.WriteQuaternion(fieldValue, 32);
             }
 
             mask >>= 1;
@@ -267,26 +267,26 @@ namespace Coherence.Generated
             if (bitStream.ReadMask())
             {
 
-                val.position = bitStream.ReadVector3(FloatMeta.NoCompression()).ToUnityVector3();
-                val.FieldsMask |= _f56c32abdf848d041964eb9b807eddfe_5150605711725245781.positionMask;
-            }
-            if (bitStream.ReadMask())
-            {
-
                 val.velocity = bitStream.ReadVector3(FloatMeta.ForTruncated(16)).ToUnityVector3();
                 val.FieldsMask |= _f56c32abdf848d041964eb9b807eddfe_5150605711725245781.velocityMask;
             }
             if (bitStream.ReadMask())
             {
 
-                val.rotation = bitStream.ReadQuaternion(23).ToUnityQuaternion();
-                val.FieldsMask |= _f56c32abdf848d041964eb9b807eddfe_5150605711725245781.rotationMask;
+                val.angularVelocity = bitStream.ReadVector3(FloatMeta.ForTruncated(16)).ToUnityVector3();
+                val.FieldsMask |= _f56c32abdf848d041964eb9b807eddfe_5150605711725245781.angularVelocityMask;
             }
             if (bitStream.ReadMask())
             {
 
-                val.angularVelocity = bitStream.ReadVector3(FloatMeta.ForTruncated(16)).ToUnityVector3();
-                val.FieldsMask |= _f56c32abdf848d041964eb9b807eddfe_5150605711725245781.angularVelocityMask;
+                val.position = bitStream.ReadVector3(FloatMeta.NoCompression()).ToUnityVector3();
+                val.FieldsMask |= _f56c32abdf848d041964eb9b807eddfe_5150605711725245781.positionMask;
+            }
+            if (bitStream.ReadMask())
+            {
+
+                val.rotation = bitStream.ReadQuaternion(32).ToUnityQuaternion();
+                val.FieldsMask |= _f56c32abdf848d041964eb9b807eddfe_5150605711725245781.rotationMask;
             }
 
             val.StoppedMask = stoppedMask;
@@ -306,26 +306,26 @@ namespace Coherence.Generated
             if (bitStream.ReadMask())
             {
 
-                val.position = bitStream.ReadVector3(FloatMeta.NoCompression()).ToUnityVector3();
-                val.FieldsMask |= positionMask;
-            }
-            if (bitStream.ReadMask())
-            {
-
                 val.velocity = bitStream.ReadVector3(FloatMeta.ForTruncated(16)).ToUnityVector3();
                 val.FieldsMask |= velocityMask;
             }
             if (bitStream.ReadMask())
             {
 
-                val.rotation = bitStream.ReadQuaternion(23).ToUnityQuaternion();
-                val.FieldsMask |= rotationMask;
+                val.angularVelocity = bitStream.ReadVector3(FloatMeta.ForTruncated(16)).ToUnityVector3();
+                val.FieldsMask |= angularVelocityMask;
             }
             if (bitStream.ReadMask())
             {
 
-                val.angularVelocity = bitStream.ReadVector3(FloatMeta.ForTruncated(16)).ToUnityVector3();
-                val.FieldsMask |= angularVelocityMask;
+                val.position = bitStream.ReadVector3(FloatMeta.NoCompression()).ToUnityVector3();
+                val.FieldsMask |= positionMask;
+            }
+            if (bitStream.ReadMask())
+            {
+
+                val.rotation = bitStream.ReadQuaternion(32).ToUnityQuaternion();
+                val.FieldsMask |= rotationMask;
             }
 
             val.StoppedMask = stoppedMask;
@@ -336,10 +336,10 @@ namespace Coherence.Generated
         public override string ToString()
         {
             return $"_f56c32abdf848d041964eb9b807eddfe_5150605711725245781(" +
-                $" position: { this.position }" +
                 $" velocity: { this.velocity }" +
-                $" rotation: { this.rotation }" +
                 $" angularVelocity: { this.angularVelocity }" +
+                $" position: { this.position }" +
+                $" rotation: { this.rotation }" +
                 $" Mask: { System.Convert.ToString(FieldsMask, 2).PadLeft(4, '0') }, " +
                 $"Stopped: { System.Convert.ToString(StoppedMask, 2).PadLeft(4, '0') })";
         }

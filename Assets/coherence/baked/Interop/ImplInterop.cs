@@ -1973,10 +1973,10 @@ namespace Coherence.Generated
                     var orig = (_daaa1fa3f3526944a84e601f43726765_6745476663283856847)component;
                     var val = new _daaa1fa3f3526944a84e601f43726765_6745476663283856847.Interop();
 
-                    val.position = orig.position;
                     val.velocity = orig.velocity;
-                    val.rotation = orig.rotation;
                     val.angularVelocity = orig.angularVelocity;
+                    val.position = orig.position;
+                    val.rotation = orig.rotation;
 
                     updater.UpdateComponent(entity, componentType, val, 52, component.FieldsMask, component.StoppedMask, frames);
 
@@ -2001,10 +2001,10 @@ namespace Coherence.Generated
                     var orig = (_daaa1fa3f3526944a84e601f43726765_7687811572458356758)component;
                     var val = new _daaa1fa3f3526944a84e601f43726765_7687811572458356758.Interop();
 
-                    val.position = orig.position;
                     val.velocity = orig.velocity;
-                    val.rotation = orig.rotation;
                     val.angularVelocity = orig.angularVelocity;
+                    val.position = orig.position;
+                    val.rotation = orig.rotation;
 
                     updater.UpdateComponent(entity, componentType, val, 52, component.FieldsMask, component.StoppedMask, frames);
 
@@ -2037,10 +2037,10 @@ namespace Coherence.Generated
                     var orig = (_f56c32abdf848d041964eb9b807eddfe_5150605711725245781)component;
                     var val = new _f56c32abdf848d041964eb9b807eddfe_5150605711725245781.Interop();
 
-                    val.position = orig.position;
                     val.velocity = orig.velocity;
-                    val.rotation = orig.rotation;
                     val.angularVelocity = orig.angularVelocity;
+                    val.position = orig.position;
+                    val.rotation = orig.rotation;
 
                     updater.UpdateComponent(entity, componentType, val, 52, component.FieldsMask, component.StoppedMask, frames);
 

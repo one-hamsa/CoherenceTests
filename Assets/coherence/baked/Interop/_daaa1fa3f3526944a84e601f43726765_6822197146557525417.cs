@@ -115,14 +115,14 @@ namespace Coherence.Generated
         public int GetComponentOrder() => order;
         public bool IsSendOrdered() => false;
 
-        private static readonly System.Int32 _leftArmItemID_Min = -2147483648;
-        private static readonly System.Int32 _leftArmItemID_Max = 2147483647;
-        private static readonly System.Int32 _rightArmItemID_Min = -2147483648;
-        private static readonly System.Int32 _rightArmItemID_Max = 2147483647;
-        private static readonly System.Int32 _leftWeaponItemID_Min = -2147483648;
-        private static readonly System.Int32 _leftWeaponItemID_Max = 2147483647;
-        private static readonly System.Int32 _rightWeaponItemID_Min = -2147483648;
-        private static readonly System.Int32 _rightWeaponItemID_Max = 2147483647;
+        private static readonly System.Int32 _leftArmItemID_Min = -1;
+        private static readonly System.Int32 _leftArmItemID_Max = 32;
+        private static readonly System.Int32 _rightArmItemID_Min = -1;
+        private static readonly System.Int32 _rightArmItemID_Max = 32;
+        private static readonly System.Int32 _leftWeaponItemID_Min = -1;
+        private static readonly System.Int32 _leftWeaponItemID_Max = 32;
+        private static readonly System.Int32 _rightWeaponItemID_Min = -1;
+        private static readonly System.Int32 _rightWeaponItemID_Max = 32;
 
         public AbsoluteSimulationFrame? GetMinSimulationFrame()
         {
@@ -198,7 +198,7 @@ namespace Coherence.Generated
 
 
 
-                bitStream.WriteIntegerRange(fieldValue, 32, -2147483648);
+                bitStream.WriteIntegerRange(fieldValue, 6, -1);
             }
 
             mask >>= 1;
@@ -213,7 +213,7 @@ namespace Coherence.Generated
 
 
 
-                bitStream.WriteIntegerRange(fieldValue, 32, -2147483648);
+                bitStream.WriteIntegerRange(fieldValue, 6, -1);
             }
 
             mask >>= 1;
@@ -228,7 +228,7 @@ namespace Coherence.Generated
 
 
 
-                bitStream.WriteIntegerRange(fieldValue, 32, -2147483648);
+                bitStream.WriteIntegerRange(fieldValue, 6, -1);
             }
 
             mask >>= 1;
@@ -243,7 +243,7 @@ namespace Coherence.Generated
 
 
 
-                bitStream.WriteIntegerRange(fieldValue, 32, -2147483648);
+                bitStream.WriteIntegerRange(fieldValue, 6, -1);
             }
 
             mask >>= 1;
@@ -263,25 +263,25 @@ namespace Coherence.Generated
             if (bitStream.ReadMask())
             {
 
-                val.leftArmItemID = bitStream.ReadIntegerRange(32, -2147483648);
+                val.leftArmItemID = bitStream.ReadIntegerRange(6, -1);
                 val.FieldsMask |= _daaa1fa3f3526944a84e601f43726765_6822197146557525417.leftArmItemIDMask;
             }
             if (bitStream.ReadMask())
             {
 
-                val.rightArmItemID = bitStream.ReadIntegerRange(32, -2147483648);
+                val.rightArmItemID = bitStream.ReadIntegerRange(6, -1);
                 val.FieldsMask |= _daaa1fa3f3526944a84e601f43726765_6822197146557525417.rightArmItemIDMask;
             }
             if (bitStream.ReadMask())
             {
 
-                val.leftWeaponItemID = bitStream.ReadIntegerRange(32, -2147483648);
+                val.leftWeaponItemID = bitStream.ReadIntegerRange(6, -1);
                 val.FieldsMask |= _daaa1fa3f3526944a84e601f43726765_6822197146557525417.leftWeaponItemIDMask;
             }
             if (bitStream.ReadMask())
             {
 
-                val.rightWeaponItemID = bitStream.ReadIntegerRange(32, -2147483648);
+                val.rightWeaponItemID = bitStream.ReadIntegerRange(6, -1);
                 val.FieldsMask |= _daaa1fa3f3526944a84e601f43726765_6822197146557525417.rightWeaponItemIDMask;
             }
 
