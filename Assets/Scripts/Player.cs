@@ -45,13 +45,16 @@ public class Player : MonoBehaviour
         {
             other = this;
         }
-        
+
+        // Randomize the player's initial pos/rot
+        if (_coherenceSync.HasStateAuthority)
+        {
+            transform.position = new Vector3(Random.Range(-5f, 5f), 0f, Random.Range(-5f, 5f));
+            transform.localEulerAngles = new Vector3(0f, Random.Range(-30f, 30f), 0f);
+        }
+
         // Create the player according to load-out
         SetupPlayer();
-        
-        // Randomize the player's initial pos/rot
-        transform.position = new Vector3(Random.Range(-5f, 5f), 0f, Random.Range(-5f, 5f));
-        transform.localEulerAngles = new Vector3(0f, Random.Range(-30f, 30f), 0f);
     }
 
     private void SetupPlayer()
@@ -62,10 +65,10 @@ public class Player : MonoBehaviour
         playerWorldJoint.rotationDriveMode = RotationDriveMode.Slerp;
         playerWorldJoint.slerpDrive = new JointDrive() { positionDamper = 50f, positionSpring = 0f, maximumForce = float.MaxValue };
 
-        _parts.Add(Instantiate(PrefabRepository.GetPrefab(leftArmItemID), transform.position + Vector3.left * 3f, Quaternion.identity, transform));
-        _parts.Add(Instantiate(PrefabRepository.GetPrefab(rightArmItemID), transform.position + Vector3.right * 3f, Quaternion.identity, transform));
-        _parts.Add(Instantiate(PrefabRepository.GetPrefab(leftWeaponItemID), _parts[0].transform.position + Vector3.up * 2f, Quaternion.identity, _parts[0].transform));
-        _parts.Add(Instantiate(PrefabRepository.GetPrefab(rightWeaponItemID), _parts[1].transform.position + Vector3.up * 2f, Quaternion.identity, _parts[1].transform));
+        _parts.Add(Instantiate(PrefabRepository.GetPrefab(leftArmItemID), transform.TransformPoint(Vector3.left * 3f), Quaternion.identity, transform));
+        _parts.Add(Instantiate(PrefabRepository.GetPrefab(rightArmItemID), transform.TransformPoint(Vector3.right * 3f), Quaternion.identity, transform));
+        _parts.Add(Instantiate(PrefabRepository.GetPrefab(leftWeaponItemID), _parts[0].transform.TransformPoint(Vector3.up * 2f), Quaternion.identity, _parts[0].transform));
+        _parts.Add(Instantiate(PrefabRepository.GetPrefab(rightWeaponItemID), _parts[1].transform.TransformPoint(Vector3.up * 2f), Quaternion.identity, _parts[1].transform));
         
         foreach (var part in _parts)
         {
@@ -79,11 +82,14 @@ public class Player : MonoBehaviour
             var joint = parentRigidbody.AddComponent<ConfigurableJoint>();
             joint.connectedBody = partRigidbody;
             joint.anchor = parentRigidbody.transform.InverseTransformPoint(partRigidbody.transform.position);
-            joint.xDrive = new JointDrive() { positionDamper = 2f, positionSpring = 2000f, maximumForce = float.MaxValue };
-            joint.yDrive = new JointDrive() { positionDamper = 2f, positionSpring = 2000f, maximumForce = float.MaxValue };
-            joint.zDrive = new JointDrive() { positionDamper = 2f, positionSpring = 2000f, maximumForce = float.MaxValue };
+
+            float maxForce = float.MaxValue; 
+            
+            joint.xDrive = new JointDrive() { positionDamper = 12f, positionSpring = 2000f, maximumForce = maxForce };
+            joint.yDrive = new JointDrive() { positionDamper = 12f, positionSpring = 2000f, maximumForce = maxForce };
+            joint.zDrive = new JointDrive() { positionDamper = 12f, positionSpring = 2000f, maximumForce = maxForce };
             joint.rotationDriveMode = RotationDriveMode.Slerp;
-            joint.slerpDrive = new JointDrive() { positionDamper = 2f, positionSpring = 15000f, maximumForce = float.MaxValue };
+            joint.slerpDrive = new JointDrive() { positionDamper = 12f, positionSpring = 15000f, maximumForce = maxForce };
 
             // When we have authority we can (and should) enable sync right now
             // For remote players, we should wait until we receive the instantiate command from the server and only then enable it (inside PlayerOrPartInstantiator)
@@ -94,19 +100,19 @@ public class Player : MonoBehaviour
 
     private void FixedUpdate()
     {
-        float forceAmount = 50f;
-        float torqueAmount = 500f;
+        float forceAmount = 250f;
+        float torqueAmount = 12500f;
         // Simple user input move code
         if (_coherenceSync.HasStateAuthority)
         {
             if (Input.GetKey(KeyCode.A))
-                _rigidbody.AddRelativeForce(-transform.right * forceAmount, ForceMode.Acceleration);
+                _rigidbody.AddForce(-_rigidbody.transform.right * forceAmount, ForceMode.Acceleration);
             if (Input.GetKey(KeyCode.D))
-                _rigidbody.AddRelativeForce(transform.right * forceAmount, ForceMode.Acceleration);
+                _rigidbody.AddForce(_rigidbody.transform.right * forceAmount, ForceMode.Acceleration);
             if (Input.GetKey(KeyCode.W))
-                _rigidbody.AddRelativeForce(transform.forward * forceAmount, ForceMode.Acceleration);
+                _rigidbody.AddForce(_rigidbody.transform.forward * forceAmount, ForceMode.Acceleration);
             if (Input.GetKey(KeyCode.S))
-                _rigidbody.AddRelativeForce(-transform.forward * forceAmount, ForceMode.Acceleration);
+                _rigidbody.AddForce(-_rigidbody.transform.forward * forceAmount, ForceMode.Acceleration);
             if (Input.GetKey(KeyCode.Q))
                 _rigidbody.AddTorque(-Vector3.up * torqueAmount, ForceMode.Acceleration);
             if (Input.GetKey(KeyCode.E))
@@ -124,7 +130,7 @@ public class Player : MonoBehaviour
     {
         while (true)
         {
-            yield return new WaitForSeconds(1f);
+            yield return new WaitForSeconds(5f);
             Debug.Log($"Ping = {_coherenceSync.CoherenceBridge.Client.Ping}");
         }
     }

@@ -38,29 +38,14 @@ public class RigidbodySync : MonoBehaviour
     private ValueBinding<Vector3> posBinding;
     private ValueBinding<Quaternion> rotBinding;
 
-    private void OnPositionUpdated(Vector3 oldPos, Vector3 newPos)
-    {
-        if (posBinding != null && posBinding.Interpolator.Buffer.Last != null)
-        {
-            double sampleTime = posBinding.Interpolator.Buffer.Last.Value.Time;
-            var clientPositionAtTimeOfSample = _positionHistory.Evaluate(sampleTime);
-            if (debug)
-                Debug.Log($"{Time.fixedTime}: Got RBPosUpdate (in Fixed = {Time.inFixedTimeStep})");
-            float invFixedDT = 1f / Time.fixedDeltaTime;
-            Vector3 deltaPos = position - clientPositionAtTimeOfSample;
-            Vector3 animatedVelocity = deltaPos * invFixedDT - _rigidbody.velocity;
-		
-            // Quaternion deltaRotation = RigidbodyPredictor.ShortWorldSpaceDeltaTo(_rigidbody.rotation, futureRot);
-            // RigidbodyPredictor.SafeToAngleAxis(deltaRotation, out float angleDegrees, out Vector3 axis);
-            // Vector3 animatedAngularVelocity = axis * (Mathf.Deg2Rad * angleDegrees * invFixedDT) - _rigidbody.angularVelocity;
-            //
-            // float rate = baseReconciliationRate * _reconciliationRate;
-            // _rigidbody.AddForce(animatedVelocity * rate, ForceMode.VelocityChange);
-            // _rigidbody.AddTorque(animatedAngularVelocity * rate, ForceMode.VelocityChange);
-            
-        }
-    }
-    private void OnRotationUpdated(Quaternion oldRot, Quaternion newRot) { }
+    private bool _positionUpdated;
+    private bool _rotationUpdated;
+    
+    private double _positionUpdatedTime;
+    private Vector3 _positionUpdateError;
+
+    private void OnPositionUpdated(Vector3 oldPos, Vector3 newPos) => _positionUpdated = true;
+    private void OnRotationUpdated(Quaternion oldRot, Quaternion newRot) => _rotationUpdated = true;
 
     private void Awake()
     {
@@ -94,9 +79,10 @@ public class RigidbodySync : MonoBehaviour
         if (debug)
             Debug.Log($"{Time.fixedTime}: FixedUpdate");
 
-        double clientTime = _bridge.Client.NetworkTime.TimeAsDouble;
-        _positionHistory.AddSample(clientTime, _rigidbody.position);
-        _rotationHistory.AddSample(clientTime, _rigidbody.rotation);
+        // Add current state to history buffers
+        double currentNetworkTime = _bridge.Client.NetworkTime.TimeAsDouble;
+        _positionHistory.AddSample(currentNetworkTime, _rigidbody.position);
+        _rotationHistory.AddSample(currentNetworkTime, _rigidbody.rotation);
         
         if (_coherenceSync.HasStateAuthority)
         {
@@ -107,31 +93,68 @@ public class RigidbodySync : MonoBehaviour
         }
         else
         {
+            _rigidbody.detectCollisions = false;
+            
             Vector3 futurePos = position;
             Quaternion futureRot = rotation;
-
-            // TODO: Can we do something with extrapolation here, how far do we need to extrapolate?
-            //float dt = (_bridge.NetworkTime.ClientSimulationFrame - _bridge.NetworkTime.ServerSimulationFrame) * Time.fixedDeltaTime;
-            //if (dt > 0f)
-                //RigidbodyPredictor.PredictFutureState(_rigidbody, position, rotation, velocity, angularVelocity, dt, out futurePos, out futureRot);
 
             _lastPredictedPos = futurePos;
             _lastPredictedRot = futureRot;
 
-            Vector3 myPositionAtTimeOfSample = _positionHistory.Evaluate(_bridge.Client.NetworkTime.TimeAsDouble - _bridge.Client.Ping.LatestLatencyMs * 0.001f);
-            Quaternion myRotationAtTimeOfSample = _rotationHistory.Evaluate(_bridge.Client.NetworkTime.TimeAsDouble - _bridge.Client.Ping.LatestLatencyMs * 0.001f);
-
-            float invFixedDT = 1f / Time.fixedDeltaTime;
-            Vector3 deltaPos = futurePos - myPositionAtTimeOfSample;
-            Vector3 animatedVelocity = deltaPos * invFixedDT - _rigidbody.velocity;
-		
-            Quaternion deltaRotation = RigidbodyPredictor.ShortWorldSpaceDeltaTo(myRotationAtTimeOfSample, futureRot);
-            RigidbodyPredictor.SafeToAngleAxis(deltaRotation, out float angleDegrees, out Vector3 axis);
-            Vector3 animatedAngularVelocity = axis * (Mathf.Deg2Rad * angleDegrees * invFixedDT) - _rigidbody.angularVelocity;
-
+            float propertyRefreshInterval = 1f/20f; // 20Hz updates
             float rate = baseReconciliationRate;// * _reconciliationRate;
-            _rigidbody.AddForce(animatedVelocity * rate, ForceMode.VelocityChange);
-            _rigidbody.AddTorque(animatedAngularVelocity * rate, ForceMode.VelocityChange);
+            float fixedDt = Time.fixedDeltaTime;
+            float invFixedDT = 1f / fixedDt;
+            float latencyDT = _bridge.Client.Ping.LatestLatencyMs * 0.001f * 2f; // approximation - TODO: figure out if we can make it more accurate (by getting this data from Coherence)
+            Vector3 velocityChange = Vector3.zero;
+            if (!Input.GetKey(KeyCode.Z))
+            {
+                if (_positionUpdated)
+                {
+                    // We have a new (past) position sample - correct the error we had in the past
+                    _positionUpdatedTime = currentNetworkTime;
+                    Vector3 myPositionAtTimeOfSample = _positionHistory.Evaluate(_positionUpdatedTime - latencyDT);
+                    _positionUpdateError = futurePos - myPositionAtTimeOfSample;
+                    //_positionUpdated = false;
+
+                    // Vector3 deltaPos = futurePos - myPositionAtTimeOfSample;
+                    // animatedVelocity = deltaPos * invFixedDT - _rigidbody.velocity;
+                    // _positionUpdated = false;
+                    //
+                    // _positionHistory.ApplyOffset(deltaPos * rate);
+                }
+                // use extrapolated positions to fix towards 
+                double extrapolationDT = (currentNetworkTime - (_positionUpdatedTime - latencyDT)) * 0.5f;
+                if (extrapolationDT > 0) 
+                    RigidbodyPredictor.PredictFutureState(_rigidbody, position, rotation, velocity, angularVelocity, (float)extrapolationDT, out futurePos, out futureRot);
+                Vector3 deltaPos = futurePos - _rigidbody.position;
+                //velocityChange = (deltaPos * invFixedDT - _rigidbody.velocity) * rate;
+                
+                // Last error correction (smeared across the property refresh interval - which is currently 20Hz)
+                double timeSinceLastUpdate = currentNetworkTime - _positionUpdatedTime;
+                if (timeSinceLastUpdate <= propertyRefreshInterval)
+                {
+                    float curDT = Mathf.Min(fixedDt, (float)(propertyRefreshInterval - timeSinceLastUpdate));
+                    float currentErrorFix = Mathf.Clamp01(curDT / propertyRefreshInterval);
+                    velocityChange += (_positionUpdateError * (currentErrorFix * invFixedDT) - _rigidbody.velocity) * rate;
+                    _positionHistory.ApplyOffset(_positionUpdateError * currentErrorFix);
+                }
+            }
+            else
+            {
+                Vector3 deltaPos = futurePos - _rigidbody.position;
+                velocityChange = deltaPos * invFixedDT - _rigidbody.velocity;
+            }
+            // Vector3 myPositionAtTimeOfSample = _positionHistory.Evaluate(_bridge.Client.NetworkTime.TimeAsDouble - _bridge.Client.Ping.LatestLatencyMs * 0.001f);
+            // Quaternion myRotationAtTimeOfSample = _rotationHistory.Evaluate(_bridge.Client.NetworkTime.TimeAsDouble - _bridge.Client.Ping.LatestLatencyMs * 0.001f);
+
+		
+            Quaternion deltaRotation = RigidbodyPredictor.ShortWorldSpaceDeltaTo(_rigidbody.rotation, futureRot);
+            RigidbodyPredictor.SafeToAngleAxis(deltaRotation, out float angleDegrees, out Vector3 axis);
+            Vector3 angularVelocityChange = axis * (Mathf.Deg2Rad * angleDegrees * invFixedDT * rate) - _rigidbody.angularVelocity;
+
+            _rigidbody.AddForce(velocityChange, ForceMode.VelocityChange);
+            _rigidbody.AddTorque(angularVelocityChange, ForceMode.VelocityChange);
         }
     }
 
@@ -139,10 +162,11 @@ public class RigidbodySync : MonoBehaviour
     private Quaternion _lastPredictedRot;
     private void OnDrawGizmos()
     {
-        // Gizmos.color = Color.green;
-        // Gizmos.DrawWireSphere(_lastPredictedPos, 0.025f);
-        // Gizmos.color = Color.blue;
-        // Gizmos.DrawLine(_lastPredictedPos, _lastPredictedPos + _lastPredictedRot * Vector3.forward);
+        if (!Application.isPlaying)
+            return;
+        if (_coherenceSync == null)
+            return;
+        
         Gizmos.color = Color.green;
         if (!_coherenceSync.HasStateAuthority && _collider != null)
         {

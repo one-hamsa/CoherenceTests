@@ -66,8 +66,19 @@ public class RigidbodyGroupSync : MonoBehaviour
                 MessageTarget.All,
                 UnityEngine.Random.Range(0, _rigidbodies.Count),
                 UnityEngine.Random.insideUnitSphere, 
-                UnityEngine.Random.onUnitSphere * impactScale, 
+                (UnityEngine.Random.onUnitSphere + Vector3.up * 2f).normalized * impactScale, 
                 240);
+        }
+        
+        if (_sync.HasStateAuthority && Input.GetKeyDown(KeyCode.J) && Player.other != null)
+        {
+            var otherGroupSync = Player.other.GetComponent<RigidbodyGroupSync>();
+            otherGroupSync._sync.SendCommand<RigidbodyGroupSync>(nameof(SendImpulse),
+                MessageTarget.All,
+                0,
+                new Vector3(), 
+                (UnityEngine.Random.onUnitSphere + Vector3.up * 2f).normalized * impactScale, 
+                10);
         }
     }
 

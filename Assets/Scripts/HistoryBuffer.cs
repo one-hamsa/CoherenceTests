@@ -8,7 +8,7 @@ public abstract class HistoryBuffer<T>
 
     protected HistoryBuffer()
     {
-        _numSamples = 10;
+        _numSamples = 32;
         _history = new(_numSamples);
     }
     
@@ -45,18 +45,32 @@ public abstract class HistoryBuffer<T>
         return _history[^1].value;
     }
 
+    public void ApplyOffset(T offset)
+    {
+        for (int i = 0; i < _history.Count; i++)
+        {
+            var cur = _history[i];
+            cur.value = ApplyOffset(cur.value, offset);
+            _history[i] = cur;
+        }
+    }
+
     protected abstract T Lerp(T a, T b, float param);
+    protected abstract T ApplyOffset(T val, T offset);
 }
 
 public class FloatHistoryBuffer : HistoryBuffer<float>
 {
     protected override float Lerp(float a, float b, float param) => Mathf.Lerp(a, b, param);
+    protected override float ApplyOffset(float val, float offset) => val + offset;
 }
 public class Vector3HistoryBuffer : HistoryBuffer<Vector3>
 {
     protected override Vector3 Lerp(Vector3 a, Vector3 b, float param) => Vector3.Lerp(a, b, param);
+    protected override Vector3 ApplyOffset(Vector3 val, Vector3 offset) => val + offset;
 }
 public class QuaternionHistoryBuffer : HistoryBuffer<Quaternion>
 {
     protected override Quaternion Lerp(Quaternion a, Quaternion b, float param) => Quaternion.Lerp(a, b, param);
+    protected override Quaternion ApplyOffset(Quaternion val, Quaternion offset) => val * offset;
 }

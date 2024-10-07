@@ -1,49 +1,52 @@
-component _3bec13d4bb00a5e479d1a130c95272ee_8119623259683859537 [id "153"]
-  partIndex Int [bits "32", range-min "-2147483648", range-max "2147483647"]
-
-component _3bec13d4bb00a5e479d1a130c95272ee_8545511309911926812 [id "154"]
+component _3bec13d4bb00a5e479d1a130c95272ee_6439543321279280110 [id "153"]
   ids Bytes [bits "4072"]
+
+component _3bec13d4bb00a5e479d1a130c95272ee_8119623259683859537 [id "154"]
+  partIndex Int [bits "32", range-min "-2147483648", range-max "2147483647"]
 
 component _7aa047939d3aa49498cc38bb3ac3eec7_11687024536901363 [id "155"]
   partIndex Int [bits "32", range-min "-2147483648", range-max "2147483647"]
 
-component _7aa047939d3aa49498cc38bb3ac3eec7_437120047812858558 [id "156"]
+component _7aa047939d3aa49498cc38bb3ac3eec7_3015984124178680140 [id "156"]
   ids Bytes [bits "4072"]
 
 component _86637d6221845a54c80f4dee3a49e53e_11040090778132851781 [id "157"]
   partIndex Int [bits "32", range-min "-2147483648", range-max "2147483647"]
 
-component _86637d6221845a54c80f4dee3a49e53e_2238072439915030536 [id "158"]
+component _86637d6221845a54c80f4dee3a49e53e_3514251146074993658 [id "158"]
   ids Bytes [bits "4072"]
 
-component _daaa1fa3f3526944a84e601f43726765_3238819829505931363 [id "159"]
+component _daaa1fa3f3526944a84e601f43726765_16199295493625938824 [id "159"]
+  ids Bytes [bits "4072"]
+
+component _daaa1fa3f3526944a84e601f43726765_3238819829505931363 [id "160"]
   frame Int [bits "32", range-min "-2147483648", range-max "2147483647"]
 
-component _daaa1fa3f3526944a84e601f43726765_6745476663283856847 [id "160"]
+component _daaa1fa3f3526944a84e601f43726765_6745476663283856847 [id "161"]
   velocity Vector3 [compression "None"]
   angularVelocity Vector3 [compression "None"]
   position Vector3 [compression "None"]
   rotation Quaternion [bits "32"]
 
-component _daaa1fa3f3526944a84e601f43726765_6822197146557525417 [id "161"]
+component _daaa1fa3f3526944a84e601f43726765_6822197146557525417 [id "162"]
   leftArmItemID Int [bits "6", range-min "-1", range-max "32"]
   rightArmItemID Int [bits "6", range-min "-1", range-max "32"]
   leftWeaponItemID Int [bits "6", range-min "-1", range-max "32"]
   rightWeaponItemID Int [bits "6", range-min "-1", range-max "32"]
 
-component _daaa1fa3f3526944a84e601f43726765_7687811572458356758 [id "162"]
+component _daaa1fa3f3526944a84e601f43726765_7687811572458356758 [id "163"]
   velocity Vector3 [compression "None"]
   angularVelocity Vector3 [compression "None"]
   position Vector3 [compression "None"]
   rotation Quaternion [bits "32"]
 
-component _ddf545e2defc9334d82e1bfb3a54514a_8181434535533552611 [id "163"]
-  partIndex Int [bits "32", range-min "-2147483648", range-max "2147483647"]
-
-component _ddf545e2defc9334d82e1bfb3a54514a_8625299608525973422 [id "164"]
+component _ddf545e2defc9334d82e1bfb3a54514a_6375165786498317404 [id "164"]
   ids Bytes [bits "4072"]
 
-component _f56c32abdf848d041964eb9b807eddfe_5150605711725245781 [id "165"]
+component _ddf545e2defc9334d82e1bfb3a54514a_8181434535533552611 [id "165"]
+  partIndex Int [bits "32", range-min "-2147483648", range-max "2147483647"]
+
+component _f56c32abdf848d041964eb9b807eddfe_5150605711725245781 [id "166"]
   velocity Vector3 [bits "16", compression "Truncated"]
   angularVelocity Vector3 [bits "16", compression "Truncated"]
   position Vector3 [compression "None"]
@@ -57,13 +60,13 @@ command _daaa1fa3f3526944a84e601f43726765_2351f7fda0244521b241827c0e01304f [id "
 
 archetype _f56c32abdf848d041964eb9b807eddfe [id "0"]
   lod 0
-    WorldPosition [id "166", base-id "0"]
+    WorldPosition [id "167", base-id "0"]
       archetype_field value [sim-frames "true", compression "None"]
-    WorldOrientation [id "167", base-id "1"]
+    WorldOrientation [id "168", base-id "1"]
       archetype_field value [bits "32", sim-frames "true"]
-    GenericScale [id "168", base-id "17"]
+    GenericScale [id "169", base-id "17"]
       archetype_field value [sim-frames "true", compression "None"]
-    _f56c32abdf848d041964eb9b807eddfe_5150605711725245781 [id "169", base-id "165"]
+    _f56c32abdf848d041964eb9b807eddfe_5150605711725245781 [id "170", base-id "166"]
       archetype_field velocity [bits "16", compression "Truncated"]
       archetype_field angularVelocity [bits "16", compression "Truncated"]
       archetype_field position [compression "None"]

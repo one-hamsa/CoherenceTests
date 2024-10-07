@@ -28,7 +28,7 @@ namespace Coherence.Generated
                             { 0, Definition.InternalArchetype_f56c32abdf848d041964eb9b807eddfe_WorldPosition_LOD0 },
                             { 1, Definition.InternalArchetype_f56c32abdf848d041964eb9b807eddfe_WorldOrientation_LOD0 },
                             { 17, Definition.InternalArchetype_f56c32abdf848d041964eb9b807eddfe_GenericScale_LOD0 },
-                            { 165, Definition.InternalArchetype_f56c32abdf848d041964eb9b807eddfe__f56c32abdf848d041964eb9b807eddfe_5150605711725245781_LOD0 },
+                            { 166, Definition.InternalArchetype_f56c32abdf848d041964eb9b807eddfe__f56c32abdf848d041964eb9b807eddfe_5150605711725245781_LOD0 },
                         },
                         ComponentsExcluded = new uint[] 
                         {

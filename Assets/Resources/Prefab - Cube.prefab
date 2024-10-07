@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3582981628696257013}
   - component: {fileID: 8118622161289229957}
   - component: {fileID: -7406653295576699835}
-  - component: {fileID: 2238072439915030536}
+  - component: {fileID: 3514251146074993658}
   m_Layer: 0
   m_Name: Prefab - Cube
   m_TagString: Untagged
@@ -83,8 +83,6 @@ MonoBehaviour:
       lodStepsActive: 1
     - component: {fileID: -7406653295576699835}
       lodStepsActive: 1
-    - component: {fileID: 2238072439915030536}
-      lodStepsActive: 1
     - component: {fileID: 6081073971515846682}
       lodStepsActive: 1
     - component: {fileID: 1896048691599841635}
@@ -125,6 +123,8 @@ MonoBehaviour:
       lodStepsActive: 1
     - component: {fileID: 221159960744187915}
       lodStepsActive: 1
+    - component: {fileID: 3514251146074993658}
+      lodStepsActive: 1
     GeneratesArchetypeDefinition: 0
   interpolationLocation: 5
   RigidbodyUpdateMode: 0
@@ -154,9 +154,9 @@ MonoBehaviour:
   bindings:
   - rid: 4417920554039508993
   - rid: 5691255278982660173
-  - rid: 4417920853876932623
   - rid: 4417920853667217433
   - rid: 4417920853667217435
+  - rid: 4417920853667217797
   onNetworkedInstantiation:
     m_PersistentCalls:
       m_Calls: []
@@ -314,16 +314,16 @@ MonoBehaviour:
             Coherence.Toolkit, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
         oldName: 
         oldParameterAssemblyTypes: []
-    - rid: 4417920853876932623
+    - rid: 4417920853667217797
       type: {class: ByteArrayBinding, ns: Coherence.Toolkit.Bindings.ValueBindings, asm: Coherence.Toolkit}
       data:
         descriptor:
-          rid: 4417920853876932624
+          rid: 4417920853667217798
         routing: 0
         syncMode: 0
         isPredicted: 0
         predictionMode: 0
-        guid: dcafd195c0f64117b2725de78b16688a
+        guid: aa34cc8cc48e4afe9f65732a8958e0e7
         archetypeData:
           type: 10
           minRange: 0
@@ -335,10 +335,10 @@ MonoBehaviour:
             bits: 4072
             precision: 0
             floatCompression: 0
-        unityComponent: {fileID: 2238072439915030536}
+        unityComponent: {fileID: 3514251146074993658}
         coherenceSync: {fileID: 3582981628696257013}
         interpolationSettings: {fileID: 0}
-    - rid: 4417920853876932624
+    - rid: 4417920853667217798
       type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
       data:
         name: ids
@@ -430,7 +430,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e335ca408e20f624b9b22396d8e8821e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &2238072439915030536
+--- !u!114 &3514251146074993658
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}

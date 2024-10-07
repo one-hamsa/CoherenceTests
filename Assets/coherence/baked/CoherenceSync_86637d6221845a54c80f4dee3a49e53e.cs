@@ -234,7 +234,7 @@ namespace Coherence.Generated
     }
     
     [UnityEngine.Scripting.Preserve]
-    public class Binding_86637d6221845a54c80f4dee3a49e53e_dcafd195c0f64117b2725de78b16688a : ByteArrayBinding
+    public class Binding_86637d6221845a54c80f4dee3a49e53e_aa34cc8cc48e4afe9f65732a8958e0e7 : ByteArrayBinding
     {   
         private global::Coherence.Toolkit.PrefabSyncGroup CastedUnityComponent;
 
@@ -243,8 +243,8 @@ namespace Coherence.Generated
     	    CastedUnityComponent = (global::Coherence.Toolkit.PrefabSyncGroup)UnityComponent;
         }
 
-        public override global::System.Type CoherenceComponentType => typeof(_86637d6221845a54c80f4dee3a49e53e_2238072439915030536);
-        public override string CoherenceComponentName => "_86637d6221845a54c80f4dee3a49e53e_2238072439915030536";
+        public override global::System.Type CoherenceComponentType => typeof(_86637d6221845a54c80f4dee3a49e53e_3514251146074993658);
+        public override string CoherenceComponentName => "_86637d6221845a54c80f4dee3a49e53e_3514251146074993658";
         public override uint FieldMask => 0b00000000000000000000000000000001;
 
         public override System.Byte[] Value
@@ -255,16 +255,16 @@ namespace Coherence.Generated
 
         protected override (System.Byte[] value, AbsoluteSimulationFrame simFrame) ReadComponentData(ICoherenceComponentData coherenceComponent, Vector3 floatingOriginDelta)
         {
-            var value = ((_86637d6221845a54c80f4dee3a49e53e_2238072439915030536)coherenceComponent).ids;
+            var value = ((_86637d6221845a54c80f4dee3a49e53e_3514251146074993658)coherenceComponent).ids;
 
-            var simFrame = ((_86637d6221845a54c80f4dee3a49e53e_2238072439915030536)coherenceComponent).idsSimulationFrame;
+            var simFrame = ((_86637d6221845a54c80f4dee3a49e53e_3514251146074993658)coherenceComponent).idsSimulationFrame;
             
             return (value, simFrame);
         }
 
         public override ICoherenceComponentData WriteComponentData(ICoherenceComponentData coherenceComponent, AbsoluteSimulationFrame simFrame)
         {
-            var update = (_86637d6221845a54c80f4dee3a49e53e_2238072439915030536)coherenceComponent;
+            var update = (_86637d6221845a54c80f4dee3a49e53e_3514251146074993658)coherenceComponent;
             if (Interpolator.IsInterpolationNone)
             {
                 update.ids = Value;
@@ -281,7 +281,7 @@ namespace Coherence.Generated
 
         public override ICoherenceComponentData CreateComponentData()
         {
-            return new _86637d6221845a54c80f4dee3a49e53e_2238072439915030536();
+            return new _86637d6221845a54c80f4dee3a49e53e_3514251146074993658();
         }    
     }
 
@@ -302,7 +302,7 @@ namespace Coherence.Generated
             ["fa9df38f990b4ca1abb99740d40d9719"] = new Binding_86637d6221845a54c80f4dee3a49e53e_fa9df38f990b4ca1abb99740d40d9719(),
             ["d17e573b69e04290956bf6ce6a16010b"] = new Binding_86637d6221845a54c80f4dee3a49e53e_d17e573b69e04290956bf6ce6a16010b(),
             ["e9dfd6bfcef24680809073a7909881c3"] = new Binding_86637d6221845a54c80f4dee3a49e53e_e9dfd6bfcef24680809073a7909881c3(),
-            ["dcafd195c0f64117b2725de78b16688a"] = new Binding_86637d6221845a54c80f4dee3a49e53e_dcafd195c0f64117b2725de78b16688a(),
+            ["aa34cc8cc48e4afe9f65732a8958e0e7"] = new Binding_86637d6221845a54c80f4dee3a49e53e_aa34cc8cc48e4afe9f65732a8958e0e7(),
         };
         
         private Dictionary<string, Action<CommandBinding, CommandsHandler>> bakedCommandBindings = new Dictionary<string, Action<CommandBinding, CommandsHandler>>();
