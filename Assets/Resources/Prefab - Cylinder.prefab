@@ -65,6 +65,10 @@ PrefabInstance:
       propertyPath: componentActions.Array.size
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3582981628696257013, guid: 86637d6221845a54c80f4dee3a49e53e, type: 3}
+      propertyPath: managedReferences[4417920554039508993].archetypeData.sampleRate
+      value: 20
+      objectReference: {fileID: 0}
     - target: {fileID: 4482071119153180088, guid: 86637d6221845a54c80f4dee3a49e53e, type: 3}
       propertyPath: m_IsActive
       value: 0

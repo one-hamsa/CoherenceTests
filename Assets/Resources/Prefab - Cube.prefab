@@ -193,7 +193,7 @@ MonoBehaviour:
           type: 7
           minRange: 0
           maxRange: 0
-          sampleRate: 60
+          sampleRate: 20
           floatCompression: 0
           fields:
           - type: 7

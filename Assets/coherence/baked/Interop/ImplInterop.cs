@@ -185,16 +185,10 @@ namespace Coherence.Generated
                 case 158: return _86637d6221845a54c80f4dee3a49e53e_3514251146074993658.FromInterop(data, dataSize, simFrames, simFramesCount);
                 case 159: return _daaa1fa3f3526944a84e601f43726765_16199295493625938824.FromInterop(data, dataSize, simFrames, simFramesCount);
                 case 160: return _daaa1fa3f3526944a84e601f43726765_3238819829505931363.FromInterop(data, dataSize, simFrames, simFramesCount);
-                case 161: return _daaa1fa3f3526944a84e601f43726765_6745476663283856847.FromInterop(data, dataSize, simFrames, simFramesCount);
-                case 162: return _daaa1fa3f3526944a84e601f43726765_6822197146557525417.FromInterop(data, dataSize, simFrames, simFramesCount);
-                case 163: return _daaa1fa3f3526944a84e601f43726765_7687811572458356758.FromInterop(data, dataSize, simFrames, simFramesCount);
-                case 164: return _ddf545e2defc9334d82e1bfb3a54514a_6375165786498317404.FromInterop(data, dataSize, simFrames, simFramesCount);
-                case 165: return _ddf545e2defc9334d82e1bfb3a54514a_8181434535533552611.FromInterop(data, dataSize, simFrames, simFramesCount);
-                case 166: return _f56c32abdf848d041964eb9b807eddfe_5150605711725245781.FromInterop(data, dataSize, simFrames, simFramesCount);
-                case 167: return WorldPosition.FromInteropArchetype_f56c32abdf848d041964eb9b807eddfe_WorldPosition_LOD0(data, dataSize, simFrames, simFramesCount);
-                case 168: return WorldOrientation.FromInteropArchetype_f56c32abdf848d041964eb9b807eddfe_WorldOrientation_LOD0(data, dataSize, simFrames, simFramesCount);
-                case 169: return GenericScale.FromInteropArchetype_f56c32abdf848d041964eb9b807eddfe_GenericScale_LOD0(data, dataSize, simFrames, simFramesCount);
-                case 170: return _f56c32abdf848d041964eb9b807eddfe_5150605711725245781.FromInteropArchetype_f56c32abdf848d041964eb9b807eddfe__f56c32abdf848d041964eb9b807eddfe_5150605711725245781_LOD0(data, dataSize, simFrames, simFramesCount);
+                case 161: return _daaa1fa3f3526944a84e601f43726765_6822197146557525417.FromInterop(data, dataSize, simFrames, simFramesCount);
+                case 162: return _ddf545e2defc9334d82e1bfb3a54514a_6375165786498317404.FromInterop(data, dataSize, simFrames, simFramesCount);
+                case 163: return _ddf545e2defc9334d82e1bfb3a54514a_8181434535533552611.FromInterop(data, dataSize, simFrames, simFramesCount);
+                case 164: return _f56c32abdf848d041964eb9b807eddfe_5150605711725245781.FromInterop(data, dataSize, simFrames, simFramesCount);
             }
 
             throw new ArgumentException($"Unkown component type {type}", nameof(type));
@@ -1982,20 +1976,6 @@ namespace Coherence.Generated
                 }
                 case 161:
                 {
-                    var orig = (_daaa1fa3f3526944a84e601f43726765_6745476663283856847)component;
-                    var val = new _daaa1fa3f3526944a84e601f43726765_6745476663283856847.Interop();
-
-                    val.velocity = orig.velocity;
-                    val.angularVelocity = orig.angularVelocity;
-                    val.position = orig.position;
-                    val.rotation = orig.rotation;
-
-                    updater.UpdateComponent(entity, componentType, val, 52, component.FieldsMask, component.StoppedMask, frames);
-
-                    return;
-                }
-                case 162:
-                {
                     var orig = (_daaa1fa3f3526944a84e601f43726765_6822197146557525417)component;
                     var val = new _daaa1fa3f3526944a84e601f43726765_6822197146557525417.Interop();
 
@@ -2008,21 +1988,7 @@ namespace Coherence.Generated
 
                     return;
                 }
-                case 163:
-                {
-                    var orig = (_daaa1fa3f3526944a84e601f43726765_7687811572458356758)component;
-                    var val = new _daaa1fa3f3526944a84e601f43726765_7687811572458356758.Interop();
-
-                    val.velocity = orig.velocity;
-                    val.angularVelocity = orig.angularVelocity;
-                    val.position = orig.position;
-                    val.rotation = orig.rotation;
-
-                    updater.UpdateComponent(entity, componentType, val, 52, component.FieldsMask, component.StoppedMask, frames);
-
-                    return;
-                }
-                case 164:
+                case 162:
                 {
                     var orig = (_ddf545e2defc9334d82e1bfb3a54514a_6375165786498317404)component;
                     var val = new _ddf545e2defc9334d82e1bfb3a54514a_6375165786498317404.Interop();
@@ -2033,7 +1999,7 @@ namespace Coherence.Generated
 
 }                    return;
                 }
-                case 165:
+                case 163:
                 {
                     var orig = (_ddf545e2defc9334d82e1bfb3a54514a_8181434535533552611)component;
                     var val = new _ddf545e2defc9334d82e1bfb3a54514a_8181434535533552611.Interop();
@@ -2044,7 +2010,7 @@ namespace Coherence.Generated
 
                     return;
                 }
-                case 166:
+                case 164:
                 {
                     var orig = (_f56c32abdf848d041964eb9b807eddfe_5150605711725245781)component;
                     var val = new _f56c32abdf848d041964eb9b807eddfe_5150605711725245781.Interop();
@@ -2053,8 +2019,9 @@ namespace Coherence.Generated
                     val.angularVelocity = orig.angularVelocity;
                     val.position = orig.position;
                     val.rotation = orig.rotation;
+                    val.dataUpdateTime = orig.dataUpdateTime;
 
-                    updater.UpdateComponent(entity, componentType, val, 52, component.FieldsMask, component.StoppedMask, frames);
+                    updater.UpdateComponent(entity, componentType, val, 60, component.FieldsMask, component.StoppedMask, frames);
 
                     return;
                 }

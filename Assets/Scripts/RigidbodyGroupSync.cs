@@ -20,7 +20,9 @@ public class RigidbodyGroupSync : MonoBehaviour
 
     private List<Impact> _impacts = new(); 
     
-    private const int InternalReconcileFrames = 10;
+    private const int InternalReconcileFrames = 20;
+
+    private CoherenceBridge _bridge;
 
     private class Impact
     {
@@ -41,12 +43,25 @@ public class RigidbodyGroupSync : MonoBehaviour
         GetComponentsInChildren(_rigidbodies);
         foreach (var rb in _rigidbodies)
             _rigidbodySyncs.Add(rb.GetComponent<RigidbodySync>());
+        
+        if (!CoherenceBridgeStore.TryGetBridge(gameObject.scene, out _bridge))
+        {
+            Debug.LogWarning("Couldn't find CoherenceBridge in the scene.");
+            return;
+        }
     }
 
     [Command]
     public void SendImpulse(int rigidbodyIndex, Vector3 localPos, Vector3 worldImpulse, int numFrames)
     {
         Debug.Log($"Adding impact");
+        
+        // Impacts when I don't have authority a smeared across more frames to account for the time it would take 
+        // the remote authority to actually start moving things (he won't add extra frames)
+        float latencyDT = _bridge.Client.Ping.LatestLatencyMs * 0.001f * 2f; 
+        if (!_sync.HasStateAuthority)
+            numFrames += Mathf.CeilToInt(latencyDT / Time.fixedDeltaTime);
+        
         _impacts.Add(new Impact
         {
             curFrame = 0, 
@@ -61,24 +76,31 @@ public class RigidbodyGroupSync : MonoBehaviour
     {
         if (_sync.HasStateAuthority && Input.GetKeyDown(KeyCode.Space) && Player.other != null)
         {
+            Vector3 impactDir = UnityEngine.Random.onUnitSphere;
+            impactDir.y = 0f;
+            impactDir.Normalize();
+            
             var otherGroupSync = Player.other.GetComponent<RigidbodyGroupSync>();
             otherGroupSync._sync.SendCommand<RigidbodyGroupSync>(nameof(SendImpulse),
                 MessageTarget.All,
-                UnityEngine.Random.Range(0, _rigidbodies.Count),
-                UnityEngine.Random.insideUnitSphere, 
-                (UnityEngine.Random.onUnitSphere + Vector3.up * 2f).normalized * impactScale, 
-                240);
+                0,
+                Vector3.right * 4f, 
+                impactDir * impactScale, 
+                1);
         }
         
         if (_sync.HasStateAuthority && Input.GetKeyDown(KeyCode.J) && Player.other != null)
         {
+            Vector3 impactDir = UnityEngine.Random.onUnitSphere + Vector3.up * 2f;
+            impactDir.Normalize();
+
             var otherGroupSync = Player.other.GetComponent<RigidbodyGroupSync>();
             otherGroupSync._sync.SendCommand<RigidbodyGroupSync>(nameof(SendImpulse),
                 MessageTarget.All,
                 0,
                 new Vector3(), 
-                (UnityEngine.Random.onUnitSphere + Vector3.up * 2f).normalized * impactScale, 
-                10);
+                impactDir * impactScale, 
+                4);
         }
     }
 
@@ -114,8 +136,9 @@ public class RigidbodyGroupSync : MonoBehaviour
             }
             else
             {
+                // Keep the "impact" alive while we're ramping up reconciliation ... 
                 float rate = (float)(impact.curFrame - impact.numFrames) / InternalReconcileFrames;
-                _reconciliationRate = Mathf.Min(rate, _reconciliationRate);
+                _reconciliationRate = Mathf.Min(rate * rate, _reconciliationRate);
                 if (rate >= 1f)
                 {
                     // Remove impact

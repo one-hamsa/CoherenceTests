@@ -286,7 +286,7 @@ namespace Coherence.Generated
     }
     
     [UnityEngine.Scripting.Preserve]
-    public class Binding_f56c32abdf848d041964eb9b807eddfe_4707d1d9e8ed47f88db76acbef83a6f2 : Vector3Binding
+    public class Binding_f56c32abdf848d041964eb9b807eddfe_a8303c163b8d4e49a7355156cc497235 : Vector3Binding
     {   
         private global::RigidbodySync CastedUnityComponent;
 
@@ -338,7 +338,7 @@ namespace Coherence.Generated
     }
     
     [UnityEngine.Scripting.Preserve]
-    public class Binding_f56c32abdf848d041964eb9b807eddfe_acb0b7a3a3884d69a06167f0a7433195 : QuaternionBinding
+    public class Binding_f56c32abdf848d041964eb9b807eddfe_5def4b633c3f4c2ead66b70c8e3571d2 : QuaternionBinding
     {   
         private global::RigidbodySync CastedUnityComponent;
 
@@ -388,6 +388,58 @@ namespace Coherence.Generated
             return new _f56c32abdf848d041964eb9b807eddfe_5150605711725245781();
         }    
     }
+    
+    [UnityEngine.Scripting.Preserve]
+    public class Binding_f56c32abdf848d041964eb9b807eddfe_b28fe16e3b74477c8d2b05dc7f1acde9 : DoubleBinding
+    {   
+        private global::RigidbodySync CastedUnityComponent;
+
+        protected override void OnBindingCloned()
+        {
+    	    CastedUnityComponent = (global::RigidbodySync)UnityComponent;
+        }
+
+        public override global::System.Type CoherenceComponentType => typeof(_f56c32abdf848d041964eb9b807eddfe_5150605711725245781);
+        public override string CoherenceComponentName => "_f56c32abdf848d041964eb9b807eddfe_5150605711725245781";
+        public override uint FieldMask => 0b00000000000000000000000000010000;
+
+        public override System.Double Value
+        {
+            get { return (System.Double)(CastedUnityComponent.dataUpdateTime); }
+            set { CastedUnityComponent.dataUpdateTime = (System.Double)(value); }
+        }
+
+        protected override (System.Double value, AbsoluteSimulationFrame simFrame) ReadComponentData(ICoherenceComponentData coherenceComponent, Vector3 floatingOriginDelta)
+        {
+            var value = ((_f56c32abdf848d041964eb9b807eddfe_5150605711725245781)coherenceComponent).dataUpdateTime;
+
+            var simFrame = ((_f56c32abdf848d041964eb9b807eddfe_5150605711725245781)coherenceComponent).dataUpdateTimeSimulationFrame;
+            
+            return (value, simFrame);
+        }
+
+        public override ICoherenceComponentData WriteComponentData(ICoherenceComponentData coherenceComponent, AbsoluteSimulationFrame simFrame)
+        {
+            var update = (_f56c32abdf848d041964eb9b807eddfe_5150605711725245781)coherenceComponent;
+            if (Interpolator.IsInterpolationNone)
+            {
+                update.dataUpdateTime = Value;
+            }
+            else
+            {
+                update.dataUpdateTime = GetInterpolatedAt(simFrame / InterpolationSettings.SimulationFramesPerSecond);
+            }
+
+            update.dataUpdateTimeSimulationFrame = simFrame;
+            
+            return update;
+        }
+
+        public override ICoherenceComponentData CreateComponentData()
+        {
+            return new _f56c32abdf848d041964eb9b807eddfe_5150605711725245781();
+        }    
+    }
 
     [UnityEngine.Scripting.Preserve]
     public class CoherenceSync_f56c32abdf848d041964eb9b807eddfe : CoherenceSyncBaked
@@ -407,8 +459,9 @@ namespace Coherence.Generated
             ["e118ae1d321b45518e714fa9fe8ffd85"] = new Binding_f56c32abdf848d041964eb9b807eddfe_e118ae1d321b45518e714fa9fe8ffd85(),
             ["045921bcf5c349a6b49c5df4e3ef7cc6"] = new Binding_f56c32abdf848d041964eb9b807eddfe_045921bcf5c349a6b49c5df4e3ef7cc6(),
             ["1bcd061bbce74cd4b618ee5e2990e1c9"] = new Binding_f56c32abdf848d041964eb9b807eddfe_1bcd061bbce74cd4b618ee5e2990e1c9(),
-            ["4707d1d9e8ed47f88db76acbef83a6f2"] = new Binding_f56c32abdf848d041964eb9b807eddfe_4707d1d9e8ed47f88db76acbef83a6f2(),
-            ["acb0b7a3a3884d69a06167f0a7433195"] = new Binding_f56c32abdf848d041964eb9b807eddfe_acb0b7a3a3884d69a06167f0a7433195(),
+            ["a8303c163b8d4e49a7355156cc497235"] = new Binding_f56c32abdf848d041964eb9b807eddfe_a8303c163b8d4e49a7355156cc497235(),
+            ["5def4b633c3f4c2ead66b70c8e3571d2"] = new Binding_f56c32abdf848d041964eb9b807eddfe_5def4b633c3f4c2ead66b70c8e3571d2(),
+            ["b28fe16e3b74477c8d2b05dc7f1acde9"] = new Binding_f56c32abdf848d041964eb9b807eddfe_b28fe16e3b74477c8d2b05dc7f1acde9(),
         };
         
         private Dictionary<string, Action<CommandBinding, CommandsHandler>> bakedCommandBindings = new Dictionary<string, Action<CommandBinding, CommandsHandler>>();
