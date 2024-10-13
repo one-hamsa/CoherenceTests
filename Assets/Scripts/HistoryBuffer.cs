@@ -15,7 +15,7 @@ public abstract class HistoryBuffer<T>
     protected HistoryBuffer(int numSamples)
     {
         _numSamples = numSamples;
-        _history = new(numSamples);
+        _history = new(_numSamples);
     }
 
     public void AddSample(double time, T value)

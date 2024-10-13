@@ -54,7 +54,7 @@ public class Player : MonoBehaviour
         }
 
         // Create the player according to load-out
-        SetupPlayer();
+        //SetupPlayer();
     }
 
     private void SetupPlayer()
@@ -85,11 +85,11 @@ public class Player : MonoBehaviour
 
             float maxForce = float.MaxValue; 
             
-            joint.xDrive = new JointDrive() { positionDamper = 12f, positionSpring = 2000f, maximumForce = maxForce };
-            joint.yDrive = new JointDrive() { positionDamper = 12f, positionSpring = 2000f, maximumForce = maxForce };
-            joint.zDrive = new JointDrive() { positionDamper = 12f, positionSpring = 2000f, maximumForce = maxForce };
+            joint.xDrive = new JointDrive() { positionDamper = 500f, positionSpring = 2000f, maximumForce = maxForce };
+            joint.yDrive = new JointDrive() { positionDamper = 500f, positionSpring = 2000f, maximumForce = maxForce };
+            joint.zDrive = new JointDrive() { positionDamper = 500f, positionSpring = 2000f, maximumForce = maxForce };
             joint.rotationDriveMode = RotationDriveMode.Slerp;
-            joint.slerpDrive = new JointDrive() { positionDamper = 12f, positionSpring = 15000f, maximumForce = maxForce };
+            joint.slerpDrive = new JointDrive() { positionDamper = 500f, positionSpring = 15000f, maximumForce = maxForce };
 
             // When we have authority we can (and should) enable sync right now
             // For remote players, we should wait until we receive the instantiate command from the server and only then enable it (inside PlayerOrPartInstantiator)

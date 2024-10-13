@@ -16,11 +16,11 @@ component _86637d6221845a54c80f4dee3a49e53e_11040090778132851781 [id "157"]
 component _86637d6221845a54c80f4dee3a49e53e_3514251146074993658 [id "158"]
   ids Bytes [bits "4072"]
 
-component _daaa1fa3f3526944a84e601f43726765_16199295493625938824 [id "159"]
-  ids Bytes [bits "4072"]
-
-component _daaa1fa3f3526944a84e601f43726765_3238819829505931363 [id "160"]
+component _daaa1fa3f3526944a84e601f43726765_3238819829505931363 [id "159"]
   frame Int [bits "32", range-min "-2147483648", range-max "2147483647"]
+
+component _daaa1fa3f3526944a84e601f43726765_3746983036109963748 [id "160"]
+  ids Bytes [bits "4072"]
 
 component _daaa1fa3f3526944a84e601f43726765_6822197146557525417 [id "161"]
   leftArmItemID Int [bits "6", range-min "-1", range-max "32"]
@@ -34,7 +34,11 @@ component _ddf545e2defc9334d82e1bfb3a54514a_6375165786498317404 [id "162"]
 component _ddf545e2defc9334d82e1bfb3a54514a_8181434535533552611 [id "163"]
   partIndex Int [bits "32", range-min "-2147483648", range-max "2147483647"]
 
-component _f56c32abdf848d041964eb9b807eddfe_5150605711725245781 [id "164"]
+component _f56c32abdf848d041964eb9b807eddfe_2556207594499470627 [id "164"]
+  path String [bits "6"]
+  pathDirtyCounter Int [bits "32", range-min "-2147483648", range-max "2147483647"]
+
+component _f56c32abdf848d041964eb9b807eddfe_5150605711725245781 [id "165"]
   velocity Vector3 [compression "None"]
   angularVelocity Vector3 [compression "None"]
   position Vector3 [compression "None"]
