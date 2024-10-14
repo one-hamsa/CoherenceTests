@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3582981628696257013}
   - component: {fileID: 8118622161289229957}
   - component: {fileID: -7406653295576699835}
-  - component: {fileID: 3514251146074993658}
+  - component: {fileID: 4947508659685282745}
   m_Layer: 0
   m_Name: Prefab - Cube
   m_TagString: Untagged
@@ -123,7 +123,9 @@ MonoBehaviour:
       lodStepsActive: 1
     - component: {fileID: 221159960744187915}
       lodStepsActive: 1
-    - component: {fileID: 3514251146074993658}
+    - component: {fileID: 7427119718701635709}
+      lodStepsActive: 1
+    - component: {fileID: 4947508659685282745}
       lodStepsActive: 1
     GeneratesArchetypeDefinition: 0
   interpolationLocation: 5
@@ -156,7 +158,7 @@ MonoBehaviour:
   - rid: 5691255278982660173
   - rid: 4417920853667217433
   - rid: 4417920853667217435
-  - rid: 4417920853667217797
+  - rid: 7276339581938827361
   onNetworkedInstantiation:
     m_PersistentCalls:
       m_Calls: []
@@ -314,51 +316,6 @@ MonoBehaviour:
             Coherence.Toolkit, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
         oldName: 
         oldParameterAssemblyTypes: []
-    - rid: 4417920853667217797
-      type: {class: ByteArrayBinding, ns: Coherence.Toolkit.Bindings.ValueBindings, asm: Coherence.Toolkit}
-      data:
-        descriptor:
-          rid: 4417920853667217798
-        routing: 0
-        syncMode: 0
-        isPredicted: 0
-        predictionMode: 0
-        guid: aa34cc8cc48e4afe9f65732a8958e0e7
-        archetypeData:
-          type: 10
-          minRange: 0
-          maxRange: 0
-          sampleRate: 20
-          floatCompression: 0
-          fields:
-          - type: 10
-            bits: 4072
-            precision: 0
-            floatCompression: 0
-        unityComponent: {fileID: 3514251146074993658}
-        coherenceSync: {fileID: 3582981628696257013}
-        interpolationSettings: {fileID: 0}
-    - rid: 4417920853667217798
-      type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
-      data:
-        name: ids
-        monoAssemblyType: System.Byte[], mscorlib
-        required: 1
-        enforcesLODingWhenFieldsOverriden: 1
-        valueSyncCallbackName: OnReceivedIds
-        memberType: 4
-        parameterAssemblyTypes: []
-        ownerType:
-          assemblyQualifiedName: Coherence.Toolkit.PrefabSyncGroup, Coherence.Toolkit,
-            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        defaultSyncMode: 0
-        CustomData:
-          rid: -2
-        bindingType:
-          assemblyQualifiedName: Coherence.Toolkit.Bindings.ValueBindings.ByteArrayBinding,
-            Coherence.Toolkit, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
-        oldName: 
-        oldParameterAssemblyTypes: []
     - rid: 5691255278982660173
       type: {class: IntBinding, ns: Coherence.Toolkit.Bindings.ValueBindings, asm: Coherence.Toolkit}
       data:
@@ -404,6 +361,51 @@ MonoBehaviour:
             Coherence.Toolkit, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
         oldName: 
         oldParameterAssemblyTypes: []
+    - rid: 7276339581938827361
+      type: {class: ByteArrayBinding, ns: Coherence.Toolkit.Bindings.ValueBindings, asm: Coherence.Toolkit}
+      data:
+        descriptor:
+          rid: 7276339581938827362
+        routing: 0
+        syncMode: 0
+        isPredicted: 0
+        predictionMode: 0
+        guid: bbec3871e5354ef4b4d5e2a214ae14fc
+        archetypeData:
+          type: 10
+          minRange: 0
+          maxRange: 0
+          sampleRate: 20
+          floatCompression: 0
+          fields:
+          - type: 10
+            bits: 4072
+            precision: 0
+            floatCompression: 0
+        unityComponent: {fileID: 4947508659685282745}
+        coherenceSync: {fileID: 3582981628696257013}
+        interpolationSettings: {fileID: 0}
+    - rid: 7276339581938827362
+      type: {class: Descriptor, ns: Coherence.Toolkit.Bindings, asm: Coherence.Toolkit}
+      data:
+        name: ids
+        monoAssemblyType: System.Byte[], mscorlib
+        required: 1
+        enforcesLODingWhenFieldsOverriden: 1
+        valueSyncCallbackName: OnReceivedIds
+        memberType: 4
+        parameterAssemblyTypes: []
+        ownerType:
+          assemblyQualifiedName: Coherence.Toolkit.PrefabSyncGroup, Coherence.Toolkit,
+            Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        defaultSyncMode: 0
+        CustomData:
+          rid: -2
+        bindingType:
+          assemblyQualifiedName: Coherence.Toolkit.Bindings.ValueBindings.ByteArrayBinding,
+            Coherence.Toolkit, Version=0.0.0.0, Culture=neutral, PublicKeyToken=null
+        oldName: 
+        oldParameterAssemblyTypes: []
 --- !u!114 &8118622161289229957
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -430,7 +432,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e335ca408e20f624b9b22396d8e8821e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &3514251146074993658
+--- !u!114 &4947508659685282745
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -591,6 +593,17 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 2405009162694504246, guid: f56c32abdf848d041964eb9b807eddfe, type: 3}
   m_PrefabInstance: {fileID: 4930059828309093726}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &7427119718701635709 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2556207594499470627, guid: f56c32abdf848d041964eb9b807eddfe, type: 3}
+  m_PrefabInstance: {fileID: 4930059828309093726}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 50ac520fda41f43c7b508d780e58180a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &8163487352135040148 stripped
 SphereCollider:
   m_CorrespondingSourceObject: {fileID: 3828516211372478922, guid: f56c32abdf848d041964eb9b807eddfe, type: 3}

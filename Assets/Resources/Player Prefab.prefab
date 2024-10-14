@@ -1260,14 +1260,6 @@ PrefabInstance:
       propertyPath: m_Name
       value: 2nd Rigidbody
       objectReference: {fileID: 0}
-    - target: {fileID: 5150605711725245781, guid: f56c32abdf848d041964eb9b807eddfe, type: 3}
-      propertyPath: baseReconciliationRate
-      value: 0.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5150605711725245781, guid: f56c32abdf848d041964eb9b807eddfe, type: 3}
-      propertyPath: useSimpleReconciliation
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 6790031266951361597, guid: f56c32abdf848d041964eb9b807eddfe, type: 3}
       propertyPath: m_LocalScale.x
       value: 0.25
@@ -1459,16 +1451,8 @@ PrefabInstance:
       value: Body Rigidbody
       objectReference: {fileID: 0}
     - target: {fileID: 5336147542446173588, guid: f56c32abdf848d041964eb9b807eddfe, type: 3}
-      propertyPath: m_Drag
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 5336147542446173588, guid: f56c32abdf848d041964eb9b807eddfe, type: 3}
       propertyPath: m_Mass
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 5336147542446173588, guid: f56c32abdf848d041964eb9b807eddfe, type: 3}
-      propertyPath: m_AngularDrag
-      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 5627273157777835619, guid: f56c32abdf848d041964eb9b807eddfe, type: 3}
       propertyPath: m_IsActive

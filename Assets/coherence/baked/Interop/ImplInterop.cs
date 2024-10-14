@@ -177,17 +177,17 @@ namespace Coherence.Generated
                 case 150: return GenericFieldULong3.FromInterop(data, dataSize, simFrames, simFramesCount);
                 case 151: return GenericFieldColor0.FromInterop(data, dataSize, simFrames, simFramesCount);
                 case 152: return GenericFieldColor1.FromInterop(data, dataSize, simFrames, simFramesCount);
-                case 153: return _3bec13d4bb00a5e479d1a130c95272ee_6439543321279280110.FromInterop(data, dataSize, simFrames, simFramesCount);
+                case 153: return _3bec13d4bb00a5e479d1a130c95272ee_3256646435288765357.FromInterop(data, dataSize, simFrames, simFramesCount);
                 case 154: return _3bec13d4bb00a5e479d1a130c95272ee_8119623259683859537.FromInterop(data, dataSize, simFrames, simFramesCount);
                 case 155: return _5adef152083604ef289a125a77765def_840763193699283319.FromInterop(data, dataSize, simFrames, simFramesCount);
                 case 156: return _7aa047939d3aa49498cc38bb3ac3eec7_11687024536901363.FromInterop(data, dataSize, simFrames, simFramesCount);
-                case 157: return _7aa047939d3aa49498cc38bb3ac3eec7_3015984124178680140.FromInterop(data, dataSize, simFrames, simFramesCount);
+                case 157: return _7aa047939d3aa49498cc38bb3ac3eec7_6752824045975742735.FromInterop(data, dataSize, simFrames, simFramesCount);
                 case 158: return _86637d6221845a54c80f4dee3a49e53e_11040090778132851781.FromInterop(data, dataSize, simFrames, simFramesCount);
-                case 159: return _86637d6221845a54c80f4dee3a49e53e_3514251146074993658.FromInterop(data, dataSize, simFrames, simFramesCount);
+                case 159: return _86637d6221845a54c80f4dee3a49e53e_4947508659685282745.FromInterop(data, dataSize, simFrames, simFramesCount);
                 case 160: return _daaa1fa3f3526944a84e601f43726765_3238819829505931363.FromInterop(data, dataSize, simFrames, simFramesCount);
                 case 161: return _daaa1fa3f3526944a84e601f43726765_3746983036109963748.FromInterop(data, dataSize, simFrames, simFramesCount);
                 case 162: return _daaa1fa3f3526944a84e601f43726765_6822197146557525417.FromInterop(data, dataSize, simFrames, simFramesCount);
-                case 163: return _ddf545e2defc9334d82e1bfb3a54514a_6375165786498317404.FromInterop(data, dataSize, simFrames, simFramesCount);
+                case 163: return _ddf545e2defc9334d82e1bfb3a54514a_3176471107512196127.FromInterop(data, dataSize, simFrames, simFramesCount);
                 case 164: return _ddf545e2defc9334d82e1bfb3a54514a_8181434535533552611.FromInterop(data, dataSize, simFrames, simFramesCount);
                 case 165: return _f56c32abdf848d041964eb9b807eddfe_2556207594499470627.FromInterop(data, dataSize, simFrames, simFramesCount);
                 case 166: return _f56c32abdf848d041964eb9b807eddfe_5150605711725245781.FromInterop(data, dataSize, simFrames, simFramesCount);
@@ -1890,8 +1890,8 @@ namespace Coherence.Generated
                 }
                 case 153:
                 {
-                    var orig = (_3bec13d4bb00a5e479d1a130c95272ee_6439543321279280110)component;
-                    var val = new _3bec13d4bb00a5e479d1a130c95272ee_6439543321279280110.Interop();
+                    var orig = (_3bec13d4bb00a5e479d1a130c95272ee_3256646435288765357)component;
+                    var val = new _3bec13d4bb00a5e479d1a130c95272ee_3256646435288765357.Interop();
 
                     fixed (void* pinnedPtrids = orig.ids) { val.ids = new ByteArray { Data = pinnedPtrids, Length =  orig.ids?.Length ?? 0 };
 
@@ -1934,8 +1934,8 @@ namespace Coherence.Generated
                 }
                 case 157:
                 {
-                    var orig = (_7aa047939d3aa49498cc38bb3ac3eec7_3015984124178680140)component;
-                    var val = new _7aa047939d3aa49498cc38bb3ac3eec7_3015984124178680140.Interop();
+                    var orig = (_7aa047939d3aa49498cc38bb3ac3eec7_6752824045975742735)component;
+                    var val = new _7aa047939d3aa49498cc38bb3ac3eec7_6752824045975742735.Interop();
 
                     fixed (void* pinnedPtrids = orig.ids) { val.ids = new ByteArray { Data = pinnedPtrids, Length =  orig.ids?.Length ?? 0 };
 
@@ -1956,8 +1956,8 @@ namespace Coherence.Generated
                 }
                 case 159:
                 {
-                    var orig = (_86637d6221845a54c80f4dee3a49e53e_3514251146074993658)component;
-                    var val = new _86637d6221845a54c80f4dee3a49e53e_3514251146074993658.Interop();
+                    var orig = (_86637d6221845a54c80f4dee3a49e53e_4947508659685282745)component;
+                    var val = new _86637d6221845a54c80f4dee3a49e53e_4947508659685282745.Interop();
 
                     fixed (void* pinnedPtrids = orig.ids) { val.ids = new ByteArray { Data = pinnedPtrids, Length =  orig.ids?.Length ?? 0 };
 
@@ -2003,8 +2003,8 @@ namespace Coherence.Generated
                 }
                 case 163:
                 {
-                    var orig = (_ddf545e2defc9334d82e1bfb3a54514a_6375165786498317404)component;
-                    var val = new _ddf545e2defc9334d82e1bfb3a54514a_6375165786498317404.Interop();
+                    var orig = (_ddf545e2defc9334d82e1bfb3a54514a_3176471107512196127)component;
+                    var val = new _ddf545e2defc9334d82e1bfb3a54514a_3176471107512196127.Interop();
 
                     fixed (void* pinnedPtrids = orig.ids) { val.ids = new ByteArray { Data = pinnedPtrids, Length =  orig.ids?.Length ?? 0 };
 

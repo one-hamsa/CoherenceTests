@@ -105,12 +105,24 @@ public class RigidbodySync : MonoBehaviour
         _positionHistory.AddSample(currentNetworkTime, _rigidbody.position);
         _rotationHistory.AddSample(currentNetworkTime, _rigidbody.rotation);
         
+        float fixedDt = Time.fixedDeltaTime;
+        float invFixedDT = 1f / fixedDt;
         if (_coherenceSync.HasStateAuthority)
         {
+            Quaternion rbRotation = _rigidbody.rotation;
+            Vector3 rbPosition = _rigidbody.position;
+
+            Vector3 empiricVelocity = (rbPosition - position) * invFixedDT;
+            var deltaRot = RigidbodyPredictor.ShortWorldSpaceDeltaTo(rotation, rbRotation);
+            RigidbodyPredictor.SafeToAngleAxis(deltaRot, out float angle, out Vector3 rotationAxis);
+            Vector3 empiricAngularVelocity = rotationAxis * (angle * Mathf.Deg2Rad * invFixedDT);
+
             position = _rigidbody.position;
-            velocity = _rigidbody.velocity;
             rotation = _rigidbody.rotation;
-            angularVelocity = _rigidbody.angularVelocity;
+            // velocity = _rigidbody.velocity;
+            // angularVelocity = _rigidbody.angularVelocity;
+            velocity = empiricVelocity;
+            angularVelocity = empiricAngularVelocity;
             dataUpdateTime = currentNetworkTime;
         }
         else
@@ -123,8 +135,6 @@ public class RigidbodySync : MonoBehaviour
 
             float propertyRefreshInterval = 1f/20f; // 20Hz updates
             float rate = baseReconciliationRate;// * _reconciliationRate;
-            float fixedDt = Time.fixedDeltaTime;
-            float invFixedDT = 1f / fixedDt;
             Vector3 velocityChange = Vector3.zero;
             Vector3 angularVelocityChange = Vector3.zero;
             
