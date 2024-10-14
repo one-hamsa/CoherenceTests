@@ -54,7 +54,7 @@ public class Player : MonoBehaviour
         }
 
         // Create the player according to load-out
-        //SetupPlayer();
+        SetupPlayer();
     }
 
     private void SetupPlayer()

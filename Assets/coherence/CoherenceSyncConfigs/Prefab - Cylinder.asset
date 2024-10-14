@@ -17,16 +17,16 @@ MonoBehaviour:
   editorTarget: {fileID: 2311676686119585255, guid: ddf545e2defc9334d82e1bfb3a54514a, type: 3}
   includeInSchema: 1
   objectProvider:
-    rid: 4417920695832936462
+    rid: 7276339557078664110
   objectInstantiator:
     rid: 4417920742033457411
   references:
     version: 2
     RefIds:
-    - rid: 4417920695832936462
-      type: {class: ResourcesProvider, ns: Coherence.Toolkit, asm: Coherence.Toolkit}
-      data:
-        resourcesPath: Prefab - Cylinder
     - rid: 4417920742033457411
       type: {class: PlayerOrPartInstantiator, ns: , asm: Assembly-CSharp}
       data: 
+    - rid: 7276339557078664110
+      type: {class: ResourcesProvider, ns: Coherence.Toolkit, asm: Coherence.Toolkit}
+      data:
+        resourcesPath: Prefab - Cylinder

@@ -253,7 +253,7 @@ MonoBehaviour:
     - component: {fileID: 7215177445236620527}
       lodStepsActive: 1
     GeneratesArchetypeDefinition: 0
-  interpolationLocation: 0
+  interpolationLocation: 1
   RigidbodyUpdateMode: 0
   OnRigidbody2DPositionUpdate:
     m_PersistentCalls:

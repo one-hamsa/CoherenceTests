@@ -20,7 +20,7 @@ public class RigidbodyGroupSync : MonoBehaviour
 
     private List<Impact> _impacts = new(); 
     
-    private const int InternalReconcileFrames = 20;
+    private const int InternalReconcileFrames = 40;
 
     private CoherenceBridge _bridge;
 
@@ -58,7 +58,10 @@ public class RigidbodyGroupSync : MonoBehaviour
         
         // Impacts when I don't have authority a smeared across more frames to account for the time it would take 
         // the remote authority to actually start moving things (he won't add extra frames)
-        float latencyDT = _bridge.Client.Ping.LatestLatencyMs * 0.001f * 2f; 
+        // NOTE:
+        //  we need 2 round trip times, 1st for the impact to arrive - 2nd for the affect of the impact to return
+        //  this way, when the local impulse should end when the remote impulse ends and the data arrives
+        float latencyDT = _bridge.Client.Ping.LatestLatencyMs * 0.001f * 4f; 
         if (!_sync.HasStateAuthority)
             numFrames += Mathf.CeilToInt(latencyDT / Time.fixedDeltaTime);
         
