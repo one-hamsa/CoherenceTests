@@ -9,9 +9,6 @@ public class RigidbodySync : MonoBehaviour
 {
     public bool debug;
     
-    [Range(0, 1)] 
-    public float baseReconciliationRate = 0.5f;
-    
     private Rigidbody _rigidbody;
     private CoherenceBridge _bridge;
     private CoherenceSync _coherenceSync;
@@ -47,6 +44,19 @@ public class RigidbodySync : MonoBehaviour
     private double _networkTimeWhenLastRemoteDataUpdated;
     private Vector3 _positionUpdateError;
     private Quaternion _rotationUpdateError;
+
+    private Vector3 _lastErrorCorrectedVelocity;
+    private Vector3 _lastErrorCorrectedAngularVelocity;
+
+    [Header("Setup")]
+    [Range(0, 1)] 
+    public float baseReconciliationRate = 0.5f;
+    [Range(0,1)]
+    public float extrapolationAmount = 0.5f;
+    [Range(0,1)]
+    public float reconcileExtrapolationRate = 1f;
+    [Range(0,1)]
+    public float reconcileHistoryErrorRate = 1f;
 
     private void Awake()
     {
@@ -122,6 +132,10 @@ public class RigidbodySync : MonoBehaviour
             {
                 Vector3 deltaPos = futurePos - _rigidbody.position;
                 velocityChange = (deltaPos * invFixedDT - _rigidbody.velocity) * rate;
+                
+                Quaternion deltaRotation = RigidbodyPredictor.ShortWorldSpaceDeltaTo(_rigidbody.rotation, futureRot);
+                RigidbodyPredictor.SafeToAngleAxis(deltaRotation, out float angleDegrees, out Vector3 axis);
+                angularVelocityChange = axis * (Mathf.Deg2Rad * angleDegrees * invFixedDT * rate) - _rigidbody.angularVelocity;
             }
             else
             {
@@ -137,7 +151,7 @@ public class RigidbodySync : MonoBehaviour
                 }
                 
                 // use extrapolated positions to fix towards 
-                double extrapolationDT = (currentNetworkTime - _remoteDataUpdateTime) * 0.5;
+                double extrapolationDT = (currentNetworkTime - _remoteDataUpdateTime) * extrapolationAmount;
                 
                 // Limit extrapolation to not look too much into the future (not getting data?)
                 if (extrapolationDT > 0.1f)
@@ -147,11 +161,11 @@ public class RigidbodySync : MonoBehaviour
                     RigidbodyPredictor.PredictFutureState(_rigidbody, position, rotation, velocity, angularVelocity, (float)extrapolationDT, out futurePos, out futureRot);
                 
                 Vector3 deltaPos = futurePos - _rigidbody.position;
-                velocityChange = (deltaPos * invFixedDT - _rigidbody.velocity) * (rate * _reconciliationRate);
+                velocityChange = (deltaPos * invFixedDT - _rigidbody.velocity) * (rate * _reconciliationRate * reconcileExtrapolationRate);
 
                 Quaternion deltaRotation = RigidbodyPredictor.ShortWorldSpaceDeltaTo(_rigidbody.rotation, futureRot);
                 RigidbodyPredictor.SafeToAngleAxis(deltaRotation, out float angleDegrees, out Vector3 axis);
-                angularVelocityChange = axis * (Mathf.Deg2Rad * angleDegrees * invFixedDT * rate) - _rigidbody.angularVelocity;
+                angularVelocityChange = (axis * (Mathf.Deg2Rad * angleDegrees * invFixedDT) - _rigidbody.angularVelocity) * (rate * _reconciliationRate * reconcileExtrapolationRate);
 
                 // Last error correction (smeared across the property refresh interval - which is currently 20Hz)
                 double timeSinceLastUpdate = currentNetworkTime - _networkTimeWhenLastRemoteDataUpdated;
@@ -159,11 +173,19 @@ public class RigidbodySync : MonoBehaviour
                 {
                     float curDT = Mathf.Min(fixedDt, (float)(propertyRefreshInterval - timeSinceLastUpdate));
                     float currentErrorFix = Mathf.Clamp01(curDT / propertyRefreshInterval);
-                    velocityChange += (_positionUpdateError * (currentErrorFix * invFixedDT) - _rigidbody.velocity) * (rate * _reconciliationRate);
+                    Vector3 currentErrorCorrectedVelocity = _positionUpdateError * (currentErrorFix * invFixedDT * rate * _reconciliationRate * reconcileHistoryErrorRate);
+                    velocityChange += currentErrorCorrectedVelocity - _lastErrorCorrectedVelocity;
+                    
                     RigidbodyPredictor.SafeToAngleAxis(_rotationUpdateError, out float errorAngle, out Vector3 errorAxis);
-                    angularVelocityChange += (errorAxis * (errorAngle * currentErrorFix * invFixedDT) - _rigidbody.angularVelocity) * (rate * _reconciliationRate);
+                    Vector3 currentErrorCorrectedAngularVelocity = errorAxis * (errorAngle * Mathf.Deg2Rad * currentErrorFix * invFixedDT * rate * _reconciliationRate * reconcileHistoryErrorRate);
+                    angularVelocityChange += currentErrorCorrectedAngularVelocity - _lastErrorCorrectedAngularVelocity;
+                    
+                    // Apply the error fix on history so we won't attempt fixing the same error twice
                     _positionHistory.ApplyOffset(_positionUpdateError * currentErrorFix);
                     _rotationHistory.ApplyOffset(Quaternion.AngleAxis(errorAngle * currentErrorFix, errorAxis) );
+
+                    _lastErrorCorrectedVelocity = currentErrorCorrectedVelocity;
+                    _lastErrorCorrectedAngularVelocity = currentErrorCorrectedAngularVelocity;
                 }
             }
 
@@ -181,15 +203,37 @@ public class RigidbodySync : MonoBehaviour
         if (_coherenceSync == null)
             return;
         
-        Gizmos.color = Color.green;
         if (!_coherenceSync.HasStateAuthority && _collider != null)
         {
+            Gizmos.color = Color.green;
             if (_collider is SphereCollider sc)
                 Gizmos.DrawWireSphere( position + rotation * (sc.transform.localPosition + sc.center), sc.radius);
             if (_collider is BoxCollider bc)
             {
                 Gizmos.matrix = Matrix4x4.TRS(position + rotation * (_collider.transform.localPosition + bc.center), rotation, _collider.transform.lossyScale);
                 Gizmos.DrawWireCube(bc.center, bc.size);
+            }
+            
+            // use extrapolated positions to fix towards 
+            double currentNetworkTime = _bridge.Client.NetworkTime.TimeAsDouble;
+            double extrapolationDT = (currentNetworkTime - _remoteDataUpdateTime) * extrapolationAmount;
+                
+            // Limit extrapolation to not look too much into the future (not getting data?)
+            if (extrapolationDT > 0.1f)
+                extrapolationDT = 0.1f + Math.Log((extrapolationDT - 0.1)*50f + 1) / 50f;
+
+            if (extrapolationDT > 0)
+            {
+                RigidbodyPredictor.PredictFutureState(_rigidbody, position, rotation, velocity, angularVelocity, (float)extrapolationDT, out Vector3 futurePos, out Quaternion futureRot);
+                Gizmos.color = Color.magenta;
+                if (_collider is SphereCollider sc2)
+                    Gizmos.DrawWireSphere( futurePos + futureRot * (sc2.transform.localPosition + sc2.center), sc2.radius);
+                if (_collider is BoxCollider bc2)
+                {
+                    Gizmos.matrix = Matrix4x4.TRS(futurePos + futureRot * (_collider.transform.localPosition + bc2.center), futureRot, _collider.transform.lossyScale);
+                    Gizmos.DrawWireCube(bc2.center, bc2.size);
+                }
+
             }
         }
     }
