@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -32,17 +33,20 @@ public abstract class HistoryBuffer<T>
         for (int i = 0; i < n; i++)
         {
             var sample = _history[i];
-            if (time >= sample.time)
+            if (time < sample.time)
             {
-                if (i == 0 || i+1 >= n)
+                if (i == 0)
                     return sample.value;
-                var next_sample = _history[i + 1];
-                double lerp = (time - sample.time) / (next_sample.time - sample.time);
-                return Lerp(sample.value, next_sample.value, Mathf.Clamp01((float)lerp));
+                var prevSample = _history[i - 1];
+                double paramBetweenSamples = (time - prevSample.time) / (sample.time - prevSample.time);
+                return Lerp(prevSample.value, sample.value, Mathf.Clamp01((float)paramBetweenSamples));
             }
         }
 
-        return _history[^1].value;
+        if (n > 0)
+            return _history[^1].value;
+
+        throw new IndexOutOfRangeException("Cannot evaluate history buffer, no data!");
     }
 
     public void ApplyOffset(T offset)
@@ -72,5 +76,5 @@ public class Vector3HistoryBuffer : HistoryBuffer<Vector3>
 public class QuaternionHistoryBuffer : HistoryBuffer<Quaternion>
 {
     protected override Quaternion Lerp(Quaternion a, Quaternion b, float param) => Quaternion.Lerp(a, b, param);
-    protected override Quaternion ApplyOffset(Quaternion val, Quaternion offset) => val * offset;
+    protected override Quaternion ApplyOffset(Quaternion val, Quaternion offset) => offset * val;
 }
